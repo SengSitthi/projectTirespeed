@@ -1,0 +1,604 @@
+@role('Admin')
+<ul class="menu accordion">
+    <li class="menu-item">
+        <a href="{{ url('admin') }}" class="menu-link w3-large">
+            <!-- <i class="menu-icon fas fa-magic"></i> -->
+            <i class="menu-icon mdi mdi-view-dashboard"></i>
+            <span class="menu-label">ແຜງ​ຄວບ​ຄຸມ</span>
+            {{-- <span class="menu-badge">
+                <span class="badge badge-info">1</span>
+            </span> --}}
+
+        </a>
+    </li>
+
+    {{-- Start Appointment --}}
+    <li class="menu-item">
+        <a href="javascript://" class="menu-link w3-large" data-toggle="collapse" data-target="#menu-appointment"
+            aria-expanded="true" aria-controls="menu-appointment">
+            <!-- <i class="menu-icon fas fa-border-all"></i> -->
+            <i class="menu-icon mdi mdi-room-service"></i>
+            <span class="menu-label">ບໍ​ລິ​ການ</span>
+            <i class="menu-arrow mdi mdi-chevron-right"></i>
+        </a>
+
+        <ul class="menu collapse" data-parent="#main-menu" id="menu-appointment" style="margin-left: 10px">
+          <li class="menu-item">
+            <a href="{{ url('appointment') }}" class="menu-link w3-large">
+              <i class="menu-icon mdi mdi-desktop-mac-dashboard"></i>
+              <span class="menu-label">ພາບ​ລວມ​ການນັດ​ໝາຍ</span>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="{{ url('quotationnew') }}" class="menu-link w3-large">
+              <i class="menu-icon mdi mdi-file-document-box-plus"></i>
+              <span class="menu-label">ໃບ​ສະ​ເໜີ</span>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="{{ url('quotationlist') }}" class="menu-link w3-large">
+              <i class="menu-icon mdi mdi-file-document-box-multiple"></i>
+              <span class="menu-label">ລາຍ​ການໃບ​ສະ​ເໜີ</span>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="{{ url('newcustomer') }}" class="menu-link w3-large">
+              <i class="menu-icon mdi mdi-account-multiple-plus"></i>
+              <span class="menu-label">ລູກ​ຄ້າ​ໃໝ່</span>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="{{ url('newcaroldcus') }}" class="menu-link w3-large">
+              <i class="menu-icon mdi mdi-account-multiple-plus"></i>
+              <span class="menu-label">ເພີ່ມ​ລົດ​ໃໝ່ລູກ​ຄ້າເກົ່າ​</span>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="{{ url('customerlist') }}" class="menu-link w3-large">
+              <i class="menu-icon mdi mdi-account-group"></i>
+              <span class="menu-label">ລາຍ​ການ​ລູກ​ຄ້າ​</span>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="{{ url('newapppointment') }}" class="menu-link w3-large">
+              <i class="menu-icon mdi mdi-update"></i>
+              <span class="menu-label">ນ​ັດ​ໝາຍ​ລູກ​ຄ້າ​ໃໝ່</span>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="{{ url('oldappointment') }}" class="menu-link w3-large">
+              <i class="menu-icon mdi mdi-update"></i>
+              <span class="menu-label">ນັດ​ໝາຍ​ລູກ​ຄ້າ​ເກົ່າ</span>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="{{ url('appointmenttoday') }}" class="menu-link w3-large">
+              <i class="menu-icon mdi mdi-table"></i>
+              <span class="menu-label">ລູກ​ຄ້າ​ນັດ​ໝາຍ​ມື້​ນີ້</span>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="{{ url('appointmentmonth') }}" class="menu-link w3-large">
+              <i class="menu-icon mdi mdi-table-large"></i>
+              <span class="menu-label">ລູກ​ຄ້າ​ນັດ​ໝາຍ​ເດືອນ​ນີ້</span>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="javascript://" class="menu-link w3-large" data-toggle="collapse" data-target="#apm-report" aria-expanded="true" aria-controls="apm-report">
+              <i class="menu-icon mdi mdi-card-text"></i>
+              <span class="menu-label">ລາຍ​ງານ</span>
+              <i class="menu-arrow mdi mdi-chevron-right"></i>
+            </a>
+            <ul class="menu collapse" data-parent="#menu-appointment" id="apm-report" style="margin-left: 10px">
+              <li class="menu-item">
+                <a href="{{ url('reportcustomer') }}" class="menu-link w3-large">
+                  <i class="menu-icon mdi mdi-file-account"></i>
+                  <span class="menu-label">ລາຍ​ງານ​ຂໍ້​ມູນ​ລູກ​ຄ້າ</span>
+                </a>
+              </li>
+              <li class="menu-item">
+                <a href="{{ url('reportcars') }}" class="menu-link w3-large">
+                  <i class="menu-icon mdi mdi-car-pickup"></i>
+                  <span class="menu-label">​ລາຍ​ງານຂໍ້​ມູນ​ລົດ</span>
+                </a>
+              </li>
+              <li class="menu-item">
+                <a href="{{ url('reportrepair') }}" class="menu-link w3-large">
+                  <i class="menu-icon mdi mdi-tools"></i>
+                  <span class="menu-label">ລາຍ​ງານ​ລາຍການ​ສ້ອມແປງ</span>
+                </a>
+              </li>
+              <li class="menu-item">
+                <a href="{{ url('reportAppointment') }}" class="menu-link w3-large">
+                  <i class="menu-icon mdi mdi-av-timer"></i>
+                  <span class="menu-label">ລາຍ​ງານເວ​ລາ​ນັດ​ໝາຍ</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="menu-item">
+            <a href="javascript://" class="menu-link w3-large" data-toggle="collapse" data-target="#menu-apms" aria-expanded="true" aria-controls="menu-apms">
+              <i class="menu-icon mdi mdi-settings-outline"></i>
+              <span class="menu-label">ຕັ້ງ​ຄ່າ</span>
+              <i class="menu-arrow mdi mdi-chevron-right"></i>
+            </a>
+            <ul class="menu collapse" data-parent="#menu-appointment" id="menu-apms" style="margin-left: 10px">
+              <li class="menu-item">
+                <a href="{{ url('customer_setting') }}" class="menu-link w3-large">
+                  <i class="menu-icon mdi mdi-account-edit"></i>
+                  <span class="menu-label">ຈັດ​ການ​ຂໍ້​ມູນ​ລູກ​ຄ້າ</span>
+                </a>
+              </li>
+              <li class="menu-item">
+                <a href="{{ url('car_setting') }}" class="menu-link w3-large">
+                  <i class="menu-icon mdi mdi-car"></i>
+                  <span class="menu-label">​ຈັດ​ການ​ຂໍ້​ມູນ​ລົດ</span>
+                </a>
+              </li>
+              <li class="menu-item">
+                <a href="{{ url('listrepair') }}" class="menu-link w3-large">
+                  <i class="menu-icon mdi mdi-tools"></i>
+                  <span class="menu-label">ຈັດ​ການລາຍ​ການ​ສ້ອມແປງ</span>
+                </a>
+              </li>
+              <li class="menu-item">
+                <a href="{{ url('ap_setting') }}" class="menu-link w3-large">
+                  <i class="menu-icon mdi mdi-av-timer"></i>
+                  <span class="menu-label">ຈັດ​ການ​ເວ​ລາ​ນັດ​ໝາຍ</span>
+                </a>
+              </li>
+              <li class="menu-item">
+                <a href="{{ url('brand_setting') }}" class="menu-link w3-large">
+                  <i class="menu-icon mdi mdi-account-multiple"></i>
+                  <span class="menu-label">ຈັດ​ການ​ຍີ່​ຫໍ້​ລົດ</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+      </li>
+    {{-- End Appointment --}}
+
+    {{-- Start Spares --}}
+    <li class="menu-item">
+        <a href="javascript:void(0)" class="menu-link w3-large" data-toggle="collapse" data-target="#menu-product"
+            aria-expanded="true" aria-controls="menu-product">
+            <i class="menu-icon mdi mdi-tools"></i>
+            <span class="menu-label">​ອາ​ໄຫຼ່</span>
+            <i class="menu-arrow mdi mdi-chevron-right"></i>
+        </a>
+        <ul class="menu collapse" data-parent="#main-menu" id="menu-product" style="margin-left: 10px">
+            <li class="menu-item">
+                <a href="{{ url('stockdashboard') }}" class="menu-link w3-large">
+                    <i class="menu-icon mdi mdi-monitor-dashboard"></i>
+                    <span class="menu-label">ແຜງ​ຄວບ​ຄຸມ​ອະ​ໄຫຼ່</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="javascript://" class="menu-link w3-large" data-toggle="collapse" data-target="#spares-data"
+                    aria-expanded="true" aria-controls="spares-data">
+                    <i class="menu-icon mdi mdi-tools"></i>
+                    <span class="menu-label">ຂໍ້​ມູນ​ອາ​ໄຫຼ່</span>
+                    <i class="menu-arrow mdi mdi-chevron-right"></i>
+                </a>
+                <ul class="menu collapse" data-parent="#menu-product" id="spares-data" style="margin-left: 10px">
+                    <li class="menu-item">
+                        <a href="{{ url('spares') }}" class="menu-link w3-large">
+                            <i class="menu-icon mdi mdi-database-plus"></i>
+                            <span class="menu-label">ເພີ່ມ​ອະ​ໄຫຼ່</span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="{{ url('spareslist') }}" class="menu-link w3-large">
+                            <i class="menu-icon mdi mdi-tools"></i>
+                            <span class="menu-label">ລາຍ​ການອະ​ໄຫຼ່</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="menu-item">
+                <a href="javascript://" class="menu-link w3-large" data-toggle="collapse" data-target="#order-spare"
+                    aria-expanded="true" aria-controls="order-spare">
+                    <i class="menu-icon mdi mdi-cart"></i>
+                    <span class="menu-label">ຂໍ້​ມູນສັ່ງ​ຊື້​ອະ​ໄຫຼ່</span>
+                    <i class="menu-arrow mdi mdi-chevron-right"></i>
+                </a>
+                <ul class="menu collapse" data-parent="#menu-product" id="order-spare" style="margin-left: 10px">
+                    <li class="menu-item">
+                        <a href="{{ url('orders') }}" class="menu-link w3-large">
+                            <i class="menu-icon mdi mdi-playlist-plus"></i>
+                            <span class="menu-label">​​ສັ່ງ​ຊື້​ອະ​ໄຫຼ່</span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="{{ url('orderslist') }}" class="menu-link w3-large">
+                            <i class="menu-icon mdi mdi-clipboard-list"></i>
+                            <span class="menu-label">ລາຍ​ການ​ສັ່ງ​ຊື້ອະ​ໄຫຼ່</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="menu-item">
+                <a href="javascript://" class="menu-link w3-large" data-toggle="collapse" data-target="#receive-spare"
+                    aria-expanded="true" aria-controls="receive-spare">
+                    <i class="menu-icon mdi mdi-expand-all"></i>
+                    <span class="menu-label">ຂໍ້​ມູນຮ​ັບ​ອະ​ໄຫຼ່​</span>
+                    <i class="menu-arrow mdi mdi-chevron-right"></i>
+                </a>
+                <ul class="menu collapse" data-parent="#menu-product" id="receive-spare" style="margin-left: 10px">
+                    <li class="menu-item">
+                        <a href="{{ url('receive') }}" class="menu-link w3-large">
+                            <i class="menu-icon mdi mdi-cart-plus"></i>
+                            <span class="menu-label">​ຮັບ​ອະ​ໄຫຼ່ເຂົ້າ</span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="{{ url('receivelist') }}" class="menu-link w3-large">
+                            <i class="menu-icon mdi mdi-clipboard-list"></i>
+                            <span class="menu-label">​ລາຍ​ການ​ຮັບ​ອະ​ໄຫຼ່</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="menu-item">
+                <a href="javascript://" class="menu-link w3-large" data-toggle="collapse" data-target="#withdraw-spare"
+                    aria-expanded="true" aria-controls="withdraw-spare">
+                    <i class="menu-icon mdi mdi-tools"></i>
+                    <span class="menu-label">ຂໍ້​ມູນການ​ເບີກ​ອະ​ໄຫຼ່​</span>
+                    <i class="menu-arrow mdi mdi-chevron-right"></i>
+                </a>
+                <ul class="menu collapse" data-parent="#menu-product" id="withdraw-spare" style="margin-left: 10px">
+                    <li class="menu-item">
+                        <a href="{{ url('withdraw') }}" class="menu-link w3-large">
+                            <i class="menu-icon mdi mdi-cart-plus"></i>
+                            <span class="menu-label">​ເບິກ​ອະ​ໄຫຼ່</span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="{{ url('withdrawlist') }}" class="menu-link w3-large">
+                            <i class="menu-icon mdi mdi-clipboard-list"></i>
+                            <span class="menu-label">​ລາຍ​ການ​ເບີກອະ​ໄຫຼ່</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="menu-item">
+              <a href="{{ url('sparesbookprint') }}" class="menu-link w3-large">
+                  <i class="menu-icon mdi mdi-printer"></i>
+                  <span class="menu-label">ພິມ​ລາຍ​ການອະ​ໄຫຼ່</span>
+              </a>
+          </li>
+
+            <li class="menu-item">
+                <a href="{{ url('stocksummary') }}" class="menu-link w3-large">
+                    <i class="menu-icon mdi mdi-chart-areaspline"></i>
+                    <span class="menu-label">ສະຫຼຸບ</span>
+                </a>
+            </li>
+
+            <li class="menu-item">
+                <a href="javascript://" class="menu-link w3-large" data-toggle="collapse" data-target="#supplier-spare"
+                    aria-expanded="true" aria-controls="supplier-spare">
+                    <i class="menu-icon mdi mdi-account-group"></i>
+                    <span class="menu-label">​ຂໍ້​ມູນ​ຜູ້​ສະ​ໜອງ</span>
+                    <i class="menu-arrow mdi mdi-chevron-right"></i>
+                </a>
+                <ul class="menu collapse" data-parent="#menu-product" id="supplier-spare" style="margin-left: 10px">
+                    <li class="menu-item">
+                        <a href="{{ url('supplier') }}" class="menu-link w3-large">
+                            <i class="menu-icon mdi mdi-account-multiple-plus"></i>
+                            <span class="menu-label">ເພີ່ມ​ຜ​ູ້​ສະ​ໜອງ</span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="{{ url('supplierlist') }}" class="menu-link w3-large">
+                            <i class="menu-icon mdi mdi-clipboard-list"></i>
+                            <span class="menu-label">​ລາຍ​ການ​​ຜູ້​ສະ​ໜອງ</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="menu-item">
+                <a href="javascript://" class="menu-link w3-large" data-toggle="collapse" data-target="#setting-spare"
+                    aria-expanded="true" aria-controls="setting-spare">
+                    <i class="menu-icon mdi mdi-tools"></i>
+                    <span class="menu-label">ຕັ້ງ​ຄ່າອະ​ໄຫຼ່</span>
+                    <i class="menu-arrow mdi mdi-chevron-right"></i>
+                </a>
+                <ul class="menu collapse" data-parent="#menu-product" id="setting-spare" style="margin-left: 10px">
+                    <li class="menu-item">
+                        <a href="{{ url('typeservice') }}" class="menu-link w3-large">
+                            <i class="menu-icon mdi mdi-clipboard-list"></i>
+                            <span class="menu-label">​ຈັດ​ການປະ​ເພດ​ອະ​ໄຫຼ່</span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="{{ url('typespare') }}" class="menu-link w3-large">
+                            <i class="menu-icon mdi mdi-clipboard-list"></i>
+                            <span class="menu-label">​ຈັດການ​ລະ​ບົບ​ການ​ສ້ອມ</span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="{{ url('brandspare') }}" class="menu-link w3-large">
+                            <i class="menu-icon mdi mdi-clipboard-list"></i>
+                            <span class="menu-label">​ຈັດການຍີ່​ຫໍ້ອະ​ໄຫຼ່</span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="{{ url('brand_setting') }}" class="menu-link w3-large">
+                            <i class="menu-icon mdi mdi-clipboard-list"></i>
+                            <span class="menu-label">​ຈັດການຍີ່​ຫໍ້​ລົດ</span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="{{ url('unitspare') }}" class="menu-link w3-large">
+                            <i class="menu-icon mdi mdi-clipboard-list"></i>
+                            <span class="menu-label">​ຈັດການຫົວ​ໜ່ວຍອະ​ໄຫຼ່</span>
+                        </a>
+                    </li>
+                    {{-- <li class="menu-item">
+                        <a href="javascript://" class="menu-link w3-large" data-toggle="collapse"
+                            data-target="#unit-spare" aria-expanded="true" aria-controls="unit-spare">
+                            <i class="menu-icon mdi mdi-google-circles-extended"></i>
+                            <span class="menu-label">ຂໍ້​ມູນ​ຫົວ​ໜ່ວຍ</span>
+                            <i class="menu-arrow mdi mdi-chevron-right"></i>
+                        </a>
+                        <ul class="menu collapse" data-parent="#setting-spare" id="unit-spare">
+                            <li class="menu-item">
+                                <a href="#" class="menu-link w3-large">
+                                    <i class="menu-icon mdi mdi-plus-thick"></i>
+                                    <span class="menu-label">ເພີ່ມ​​ຫົວ​ໜ່ວຍ</span>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="#" class="menu-link w3-large">
+                                    <i class="menu-icon mdi mdi-clipboard-list"></i>
+                                    <span class="menu-label">​ລາຍ​ການ​ຫົວ​ໜ່ວຍ</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li> --}}
+
+                </ul>
+            </li>
+
+        </ul>
+    </li>
+    {{-- End Stock --}}
+
+    {{-- Start Account Manager --}}
+    <li class="menu-item">
+        <a href="javascript://" class="menu-link w3-large" data-toggle="collapse" data-target="#menu-stock"
+            aria-expanded="true" aria-controls="menu-stock">
+            <!-- <i class="menu-icon fas fa-tasks"></i> -->
+            <i class="menu-icon mdi mdi-home-city-outline"></i>
+            <span class="menu-label">​ລາຍ​ງານ​ລະ​ບົບ​ບັນ​ຊີ</span>
+            <i class="menu-arrow mdi mdi-chevron-right"></i>
+        </a>
+
+        <ul class="menu collapse" data-parent="#main-menu" id="menu-stock">
+
+            <li class="menu-item">
+                <a href="form-general.html" class="menu-link w3-large">
+                    <i class="menu-icon">E</i>
+                    <span class="menu-label">ຂໍ້​ມູນ​ລາຍ​ຮັບ</span>
+                </a>
+            </li>
+
+            <li class="menu-item">
+                <a href="form-advanced.html" class="menu-link w3-large">
+                    <i class="menu-icon">A</i>
+                    <span class="menu-label">​ຂໍ້​ມູນ​ລາຍ​ຈ່າຍ</span>
+                </a>
+            </li>
+
+
+        </ul>
+    </li>
+
+    {{-- <li class="menu-item">
+        <a href="javascript://" class="menu-link w3-large" data-toggle="collapse" data-target="#menu-document"
+            aria-expanded="true" aria-controls="menu-document">
+            <!-- <i class="menu-icon fas fa-tasks"></i> -->
+            <i class="menu-icon mdi mdi-folder-multiple-outline"></i>
+            <span class="menu-label">​ເອ​ກະ​ສານ</span>
+            <i class="menu-arrow mdi mdi-chevron-right"></i>
+        </a>
+
+        <ul class="menu collapse" data-parent="#main-menu" id="menu-document">
+
+            <li class="menu-item">
+                <a href="form-general.html" class="menu-link w3-large">
+                    <i class="menu-icon">E</i>
+                    <span class="menu-label">General</span>
+                </a>
+            </li>
+
+            <li class="menu-item">
+                <a href="form-advanced.html" class="menu-link w3-large">
+                    <i class="menu-icon">A</i>
+                    <span class="menu-label">Advanced</span>
+                </a>
+            </li>
+
+
+        </ul>
+    </li> --}}
+
+    <li class="menu-item">
+        <a href="javascript://" class="menu-link w3-large" data-toggle="collapse" data-target="#repair-car"
+            aria-expanded="true" aria-controls="repair-car">
+            <i class="menu-icon mdi mdi-vector-square"></i>
+            <!-- <i class="menu-icon fas fa-vector-square"></i> -->
+            <span class="menu-label">ງານ​ສ້ອມ​ແປງລົດ</span>
+            <i class="menu-arrow mdi mdi-chevron-right"></i>
+        </a>
+
+        <ul class="menu collapse" data-parent="#main-menu" id="repair-car">
+            <li class="menu-item">
+                <a href="javascript://" class="menu-link w3-large" data-toggle="collapse" data-target="#open-repair"
+                    aria-expanded="true" aria-controls="open-repair">
+                    <!-- <i class="menu-icon fas fa-tasks"></i> -->
+                    <i class="menu-icon mdi mdi-car-side"></i>
+                    <span class="menu-label">​ເປີດ​ງານ​ສ້ອມ</span>
+                    <i class="menu-arrow mdi mdi-chevron-right"></i>
+                </a>
+
+                <ul class="menu collapse" data-parent="#repair-car" id="open-repair">
+
+                    <li class="menu-item">
+                        <a href="form-general.html" class="menu-link w3-large">
+                            <i class="menu-icon mdi mdi-car"></i>
+                            <span class="menu-label">​ເປີດ​ງານ​ສ້ອມ​ລົດ​ໃໝ່</span>
+                        </a>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="form-advanced.html" class="menu-link w3-large">
+                            <i class="menu-icon mdi mdi-car"></i>
+                            <span class="menu-label">ປິດ​ການ​ສ້ອມ</span>
+                        </a>
+                    </li>
+
+
+                </ul>
+            </li>
+
+            <li class="menu-item">
+                <a href="icon-fa.html" class="menu-link w3-large">
+                    <i class="menu-icon mdi mdi-car"></i>
+                    <span class="menu-label">ລົດ​ກຳ​ລັງ​ສ້ອມ</span>
+                </a>
+            </li>
+
+            <li class="menu-item">
+                <a href="icon-remix.html" class="menu-link w3-large">
+                    <i class="menu-icon mdi mdi-car"></i>
+                    <span class="menu-label">​ລົ​ດ​ສ້ອມ​ສຳ​ເລັດ</span>
+                </a>
+            </li>
+
+            <li class="menu-item">
+                <a href="icon-remix.html" class="menu-link w3-large">
+                    <i class="menu-icon mdi mdi-car"></i>
+                    <span class="menu-label">​ລົ​ດ​ສົ່ງ​ຄືນ​ລູກ​ຄ້າ​ແລ້ວ</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+
+    {{-- <li class="menu-item">
+        <a href="#" class="menu-link w3-large" data-toggle="collapse" data-target="#menu-62d0a7" aria-expanded="true"
+            aria-controls="menu-62d0a7">
+            <i class="menu-icon mdi mdi-account-box-multiple"></i>
+
+            <span class="menu-label">ລູກ​ຄ້າ</span>
+            <i class="menu-arrow mdi mdi-chevron-right"></i>
+        </a>
+
+        <ul class="menu collapse" data-parent="#main-menu" id="menu-62d0a7">
+
+            <li class="menu-item">
+                <a href="chart-flot.html" class="menu-link w3-large">
+                    <i class="menu-icon">F</i>
+                    <span class="menu-label">Flot Charts</span>
+                </a>
+            </li>
+
+            <li class="menu-item">
+                <a href="chart-morris.html" class="menu-link w3-large">
+                    <i class="menu-icon">M</i>
+                    <span class="menu-label">Morris Charts</span>
+                </a>
+            </li>
+
+            <li class="menu-item">
+                <a href="chart-knob.html" class="menu-link w3-large">
+                    <i class="menu-icon">K</i>
+                    <span class="menu-label">Knob Charts</span>
+                </a>
+            </li>
+
+            <li class="menu-item">
+                <a href="chart-highcharts.html" class="menu-link w3-large">
+                    <i class="menu-icon">H</i>
+                    <span class="menu-label">Highcharts</span>
+                </a>
+            </li>
+
+        </ul>
+    </li> --}}
+
+    <li class="menu-item">
+        <a href="javascript://" class="menu-link w3-large" data-toggle="collapse" data-target="#menu-setting"
+            aria-expanded="true" aria-controls="menu-setting">
+            <i class="menu-icon mdi mdi-settings-outline"></i>
+            <!-- <i class="menu-icon fas fa-vector-square"></i> -->
+            <span class="menu-label">ຕັ້ງ​ຄ່າ</span>
+            <i class="menu-arrow mdi mdi-chevron-right"></i>
+        </a>
+
+        <ul class="menu collapse" data-parent="#main-menu" id="menu-setting">
+            <li class="menu-item">
+                <a href="javascript://" class="menu-link w3-large" data-toggle="collapse" data-target="#menu-emp"
+                    aria-expanded="true" aria-controls="menu-emp">
+                    <i class="menu-icon mdi mdi-account-badge-horizontal-outline"></i>
+                    <span class="menu-label">​ພະ​ນັກ​ງານ</span>
+                    <i class="menu-arrow mdi mdi-chevron-right"></i>
+                </a>
+                <ul class="menu collapse" data-parent="#menu-setting" id="menu-emp">
+                    <li class="menu-item">
+                        <a href="{{ url('employee') }}" class="menu-link w3-large">
+                            <i class="menu-icon mdi mdi-account-plus-outline"></i>
+                            <span class="menu-label">ເພີ່ມພະ​ນັກ​ງານ</span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="{{ url('employee_list') }}" class="menu-link w3-large">
+                            <i class="menu-icon mdi mdi-clipboard-list-outline"></i>
+                            <span class="menu-label">ລາຍ​ການພະ​ນັກ​ງານ</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="menu-item">
+                <a href="javascript://" class="menu-link w3-large" data-toggle="collapse" data-target="#menu-user"
+                    aria-expanded="true" aria-controls="menu-user">
+                    <i class="menu-icon mdi mdi-account-badge-horizontal-outline"></i>
+                    <span class="menu-label">ຜູ້​ໃຊ້</span>
+                    <i class="menu-arrow mdi mdi-chevron-right"></i>
+                </a>
+                <ul class="menu collapse" data-parent="#menu-setting" id="menu-user">
+                    <li class="menu-item">
+                        <a href="{{ url('user') }}" class="menu-link w3-large">
+                            <i class="menu-icon mdi mdi-account-plus-outline"></i>
+                            <span class="menu-label">​ເພີ່ມ​ຜູ້​ໃຊ້</span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="{{ url('rolespms') }}" class="menu-link w3-large">
+                            <i class="menu-icon mdi mdi-shield-account"></i>
+                            <span class="menu-label">ເພີ່ມສິດ​ທິ​ຜູ້​ໃຊ້</span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="{{ url('userlist') }}" class="menu-link w3-large">
+                            <i class="menu-icon mdi mdi-clipboard-list-outline"></i>
+                            <span class="menu-label">ລາຍ​ການຜູ້​ໃຊ້</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+
+
+</ul>
+@endrole

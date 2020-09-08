@@ -1,0 +1,190 @@
+@if(isset(Auth::user()->email) && isset(Auth::user()->password))
+@include('manage.layout.head')
+  <div class="wrapper">
+
+  @include('manage.layout.nav')
+  @include('manage.layout.sidemenu')
+
+    <div class="container-fluid mt-30">
+      @error('cusid')
+        <div class="amaran-wrapper bottom right">
+          <div class="amaran-wrapper-inner">
+            <div class="amaran awesome error" style="display: block;">
+              <i class="icon fa fa-ban icon-large"></i>
+              <p class="bold">ຜິດ​ພາດ!</p>
+              <p><span>​ທ່ານ​ຍັງ​ບໍ່​ໄດ້​ເລືອກລູກ​ຄ້າ​ເທື່ອ​</span>
+                <span class="light">​ກະ​ລ​ຸ​ນາ​ເລືອກ​ລູກ​ຄ້າ​ກ່ອນ</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      @enderror
+      @error('carid')
+        <div class="amaran-wrapper bottom right">
+          <div class="amaran-wrapper-inner">
+            <div class="amaran awesome error" style="display: block;">
+              <i class="icon fa fa-ban icon-large"></i>
+              <p class="bold">ຜິດ​ພາດ!</p>
+              <p><span>​ທ່ານ​ຍັງ​ບໍ່​ໄດ້​ເລືອກລົດລູກ​ຄ້າ​ເທື່ອ​</span>
+                <span class="light">​ກະ​ລ​ຸ​ນາ​ເລືອກ​​ລົດລູກ​ຄ້າ​ກ່ອນ</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      @enderror
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-header bg-transparent py-15">
+              <h3>ໃບ​ສະ​ເໜີ​ໃໝ່</h3>
+            </div>
+            <form class="card-body" action="{{ url('insertnewqt') }}" method="POST">
+              {{ csrf_field() }}
+              <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a href="#" class="nav-link w3-blue w3-large"><i class="mdi mdi-car"></i> ຂໍ້​ມູນ​ລູ​ກ​ຄ້າ</a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link w3-large">ລະ​ຫັດ​ໃບ​ສະ​ເໜີ <b>{{ $qtid }}</b></a>
+                </li>
+              </ul>
+              <div class="row">
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <input type="hidden" name="qtid" value="{{ $qtid }}">
+                    <label for="cusid">ລູກ​ຄ້າ</label>
+                    <select id="cusid" class="form-control" name="cusid">
+                      <option value="">ເລືອກ​ລູກ​ຄ້າ</option>
+                    @if (count($customers) > 0)
+                      @foreach ($customers as $cus)
+                        <option value="{{ $cus->cusid }}">{{ $cus->name }}</option>
+                      @endforeach
+                    @else
+                    <option value="">ບໍ່​ມີ​ລູກ​ຄ້າໃນ​ລະ​ບົບ</option>
+                    @endif
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label for="carid">ເລືອກ​ລົດ​ລ​ູກ​ຄ້າ</label>
+                    <select id="carid" class="form-control" name="carid">
+                      <option value="">ເລືອກ​ລົດ​ລູກ​ຄ້າ</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label for="part">ພາກ​ສ່ວນ</label>
+                    <input id="part" class="form-control" type="text" name="part">
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label for="checkin_date">ວັນ​ທີ່​ເຂົ້າ</label>
+                    <input id="checkin_date" class="form-control" type="text" name="checkin_date" required>
+                  </div>
+                </div>
+                <div class="col-md-1">
+                  <div class="form-group">
+                    <label for="checkin_time">ເວ​ລາ​ເຂົ້າ</label>
+                    <input id="checkin_time" class="form-control" type="text" name="checkin_time" required>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label for="checkout_date">ວັນ​ທີ່​ອອກ</label>
+                    <input id="checkout_date" class="form-control" type="text" name="checkout_date" required>
+                  </div>
+                </div>
+                <div class="col-md-1">
+                  <div class="form-group">
+                    <label for="checkout_time">ເວ​ລາ​ອອກ</label>
+                    <input id="checkout_time" class="form-control" type="text" name="checkout_time" required>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label for="document_date">ວັນ​ທີ່​ອອກ​ເອ​ກະ​ສາ​ນ</label>
+                    <input id="document_date" class="form-control" type="text" name="document_date" required>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label for="expire_date">ວັນ​ທີ່​ໝົດ​ກຳ​ນົດ</label>
+                    <input id="expire_date" class="form-control" type="text" name="expire_date" required>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label for="credit_day">ຈຳ​ນວນ​ມື້</label>
+                    <input id="credit_day" class="form-control" type="number" name="credit_day" readonly required>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label for="instance">ເລກ​ກົງ​ເຕີ</label>
+                    <input id="instance" class="form-control" type="number" name="instance" required>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label for="receive_bill">ເລກ​ທີ​ໃບ​ຮັບ​ລົດ</label>
+                    <input id="receive_bill" class="form-control" type="text" name="receive_bill" required>
+                  </div>
+                </div>
+                <div class="col-md-2 text-center">
+                  <p></p>
+                  <button class="btn btn-success btn-lg" type="submit"><i class="mdi mdi-file-document-box-plus"></i> ບັນ​ທຶກ​ໃບ​ສະ​ເໜີ</button>
+                </div>
+              </div>
+              <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a href="#" class="nav-link w3-blue w3-large"><i class="mdi mdi-car"></i> ລາຍ​ລະ​ອຽດ​ອະ​ໄຫຼ່</a>
+                </li>
+              </ul>
+              <div class="row col-md-12">
+                <div class="table-responsive">
+                  <table class="table table-bordered table-striped">
+                    <thead class="text-center">
+                      <tr>
+                        <th>ລະ​ຫັດ​ອະ​ໄຫຼ່</th>
+                        <th>ຊື່ອະ​ໄຫຼ່</th>
+                        <th>​ຫົວ​ໜ່ວຍ​ອະ​ໄຫຼ່</th>
+                        <th>ຈຳ​ນວນ</th>
+                        <th>ລາ​ຄາ​ຂາຍ (ກີບ)</th>
+                        <th>ຄ່າ​ແຮງ​ງານ</th>
+                        <th>ລວມ (ກີບ)</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody id="quotation_detail">
+                      <tr>
+                        <td><input class="form-control sparesid" type="number" name="sparesid[]" id="sparesid1" maxlength="13" placeholder="ຄົ້ນ​ຫາ​ລະ​ຫັດ"></td>
+                        <td><input class="form-control" type="text" name="sparesname[]" id="sparesname1" readonly></td>
+                        <td><input class="form-control" type="text" name="unitname[]" id="unitname1" readonly></td>
+                        <td><input class="form-control qty" type="number" name="qty[]" id="qty1"></td>
+                        <td><input class="form-control" type="text" name="price[]" id="price1" readonly></td>
+                        <td><input class="form-control" type="number" name="wages[]" id="wages1"></td>
+                        <td><input class="form-control" type="number" name="total[]" id="total1" value="0" readonly></td>
+                        <td><button class="btn btn-info" type="button" id="addrow"><i class="mdi mdi-plus"></i></button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+@include('manage.layout.foot')
+<script src="{{ url('js/quotationnew.js') }}"></script>
+@else
+    <meta http-equiv="refresh" content="0; url={{ url('login')}}">
+@endif

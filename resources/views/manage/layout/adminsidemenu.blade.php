@@ -79,7 +79,7 @@
           </li><li class="menu-item">
             <a href="javascript://" class="menu-link w3-large" data-toggle="collapse" data-target="#appointment-list" aria-expanded="true" aria-controls="appointment-list">
               <i class="menu-icon mdi mdi-card-text"></i>
-              <span class="menu-label mdi mdi-update">ໃບ​ສະ​ເໜີ</span>
+              <span class="menu-label mdi mdi-update">ນັດ​ໝາຍ</span>
               <i class="menu-arrow mdi mdi-chevron-right"></i>
             </a>
             <ul class="menu collapse" data-parent="#menu-appointment" id="appointment-list" style="margin-left: 10px">

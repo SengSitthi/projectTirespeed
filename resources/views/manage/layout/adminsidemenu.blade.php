@@ -76,30 +76,38 @@
                 </a>
               </li>
             </ul>
-          </li>
-          <li class="menu-item">
-            <a href="{{ url('newapppointment') }}" class="menu-link w3-large">
-              <i class="menu-icon mdi mdi-update"></i>
-              <span class="menu-label">ນ​ັດ​ໝາຍ​ລູກ​ຄ້າ​ໃໝ່</span>
+          </li><li class="menu-item">
+            <a href="javascript://" class="menu-link w3-large" data-toggle="collapse" data-target="#appointment-list" aria-expanded="true" aria-controls="appointment-list">
+              <i class="menu-icon mdi mdi-card-text"></i>
+              <span class="menu-label mdi mdi-update">ໃບ​ສະ​ເໜີ</span>
+              <i class="menu-arrow mdi mdi-chevron-right"></i>
             </a>
-          </li>
-          <li class="menu-item">
-            <a href="{{ url('oldappointment') }}" class="menu-link w3-large">
-              <i class="menu-icon mdi mdi-update"></i>
-              <span class="menu-label">ນັດ​ໝາຍ​ລູກ​ຄ້າ​ເກົ່າ</span>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="{{ url('appointmenttoday') }}" class="menu-link w3-large">
-              <i class="menu-icon mdi mdi-table"></i>
-              <span class="menu-label">ລູກ​ຄ້າ​ນັດ​ໝາຍ​ມື້​ນີ້</span>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="{{ url('appointmentmonth') }}" class="menu-link w3-large">
-              <i class="menu-icon mdi mdi-table-large"></i>
-              <span class="menu-label">ລູກ​ຄ້າ​ນັດ​ໝາຍ​ເດືອນ​ນີ້</span>
-            </a>
+            <ul class="menu collapse" data-parent="#menu-appointment" id="appointment-list" style="margin-left: 10px">
+              <li class="menu-item">
+                <a href="{{ url('newapppointment') }}" class="menu-link w3-large">
+                  <i class="menu-icon mdi mdi-update"></i>
+                  <span class="menu-label">ນ​ັດ​ໝາຍ​ລູກ​ຄ້າ​ໃໝ່</span>
+                </a>
+              </li>
+              <li class="menu-item">
+                <a href="{{ url('oldappointment') }}" class="menu-link w3-large">
+                  <i class="menu-icon mdi mdi-update"></i>
+                  <span class="menu-label">ນັດ​ໝາຍ​ລູກ​ຄ້າ​ເກົ່າ</span>
+                </a>
+              </li>
+              <li class="menu-item">
+                <a href="{{ url('appointmenttoday') }}" class="menu-link w3-large">
+                  <i class="menu-icon mdi mdi-table"></i>
+                  <span class="menu-label">ລູກ​ຄ້າ​ນັດ​ໝາຍ​ມື້​ນີ້</span>
+                </a>
+              </li>
+              <li class="menu-item">
+                <a href="{{ url('appointmentmonth') }}" class="menu-link w3-large">
+                  <i class="menu-icon mdi mdi-table-large"></i>
+                  <span class="menu-label">ລູກ​ຄ້າ​ນັດ​ໝາຍ​ເດືອນ​ນີ້</span>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="menu-item">
             <a href="javascript://" class="menu-link w3-large" data-toggle="collapse" data-target="#apm-report" aria-expanded="true" aria-controls="apm-report">

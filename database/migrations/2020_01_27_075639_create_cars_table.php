@@ -17,6 +17,8 @@ class CreateCarsTable extends Migration
             $table->string('carid', 5);
             $table->primary('carid');
             $table->string('license', 11);
+            $table->string('motornum', 30);
+            $table->string('bodynum', 30);
             // $table->string('province', 25);
             $table->integer('brandid')->unsigned();
             $table->foreign('brandid')->references('brandid')->on('brands');

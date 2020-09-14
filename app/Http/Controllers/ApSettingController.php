@@ -11,7 +11,7 @@ class ApSettingController extends Controller
     //function show customer setting
     public function fnCusSetting()
     {
-        $customer = DB::table('customdata')->paginate(20);
+        $customer = DB::table('customdata')->orderBy('cusid', 'desc')->paginate(20);
         $province = DB::table('provinces')->get();
         $typecus = DB::table('typecuses')->get();
         return view('manage/crm/customer')->with('customer', $customer)

@@ -93,6 +93,12 @@
                                                 </td>
                                             </tr>
                                             @endforeach
+                                        @else
+                                            <tr>
+                                              <td>
+                                                <h4 class="text-center">ຍັງ​ບໍ່​ມີ​ຂໍ້​ມູນ​ລ​ູກ​ຄ້າ​ໃນ​ລະ​ບົບ</h4>
+                                              </td>
+                                            </tr>
                                         @endif
                                         </tbody>
                                     </table>

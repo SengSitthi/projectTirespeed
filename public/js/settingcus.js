@@ -37,18 +37,25 @@ $(document).ready(function(){
     });
 
     $('body').on('click', '#btnDel', function(){
-        var cusid = $(this).val();
+      var cusid = $(this).val();
         // alert(cusid);
-        $.ajax({
-            url: '/delcustomer/'+cusid,
-            type: 'GET',
-            dataType: 'json',
-            success: function(data){
-
-            },error: function(data){
-                console.log('Error: '+data);
-            }
-        });
+      swal({
+        title: "ທ່ານ​ຕ້ອງ​ການ​ລຶບ​ຂໍ​ມູ້ນ​ນີ້ແທ້​ບໍ່?",
+        text: "​ກົດ​ຕົກ​ລົງ​ເພື່ອ​ຢືນ​ຢັນ​ການ​ລຶບ ຫຼື ຍົກ​ເລີກດ້ວຍ​ການ​ກົດ​ບ່ອນ​​​ຫວ່າງ!",
+        icon: "warning",
+        buttons: "ຕົກ​ລົງ",
+        dangerMode: true,
+      }).then((willDelete) => {
+        if(willDelete){
+          window.location = '/delcustomer/'+cusid;
+        }else{
+          swal("ການ​ລຶບ​ຖືກ​ຍົກ​ເລີກ", {
+            icon: "warning",
+            button: false,
+            timer: 2500
+          });
+        }
+      });
     });
 
     getDistrict();

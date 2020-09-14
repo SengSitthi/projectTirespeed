@@ -43,7 +43,9 @@
 
             // $('#modal-download').modal('show');
 
-
+            // $('body').on('click', '#btnMenu', function(){
+            //   $('#main-menu').show();
+            // });
 
 
             $(".bar").peity("bar");

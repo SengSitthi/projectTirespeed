@@ -24,8 +24,7 @@
                 <a href="javascript://" class="nav-icon font-2xl" id="navbar-toggler" style="color:#21409b">
                     <!-- <i class="fas fa-bars"></i> -->
                     <!-- <i class="mdi mdi-view-sequential font-2xl"></i> -->
-
-                    <i class="mdi mdi-menu"></i>
+                    <i class="mdi mdi-menu" id="btnMenu"></i>
                 </a>
             </li>
 

@@ -29,6 +29,8 @@
                 <table class="table table-light table-bordered table-striped">
                   <thead>
                     <tr>
+                      <th class="text-center">ລະ​ຫັດ​ລົດ</th>
+                      <th class="text-center">ປ້າຍ​ລົດ</th>
                       <th class="text-center">ລະ​ຫັດ​ລູກ​ຄ້າ</th>
                       <th class="text-center">​ຊື່ ແລະ ນາມ​ສະ​ກຸນ</th>
                       <th class="text-center">ບ​້ານຢ​ູ່</th>
@@ -46,6 +48,8 @@
                     @if(count($customerlist) > 0)
                       @foreach($customerlist as $cusl)
                         <tr>
+                          <td>{{ $cusl->carid }}</td>
+                          <td>{{ $cusl->license }}</td>
                           <td>{{ $cusl->cusid }}</td>
                           <td>{{ $cusl->name }} {{ $cusl->lastname }}</td>
                           <td>{{ $cusl->village }}</td>

@@ -117,31 +117,51 @@
                   </div>
                   <div class="col-3">
                     <div class="form-group">
-                      <label for="brandid">ຍີ່​ຫໍ້​ລົດ</label>
-                      <select class="form-control btn-outline-primary1" name="brandid" id="brandid">
-                        @if (count($brands) > 0)
-                          <option value="">***** ເລືອກ​ຍີ່​ຫໍ້​ລົດ *****</option>
-                          @foreach ($brands as $bd)
-                            <option value="{{ $bd->brandid }}">{{ $bd->brandname }}</option>
-                          @endforeach
-                        @else
-                          <option value="">ຍັງ​ບໍ່​ມີ​ຍີ່​ຫໍ້​ລົດ​ໃນ​ລະ​ບົບ​ເທື່ອ</option>
-                        @endif
-                      </select>
+                      <label for="motornum">ເລກ​ຈັກ</label>
+                      <input id="motornum" class="form-control" type="text" name="motornum">
                     </div>
                     <div class="form-group">
-                      <label for="model">ລູ້ນ</label>
-                      <input id="model" class="form-control" type="text" name="model" placeholder="..." required>
+                      <label for="bodynum">ເລ​ກ​ຖັງ</label>
+                      <input id="bodynum" class="form-control" type="text" name="bodynum">
                     </div>
                   </div>
                   <div class="col-3">
-                    <div class="form-group">
-                      <label for="madeyear">ປີ​ຜະ​ລິດ</label>
-                      <input id="madeyear" class="form-control" type="text" name="madeyear" placeholder="...">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="brandid">ຍີ່​ຫໍ້​ລົດ</label>
+                          <select class="form-control btn-outline-primary1" name="brandid" id="brandid">
+                            @if (count($brands) > 0)
+                              <option value="">***** ເລືອກ​ຍີ່​ຫໍ້​ລົດ *****</option>
+                              @foreach ($brands as $bd)
+                                <option value="{{ $bd->brandid }}">{{ $bd->brandname }}</option>
+                              @endforeach
+                            @else
+                              <option value="">ຍັງ​ບໍ່​ມີ​ຍີ່​ຫໍ້​ລົດ​ໃນ​ລະ​ບົບ​ເທື່ອ</option>
+                            @endif
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="model">ລູ້ນ</label>
+                          <input id="model" class="form-control" type="text" name="model" placeholder="..." required>
+                        </div>
+                      </div>
                     </div>
-                    <div class="form-group">
-                      <label for="color">ສີລົດ</label>
-                      <input id="color" class="form-control" type="text" name="color" placeholder="..." required>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="madeyear">ປີ​ຜະ​ລິດ</label>
+                          <input id="madeyear" class="form-control" type="text" name="madeyear" placeholder="...">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="color">ສີລົດ</label>
+                          <input id="color" class="form-control" type="text" name="color" placeholder="..." required>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div class="col-3">

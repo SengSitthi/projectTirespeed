@@ -145,6 +145,7 @@ class CustomerController extends Controller
     ]);
     $cardata = array(
       'carid' => $req->input('carid'),'license' => $req->input('license'),
+      'motornum' => $req->input('motornum'), 'bodynum' => $req->input('bodynum'),
       'brandid' => $req->input('brandid'),'model' => $req->input('model'),
       'madeyear' => $req->input('madeyear'),'color' => $req->input('color'),
       'distance' => $req->input('distance'),'motor' => $req->input('motor'),

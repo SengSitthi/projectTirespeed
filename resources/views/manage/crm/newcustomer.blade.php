@@ -259,6 +259,16 @@
                   </div>
                   <div class="col-3">
                     <div class="form-group">
+                      <label for="motornum">ເລກ​ຈັກ</label>
+                      <input id="motornum" class="form-control" type="text" name="motornum">
+                    </div>
+                    <div class="form-group">
+                      <label for="bodynum">ເລ​ກ​ຖັງ</label>
+                      <input id="bodynum" class="form-control" type="text" name="bodynum">
+                    </div>
+                  </div>
+                  <div class="col-3">
+                    <div class="form-group">
                       <label for="model">ລູ້ນ</label>
                       <input id="model" class="form-control" type="text" name="model" placeholder="..." required>
                     </div>
@@ -268,24 +278,32 @@
                     </div>
                   </div>
                   <div class="col-3">
-                    <div class="form-group">
-                      <label for="color">ສີລົດ</label>
-                      <input id="color" class="form-control" type="text" name="color" placeholder="..." required>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="color">ສີລົດ</label>
+                          <input id="color" class="form-control" type="text" name="color" placeholder="..." required>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="distance">​ເລກ​ກົງ​ເຕີ</label>
+                          <input id="distance" class="form-control" type="number" name="distance" placeholder="..." required>
+                        </div>
+                      </div>
                     </div>
-                    <div class="form-group">
-                      <label for="distance">​ເລກ​ກົງ​ເຕີ</label>
-                      <input id="distance" class="form-control" type="number" name="distance" placeholder="..." required>
-                    </div>
-                  </div>
-                  <div class="col-3">
-                    <div class="form-group">
-                      <label for="motor">​ປະ​ເພດ​ເຄື່ອງ​ຈັກ</label>
-                      <select id="motor" class="form-control" name="motor">
-                        <option value="">***** ເລືອກປະ​ເພດ​ລົດ *****</option>
-                        <option value="ແອັດ​ຊັງ">ແອັດ​ຊັງ</option>
-                        <option value="ກາ​ຊວນ">ກາ​ຊວນ</option>
-                        <option value="ໄຟ​ຟ້າ">ໄຟ​ຟ້າ</option>
-                      </select>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label for="motor">​ປະ​ເພດ​ເຄື່ອງ​ຈັກ</label>
+                          <select id="motor" class="form-control" name="motor">
+                            <option value="">***** ເລືອກປະ​ເພດ​ລົດ *****</option>
+                            <option value="ແອັດ​ຊັງ">ແອັດ​ຊັງ</option>
+                            <option value="ກາ​ຊວນ">ກາ​ຊວນ</option>
+                            <option value="ໄຟ​ຟ້າ">ໄຟ​ຟ້າ</option>
+                          </select>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

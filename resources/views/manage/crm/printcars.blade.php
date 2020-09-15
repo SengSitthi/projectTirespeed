@@ -13,7 +13,12 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                    <img src="{{ url('images/header.png') }}" class="img-fluid">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <img src="{{ url('images/header.png') }}" class="img-fluid" width="50%" height="50%">
+                    </div>
+                  </div>
+                    
                     <br>
                     <h3 class="text-center"><b>ລາຍ​ງານ​ຂໍ້​ມູນລົດ</b></h3>
                     <div class="row">
@@ -21,20 +26,20 @@
                             <div class="table-responsive">
                                 <table class="table table-light table-bordered table-striped table-responsive">
                                     <thead>
-                                        <tr>
-                                          <th class="text-center">ລະ​ຫັດ​ລົດ</th>
-                                          <th class="text-center">ປ້າຍທະບຽນ​ລົດ</th>
-                                          <th class="text-center">ເລກ​ຈັກ</th>
-                                          <th class="text-center">ເລກ​ຖັງ</th>
-                                          <th class="text-center">ຍີ່​ຫໍ້</th>
-                                          <th class="text-center">ລຸ້ນ</th>
-                                          <th class="text-center">ປີ​ຜະ​ລິດ</th>
-                                          <th class="text-center">ສີ​ລົດ</th>
-                                          <th class="text-center">​ເລກ​ກົງ​ເຕີ</th>
-                                          <th class="text-center">ປະ​ເພດ​ເຄື່ອ​ງ​ຈັກ</th>
-                                          <th class="text-center">ລະ​ຫັດ​ລູກ​ຄ້າ</th>
-                                          <th class="text-center">​ຊື່ ແລະ ນາມ​ສະ​ກ​ຸນ</th>
-                                        </tr>
+                                      <tr>
+                                        <th class="text-center">ລະ​ຫັດ​ລົດ</th>
+                                        <th class="text-center">ທະບຽນ​ລົດ</th>
+                                        <th class="text-center">ເລກ​ຈັກ</th>
+                                        <th class="text-center">ເລກ​ຖັງ</th>
+                                        <th class="text-center">ຍີ່​ຫໍ້</th>
+                                        <th class="text-center">ລຸ້ນ</th>
+                                        <th class="text-center">ປີ​ຜະ​ລິດ</th>
+                                        <th class="text-center">ສີ​ລົດ</th>
+                                        <th class="text-center">​ເລກ​ກົງ​ເຕີ</th>
+                                        <th class="text-center">​ເຄື່ອ​ງ​ຈັກ</th>
+                                        <th class="text-center">ລະ​ຫັດ​ລູກ​ຄ້າ</th>
+                                        <th class="text-center">​ຊື່ ແລະ ນາມ​ສະ​ກ​ຸນ</th>
+                                      </tr>
                                     </thead>
                                     <tbody id="showdata">
                                     @if(count($cardata) > 0)
@@ -58,7 +63,7 @@
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <td class="text-right" colspan="9">ຈຳ​ນວນ​ລູກ​ຄ້າ:</td>
+                                            <td class="text-right" colspan="11">ຈຳ​ນວນ​ລູກ​ຄ້າ:</td>
                                             <td class="text-center"><b id="showcount">{{ $count }}</b></td>
                                         </tr>
                                     </tfoot>

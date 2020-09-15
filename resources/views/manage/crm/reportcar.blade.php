@@ -62,7 +62,7 @@
                                 </div>
                             </form>
                             <div class="row">
-                              <div class="col-md-12">
+                              <div class="col-md-12 table-responsive">
                                 <table class="table table-light table-striped table-bordered">
                                   <thead>
                                     <tr>
@@ -97,7 +97,7 @@
                                   </tbody>
                                   <tfoot>
                                     <tr>
-                                      <td class="text-right" colspan="9">ຈຳ​ນວນ​ລູກ​ຄ້າ:</td>
+                                      <td class="text-right" colspan="11">ຈຳ​ນວນ​ລູກ​ຄ້າ:</td>
                                       <td class="text-center"><b id="showcount"></b></td>
                                     </tr>
                                   </tfoot>

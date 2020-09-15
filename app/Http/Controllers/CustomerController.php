@@ -192,8 +192,8 @@ class CustomerController extends Controller
             <div class="col-md-12">
               <div class="row">
                 <div class="col-md-3">
-                  <h5>ເລກ​ຈັກ: <b>'.$car->carid.'</b></h5>
-                  <h5>ເລ​ກ​ຖ​ັງ: <b>'.$car->license.'</b></h5>
+                  <h5>ເລກ​ຈັກ: <b>'.$car->motornum.'</b></h5>
+                  <h5>ເລ​ກ​ຖ​ັງ: <b>'.$car->bodynum.'</b></h5>
                 </div>
                 <div class="col-md-3">
                   <h5>ຍີ່​ຫໍ້​ລົດ: <b>'.$car->brandname.'</b></h5>

@@ -129,7 +129,7 @@ class AppointController extends Controller
         $occupation = $req->input('occupation');$workaddress = $req->input('workadd');$status = $req->input('status');
         $tcusid = $req->input('tcusid');
         // car data
-        $carid = $req->input('carid');$license = $req->input('license');
+        $carid = $req->input('carid');$license = $req->input('license');$motornum = $req->input('motornum');$bodynum = $req->input('bodynum');
         $brandid = $req->input('brandid');$model = $req->input('model');$madeyear = $req->input('madeyear');
         $color = $req->input('color');$distance = $req->input('distance');$motor = $req->input('motor');
         // list repair data
@@ -145,12 +145,12 @@ class AppointController extends Controller
 
         if($madeyear == ""){
             $cardata = array(
-                'carid'=>$carid,'license'=>$license,'brandid'=>$brandid,'model'=>$model,'color'=>$color,
+                'carid'=>$carid,'license'=>$license,'motornum' => $motornum,'bodynum' => $bodynum,'brandid'=>$brandid,'model'=>$model,'color'=>$color,
                 'distance'=>$distance,'motor'=>$motor,'cusid'=>$cusid,'created_at'=>date('Y-m-d H:i:s')
             );
         }else{
             $cardata = array(
-                'carid'=>$carid,'license'=>$license,'brandid'=>$brandid,'model'=>$model,'madeyear'=>$madeyear,
+                'carid'=>$carid,'license'=>$license,'motornum' => $motornum,'bodynum' => $bodynum,'brandid'=>$brandid,'model'=>$model,'madeyear'=>$madeyear,
                 'color'=>$color,'distance'=>$distance,'motor'=>$motor,'cusid'=>$cusid,'created_at'=>date('Y-m-d H:i:s')
             );
         }

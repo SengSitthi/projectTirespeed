@@ -83,16 +83,18 @@ class ApSettingController extends Controller
     {
         $carsql = DB::table('cars')->where('carid', $carid)->get();
         foreach($carsql as $car){
-            $id = $car->carid;
-            $license = $car->license;
-            $brandid = $car->brandid;
-            $model = $car->model;
-            $madeyear = $car->madeyear;
-            $color = $car->color;
-            $distance = $car->distance;
-            $motor = $car->motor;
+          $id = $car->carid;
+          $license = $car->license;
+          $motornum = $car->motornum;
+          $bodynum = $car->bodynum;
+          $brandid = $car->brandid;
+          $model = $car->model;
+          $madeyear = $car->madeyear;
+          $color = $car->color;
+          $distance = $car->distance;
+          $motor = $car->motor;
         }
-        $data = array('id'=> $id,'license'=> $license,'brandid'=> $brandid,'model'=> $model,
+        $data = array('id'=> $id,'license'=> $license,'motornum' => $motornum,'bodynum'=>$bodynum,'brandid'=> $brandid,'model'=> $model,
         'madeyear'=> $madeyear,'color'=> $color,'distance'=> $distance,'motor'=> $motor);
         echo json_encode($data);
     }
@@ -105,14 +107,16 @@ class ApSettingController extends Controller
         ]);
         $carid = $req->input('carid');
         $dataupdate = array(
-            'license' => $req->input('license'),
-            'brandid' => $req->input('brandid'),
-            'model' => $req->input('model'),
-            'madeyear' => $req->input('madeyear'),
-            'color' => $req->input('color'),
-            'distance' => $req->input('distance'),
-            'motor' => $req->input('motor'),
-            'created_at'=>date('Y-m-d H:i:s')
+          'license' => $req->input('license'),
+          'motornum' => $req->input('motornum'),
+          'bodynum' => $req->input('bodynum'),
+          'brandid' => $req->input('brandid'),
+          'model' => $req->input('model'),
+          'madeyear' => $req->input('madeyear'),
+          'color' => $req->input('color'),
+          'distance' => $req->input('distance'),
+          'motor' => $req->input('motor'),
+          'created_at'=>date('Y-m-d H:i:s')
         );
         // echo $carid;
         DB::table('cars')->where('carid', $carid)->update($dataupdate);

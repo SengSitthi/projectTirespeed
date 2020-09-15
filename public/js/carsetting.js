@@ -14,6 +14,8 @@ $(document).ready(function(){
                 // console.log(data);
                 $('#carid').val(data.id);
                 $('#license').val(data.license);
+                $('#motornum').val(data.motornum);
+                $('#bodynum').val(data.bodynum);
                 // $('#province').val(data.province);
                 $('#brandid option[value="'+data.brandid+'"]').prop('selected', true);
                 $('#model').val(data.model);

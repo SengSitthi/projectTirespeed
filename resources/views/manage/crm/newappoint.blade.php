@@ -189,15 +189,15 @@
                                               </div>
                                             </div>
                                             <div class="col-3">
-                                                <div class="form-group">
-                                                    <label for="motor">​ປະ​ເພດ​ເຄື່ອງ​ຈັກ</label>
-                                                    <select id="motor" class="form-control" name="motor">
-                                                        <option value="">***** ເລືອກປະ​ເພດ​ລົດ *****</option>
-                                                        <option value="ແອັດ​ຊັງ">ແອັດ​ຊັງ</option>
-                                                        <option value="ກາ​ຊວນ">ກາ​ຊວນ</option>
-                                                        <option value="ໄຟ​ຟ້າ">ໄຟ​ຟ້າ</option>
-                                                    </select>
-                                                </div>
+                                              <div class="form-group">
+                                                <label for="motor">​ປະ​ເພດ​ເຄື່ອງ​ຈັກ</label>
+                                                <select id="motor" class="form-control" name="motor">
+                                                  <option value="">***** ເລືອກປະ​ເພດ​ລົດ *****</option>
+                                                  <option value="ແອັດ​ຊັງ">ແອັດ​ຊັງ</option>
+                                                  <option value="ກາ​ຊວນ">ກາ​ຊວນ</option>
+                                                  <option value="ໄຟ​ຟ້າ">ໄຟ​ຟ້າ</option>
+                                                </select>
+                                              </div>
                                             </div>
                                         </div>
                                         <hr>

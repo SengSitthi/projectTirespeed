@@ -62,23 +62,25 @@
                                 </div>
                             </form>
                             <div class="row">
-                                <div class="col-md-12">
-                                    <table class="table table-light table-striped table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th class="text-center">ລະ​ຫັດ​ລູກ​ຄ້າ</th>
-                                                <th class="text-center">​ຊື່ ແລະ ນາມ​ສະ​ກ​ຸນ</th>
-                                                <th class="text-center">ລະ​ຫັດ​ລົດ</th>
-                                                <th class="text-center">ປ້າຍທະບຽນ​ລົດ</th>
-                                                <th class="text-center">ຍີ່​ຫໍ້</th>
-                                                <th class="text-center">ລຸ້ນ</th>
-                                                <th class="text-center">ປີ​ຜະ​ລິດ</th>
-                                                <th class="text-center">ສີ​ລົດ</th>
-                                                <th class="text-center">​ເລກ​ກົງ​ເຕີ</th>
-                                                <th class="text-center">ປະ​ເພດ​ເຄື່ອ​ງ​ຈັກ</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="showdata">
+                              <div class="col-md-12">
+                                <table class="table table-light table-striped table-bordered">
+                                  <thead>
+                                    <tr>
+                                      <th class="text-center">ລະ​ຫັດ​ລົດ</th>
+                                      <th class="text-center">ປ້າຍທະບຽນ​ລົດ</th>
+                                      <th class="text-center">ເລກ​ຈັກ</th>
+                                      <th class="text-center">ເລກ​ຖັງ</th>
+                                      <th class="text-center">ຍີ່​ຫໍ້</th>
+                                      <th class="text-center">ລຸ້ນ</th>
+                                      <th class="text-center">ປີ​ຜະ​ລິດ</th>
+                                      <th class="text-center">ສີ​ລົດ</th>
+                                      <th class="text-center">​ເລກ​ກົງ​ເຕີ</th>
+                                      <th class="text-center">ປະ​ເພດ​ເຄື່ອ​ງ​ຈັກ</th>
+                                      <th class="text-center">ລະ​ຫັດ​ລູກ​ຄ້າ</th>
+                                      <th class="text-center">​ຊື່ ແລະ ນາມ​ສະ​ກ​ຸນ</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody id="showdata">
                                             {{-- <tr>
                                                 <td></td>
                                                 <td></td>
@@ -89,16 +91,18 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
+                                                <td></td>
+                                                <td></td>
                                             </tr> --}}
-                                        </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <td class="text-right" colspan="9">ຈຳ​ນວນ​ລູກ​ຄ້າ:</td>
-                                                <td class="text-center"><b id="showcount"></b></td>
-                                            </tr>
-                                        </tfoot>
-                                    </table>
-                                </div>
+                                  </tbody>
+                                  <tfoot>
+                                    <tr>
+                                      <td class="text-right" colspan="9">ຈຳ​ນວນ​ລູກ​ຄ້າ:</td>
+                                      <td class="text-center"><b id="showcount"></b></td>
+                                    </tr>
+                                  </tfoot>
+                                </table>
+                              </div>
                             </div>
                         </div>
                     </div>

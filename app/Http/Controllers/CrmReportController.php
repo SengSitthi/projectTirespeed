@@ -82,16 +82,18 @@ class CrmReportController extends Controller
             foreach ($cardata as $row) {
                 $result .= '
                 <tr>
-                    <td>'.$row->cusid.'</td>
-                    <td>'.$row->name.' '.$row->lastname.'</td>
-                    <td>'.$row->carid.'</td>
-                    <td>'.$row->license.'</td>
-                    <td>'.$row->brandname.'</td>
-                    <td>'.$row->model.'</td>
-                    <td>'.$row->madeyear.'</td>
-                    <td>'.$row->color.'</td>
-                    <td>'.$row->distance.'</td>
-                    <td>'.$row->motor.'</td>
+                  <td>'.$row->carid.'</td>
+                  <td>'.$row->license.'</td>
+                  <td>'.$row->motornum.'</td>
+                  <td>'.$row->bodynum.'</td>
+                  <td>'.$row->brandname.'</td>
+                  <td>'.$row->model.'</td>
+                  <td>'.$row->madeyear.'</td>
+                  <td>'.$row->color.'</td>
+                  <td>'.$row->distance.'</td>
+                  <td>'.$row->motor.'</td>
+                  <td>'.$row->cusid.'</td>
+                  <td>'.$row->name.' '.$row->lastname.'</td>
                 </tr>
                 ';
             }
@@ -116,16 +118,18 @@ class CrmReportController extends Controller
             foreach ($cuscars as $row) {
                 $result .= '
                 <tr>
-                    <td>'.$row->cusid.'</td>
-                    <td>'.$row->name.' '.$row->lastname.'</td>
-                    <td>'.$row->carid.'</td>
-                    <td>'.$row->license.'</td>
-                    <td>'.$row->brandname.'</td>
-                    <td>'.$row->model.'</td>
-                    <td>'.$row->madeyear.'</td>
-                    <td>'.$row->color.'</td>
-                    <td>'.$row->distance.'</td>
-                    <td>'.$row->motor.'</td>
+                  <td>'.$row->carid.'</td>
+                  <td>'.$row->license.'</td>
+                  <td>'.$row->motornum.'</td>
+                  <td>'.$row->bodynum.'</td>
+                  <td>'.$row->brandname.'</td>
+                  <td>'.$row->model.'</td>
+                  <td>'.$row->madeyear.'</td>
+                  <td>'.$row->color.'</td>
+                  <td>'.$row->distance.'</td>
+                  <td>'.$row->motor.'</td>
+                  <td>'.$row->cusid.'</td>
+                  <td>'.$row->name.' '.$row->lastname.'</td>
                 </tr>
                 ';
             }
@@ -151,16 +155,18 @@ class CrmReportController extends Controller
             foreach ($brandcars as $row) {
                 $result .= '
                 <tr>
-                    <td>'.$row->cusid.'</td>
-                    <td>'.$row->name.' '.$row->lastname.'</td>
-                    <td>'.$row->carid.'</td>
-                    <td>'.$row->license.'</td>
-                    <td>'.$row->brandname.'</td>
-                    <td>'.$row->model.'</td>
-                    <td>'.$row->madeyear.'</td>
-                    <td>'.$row->color.'</td>
-                    <td>'.$row->distance.'</td>
-                    <td>'.$row->motor.'</td>
+                  <td>'.$row->carid.'</td>
+                  <td>'.$row->license.'</td>
+                  <td>'.$row->motornum.'</td>
+                  <td>'.$row->bodynum.'</td>
+                  <td>'.$row->brandname.'</td>
+                  <td>'.$row->model.'</td>
+                  <td>'.$row->madeyear.'</td>
+                  <td>'.$row->color.'</td>
+                  <td>'.$row->distance.'</td>
+                  <td>'.$row->motor.'</td>
+                  <td>'.$row->cusid.'</td>
+                  <td>'.$row->name.' '.$row->lastname.'</td>
                 </tr>
                 ';
             }

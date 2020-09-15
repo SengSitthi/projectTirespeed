@@ -19,37 +19,41 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="table-responsive">
-                                <table class="table table-light table-bordered table-striped">
+                                <table class="table table-light table-bordered table-striped table-responsive">
                                     <thead>
                                         <tr>
-                                            <th class="text-center">ລະ​ຫັດ​ລູກ​ຄ້າ</th>
-                                            <th class="text-center">​ຊື່ ແລະ ນາມ​ສະ​ກ​ຸນ</th>
-                                            <th class="text-center">ລະ​ຫັດ​ລົດ</th>
-                                            <th class="text-center">ປ້າຍທະບຽນ​ລົດ</th>
-                                            <th class="text-center">ຍີ່​ຫໍ້</th>
-                                            <th class="text-center">ລຸ້ນ</th>
-                                            <th class="text-center">ປີ​ຜະ​ລິດ</th>
-                                            <th class="text-center">ສີ​ລົດ</th>
-                                            <th class="text-center">​ເລກ​ກົງ​ເຕີ</th>
-                                            <th class="text-center">ປະ​ເພດ​ເຄື່ອ​ງ​ຈັກ</th>
+                                          <th class="text-center">ລະ​ຫັດ​ລົດ</th>
+                                          <th class="text-center">ປ້າຍທະບຽນ​ລົດ</th>
+                                          <th class="text-center">ເລກ​ຈັກ</th>
+                                          <th class="text-center">ເລກ​ຖັງ</th>
+                                          <th class="text-center">ຍີ່​ຫໍ້</th>
+                                          <th class="text-center">ລຸ້ນ</th>
+                                          <th class="text-center">ປີ​ຜະ​ລິດ</th>
+                                          <th class="text-center">ສີ​ລົດ</th>
+                                          <th class="text-center">​ເລກ​ກົງ​ເຕີ</th>
+                                          <th class="text-center">ປະ​ເພດ​ເຄື່ອ​ງ​ຈັກ</th>
+                                          <th class="text-center">ລະ​ຫັດ​ລູກ​ຄ້າ</th>
+                                          <th class="text-center">​ຊື່ ແລະ ນາມ​ສະ​ກ​ຸນ</th>
                                         </tr>
                                     </thead>
                                     <tbody id="showdata">
                                     @if(count($cardata) > 0)
-                                        @foreach($cardata as $car)
-                                        <tr>
-                                            <td>{{ $car->cusid }}</td>
-                                            <td>{{ $car->name }} {{ $car->lastname }}</td>
-                                            <td>{{ $car->carid }}</td>
-                                            <td>{{ $car->license }}</td>
-                                            <td>{{ $car->brandname }}</td>
-                                            <td>{{ $car->model }}</td>
-                                            <td>{{ $car->madeyear }}</td>
-                                            <td>{{ $car->color }}</td>
-                                            <td>{{ $car->distance }}</td>
-                                            <td>{{ $car->motor }}</td>
-                                        </tr>
-                                        @endforeach
+                                      @foreach($cardata as $car)
+                                      <tr>
+                                        <td>{{ $car->carid }}</td>
+                                        <td>{{ $car->license }}</td>
+                                        <td>{{ $car->motornum }}</td>
+                                        <td>{{ $car->bodynum }}</td>
+                                        <td>{{ $car->brandname }}</td>
+                                        <td>{{ $car->model }}</td>
+                                        <td>{{ $car->madeyear }}</td>
+                                        <td>{{ $car->color }}</td>
+                                        <td>{{ $car->distance }}</td>
+                                        <td>{{ $car->motor }}</td>
+                                        <td>{{ $car->cusid }}</td>
+                                        <td>{{ $car->name }} {{ $car->lastname }}</td>
+                                      </tr>
+                                      @endforeach
                                     @endif
                                     </tbody>
                                     <tfoot>

@@ -181,7 +181,7 @@ class CustomerController extends Controller
     $cars = DB::table('cars')
     ->join('brands', 'brands.brandid', '=', 'cars.brandid')
     ->where('cars.carid', '=', $carid)
-    ->select('cars.carid','cars.license','brands.brandname','cars.model','cars.madeyear','cars.color','cars.distance','cars.motor')
+    ->select('cars.*','brands.brandname')
     ->get();
     $result = '';
     //  

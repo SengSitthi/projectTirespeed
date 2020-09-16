@@ -39,69 +39,77 @@
                             </div>
                             @endif
                             <div class="row">
-                                <div class="col-md-4"></div>
-                                <div class="col-md-4">
-                                    <input class="form-control text-center" type="text" name="search" id="search" placeholder="ປ້ອນ​ຂໍ້​ມູນຄົ້ນ​ຫາ​">
+                              <div class="col-md-3"></div>
+                              <div class="col-md-1">
+                                <a href="{{ url('customer_setting') }}" class="btn btn-primary"><i class="mdi mdi-reload"></i> ເບິ່ງ​ທັງ​ໝົດ</a>
+                              </div>
+                              <div class="col-md-4">
+                                <div class="input-group">
+                                  <div class="input-group-append">
+                                    <span class="input-group-text" id="my-addon"><i class="mdi mdi-account-search"></i></span>
+                                  </div>
+                                  <input class="form-control text-center" type="text" name="searchcus" id="searchcus" placeholder="ປ້ອນ​ລະ​ຫັດ​ເພື່ອຄົ້ນ​ຫາ​">
+                                  <button class="btn btn-primary" type="button" id="btnSearchcus"><i class="mdi mdi-account-search"></i> ຄົ້ນ​ຫາ</button>
                                 </div>
+                              </div>
                             </div>
                             <br>
                             <div class="row">
-                                <div class="table-responsive">
-                                    <table class="table table-light table-bordered table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th class="text-center">ລະ​ຫັດ</th>
-                                                <th class="text-center">ຊື່ ແລະ ນາມ​ສະ​ກຸນ</th>
-                                                <th class="text-center">ບ້ານ</th>
-                                                <th class="text-center">ເມືອງ</th>
-                                                <th class="text-center">ແຂວງ</th>
-                                                <th class="text-center">ເບີ​ໂທ</th>
-                                                <th class="text-center">ເບີ​ໂທ​ສ​ຸກ​ເສີນ</th>
-                                                <th class="text-center">ອາ​ຊີບ</th>
-                                                <th class="text-center">ບ່ອນ​ເຮັດ​ວຽກ</th>
-                                                <th class="text-center">ປະ​ເພດ​ລູກ​ຄ້າ</th>
-                                                <th class="text-center">ເຄີຍ​ໃຊ້​ບໍ​ລິ​ການ​ບໍ່</th>
-                                                <th class="text-center">ຈັດ​ການ</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="myTable">
-                                        @if(count($customer) > 0)
-                                            @foreach($customer as $cus)
-                                            <tr>
-                                                <td>{{ $cus->cusid }}</td>
-                                                <td>{{ $cus->name }} {{ $cus->lastname }}</td>
-                                                <td>{{ $cus->village }}</td>
-                                                <td>{{ $cus->disname }}</td>
-                                                <td>{{ $cus->proname }}</td>
-                                                <td>{{ $cus->mobile }}</td>
-                                                <td>{{ $cus->phone }}</td>
-                                                <td>{{ $cus->occupation }}</td>
-                                                <td>{{ $cus->workaddress }}</td>
-                                                <td>{{ $cus->tcusname }}</td>
-                                                <td>{{ $cus->status }}</td>
-                                                <td>
-                                                    <div class="btn-group dropleft">
-                                                        <button class="btn btn-default btn-sm btn-icon btn-transparent font-xl" type="button" id="d350ad" data-toggle="dropdown"
-                                                            aria-haspopup="true" aria-expanded="false">
-                                                            <i class="mdi mdi-dots-horizontal"></i>
-                                                        </button>
-                                                        <div class="dropdown-menu">
-                                                            <button class="dropdown-item" id="btnEdit" value="{{ $cus->cusid }}"><i class="mdi mdi-account-edit-outline"></i> ແກ້​ໄຂ</button>
-                                                            <button class="dropdown-item" id="btnDel" value="{{ $cus->cusid }}"><i class="mdi mdi-trash-can"></i> ລົບ</button>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            @endforeach
-                                        @else
-                                            <tr>
-                                              <td>
-                                                <h4 class="text-center">ຍັງ​ບໍ່​ມີ​ຂໍ້​ມູນ​ລ​ູກ​ຄ້າ​ໃນ​ລະ​ບົບ</h4>
-                                              </td>
-                                            </tr>
-                                        @endif
-                                        </tbody>
-                                    </table>
+                              <div class="table-responsive">
+                                <table class="table table-light table-bordered table-striped">
+                                  <thead>
+                                    <tr>
+                                      <th class="text-center">ລະ​ຫັດ</th>
+                                      <th class="text-center">ຊື່ ແລະ ນາມ​ສະ​ກຸນ</th>
+                                      <th class="text-center">ບ້ານ</th>
+                                      <th class="text-center">ເມືອງ</th>
+                                      <th class="text-center">ແຂວງ</th>
+                                      <th class="text-center">ເບີ​ໂທ</th>
+                                      <th class="text-center">ເບີ​ໂທ​ສ​ຸກ​ເສີນ</th>
+                                      <th class="text-center">ອາ​ຊີບ</th>
+                                      <th class="text-center">ບ່ອນ​ເຮັດ​ວຽກ</th>
+                                      <th class="text-center">ປະ​ເພດ​ລູກ​ຄ້າ</th>
+                                      <th class="text-center">ເຄີຍ​ໃຊ້​ບໍ​ລິ​ການ​ບໍ່</th>
+                                      <th class="text-center">ຈັດ​ການ</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody id="showcussearch">
+                                  @if(count($customer) > 0)
+                                    @foreach($customer as $cus)
+                                      <tr>
+                                        <td>{{ $cus->cusid }}</td>
+                                        <td>{{ $cus->name }} {{ $cus->lastname }}</td>
+                                        <td>{{ $cus->village }}</td>
+                                        <td>{{ $cus->disname }}</td>
+                                        <td>{{ $cus->proname }}</td>
+                                        <td>{{ $cus->mobile }}</td>
+                                        <td>{{ $cus->phone }}</td>
+                                        <td>{{ $cus->occupation }}</td>
+                                        <td>{{ $cus->workaddress }}</td>
+                                        <td>{{ $cus->tcusname }}</td>
+                                        <td>{{ $cus->status }}</td>
+                                        <td>
+                                          <div class="btn-group dropleft">
+                                            <button class="btn btn-default btn-sm btn-icon btn-transparent font-xl" type="button" id="d350ad" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                              <i class="mdi mdi-dots-horizontal"></i>
+                                            </button>
+                                            <div class="dropdown-menu">
+                                              <button class="dropdown-item" id="btnEdit" value="{{ $cus->cusid }}"><i class="mdi mdi-account-edit-outline"></i> ແກ້​ໄຂ</button>
+                                              <button class="dropdown-item" id="btnDel" value="{{ $cus->cusid }}"><i class="mdi mdi-trash-can"></i> ລົບ</button>
+                                            </div>
+                                          </div>
+                                        </td>
+                                      </tr>
+                                    @endforeach
+                                  @else
+                                    <tr>
+                                      <td>
+                                        <h4 class="text-center" colspan="12">ຍັງ​ບໍ່​ມີ​ຂໍ້​ມູນ​ລ​ູກ​ຄ້າ​ໃນ​ລະ​ບົບ</h4>
+                                      </td>
+                                    </tr>
+                                  @endif
+                                </tbody>
+                              </table>
                                     {{ $customer->render() }}
                                     <div class="modal fade" id="editmodal" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-xl" role="document">

@@ -82,6 +82,8 @@ Route::get('/loadapmonth/{carid}', 'AppointController@fnLoadApmonth');
 ////////////////////////////// APPOINTMENT SETTING /////////////////////////////
 /// Route show customer setting page
 Route::get('/customer_setting', 'ApSettingController@fnCusSetting')->name('customer_setting');
+/// Route to search customer data
+Route::post('/searchcusbyid', 'ApSettingController@fnSearchcusbyid');
 /// Route show customer data
 Route::get('/loadcusedit/{cusid}', 'ApSettingController@fnloadCusedit');
 /// Route edit customer data

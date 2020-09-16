@@ -87,10 +87,30 @@ $(document).ready(function(){
         }
     });
 
-    $("#search").on("keyup", function() {
-        var value = $(this).val().toLowerCase();
-        $("#myTable tr").filter(function() {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-        });
+    // $("#search").on("keyup", function() {
+    //     var value = $(this).val().toLowerCase();
+    //     $("#myTable tr").filter(function() {
+    //         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    //     });
+    // });
+
+    $('body').on('click', '#btnSearchcus', function(){
+      var cusid = $('#searchcus').val();
+      if(cusid == ""){
+        swal("ຜິດ​ພາດ", 'ກະ​ລຸ​ນາ​ໃສ່​ຂໍ້​ມູນ​ທີ່​ທ່ານ​ຕ້ອງ​ການ​ຄົ້ນ​ຫາ!', 'warning');
+      }else{
+        $.ajax({
+          url: '/searchcusbyid',
+          type: 'POST',
+          data: {cusid:cusid},
+          dataType: 'json',
+          success:function(data){
+            // console.log(data);
+            $('#showcussearch').html(data.result);
+          }, error: function(data){
+            console.log('Error: ' + data);
+          }
+        })
+      }
     });
 });

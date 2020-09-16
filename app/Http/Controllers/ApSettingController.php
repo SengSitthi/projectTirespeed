@@ -19,6 +19,54 @@ class ApSettingController extends Controller
                                           ->with('typecus', $typecus);
     }
 
+    // function search customer by id
+    public function fnSearchcusbyid(Request $req)
+    {
+      $result = "";
+      $cusid = $req->cusid;
+      $sqlcustomer = DB::table('customdata')->where('cusid', 'like', '%'.$cusid.'%')->get();
+      if(count($sqlcustomer) > 0){
+        foreach ($sqlcustomer as $sctm) {
+          $result .= '
+            <tr>
+              <td>'.$sctm->cusid.'</td>
+              <td>'.$sctm->name.' '.$sctm->lastname.'</td>
+              <td>'.$sctm->village.'</td>
+              <td>'.$sctm->disname.'</td>
+              <td>'.$sctm->proname.'</td>
+              <td>'.$sctm->mobile.'</td>
+              <td>'.$sctm->phone.'</td>
+              <td>'.$sctm->occupation.'</td>
+              <td>'.$sctm->workaddress.'</td>
+              <td>'.$sctm->tcusname.'</td>
+              <td>'.$sctm->status.'</td>
+              <td>
+                <div class="btn-group dropleft">
+                  <button class="btn btn-default btn-sm btn-icon btn-transparent font-xl" type="button" id="d350ad" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="mdi mdi-dots-horizontal"></i>
+                  </button>
+                  <div class="dropdown-menu">
+                    <button class="dropdown-item" id="btnEdit" value="'.$sctm->cusid.'"><i class="mdi mdi-account-edit-outline"></i> ແກ້​ໄຂ</button>
+                    <button class="dropdown-item" id="btnDel" value="'.$sctm->cusid.'"><i class="mdi mdi-trash-can"></i> ລົບ</button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          ';
+        }
+      }else{
+        $result .= '
+        <tr>
+          <td>
+            <h4 class="text-center" colspan="12">ຍັງ​ບໍ່​ມີ​ຂໍ້​ມູນ​ລ​ູກ​ຄ້າ​ໃນ​ລະ​ບົບ</h4>
+          </td>
+        </tr>
+        ';
+      }
+      $data = array('result'=>$result);
+      echo json_encode($data);
+    }
+
     // function load customer data to edit
     public function fnloadCusedit($cusid)
     {

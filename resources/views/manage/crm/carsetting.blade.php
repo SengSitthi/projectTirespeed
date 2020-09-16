@@ -37,16 +37,18 @@
                               <table class="table table-light table-bordered table-striped">
                                 <thead>
                                   <tr>
-                                    <th class="text-center">ລະ​ຫັດ​ລູກ​ຄ້າ</th>
-                                    <th class="text-center">ຊື່ ແລະ​ ນາມ​ສະ​ກຸນ</th>
                                     <th class="text-center">ລະ​ຫັດ​ລົດ</th>
                                     <th class="text-center">ປ້າຍ​ລົດ</th>
+                                    <th class="text-center">ເລກ​ຈັກ</th>
+                                    <th class="text-center">ເລ​ກ​ຖັງ</th>
                                     <th class="text-center">ຍີ່​ຫໍ້</th>
                                     <th class="text-center">ລຸ້ນ</th>
                                     <th class="text-center">ປີ​ຜະ​ລິດ</th>
                                     <th class="text-center">ສີລົດ</th>
                                     <th class="text-center">​ເລກ​ກົງ​ເຕີ</th>
                                     <th class="text-center">ປະ​ເພດ​ເຄື່ອງ​ຈັກ</th>
+                                    <th class="text-center">ລະ​ຫັດ​ລູກ​ຄ້າ</th>
+                                    <th class="text-center">ຊື່ ແລະ​ ນາມ​ສະ​ກຸນ</th>
                                     <th class="text-center">ຈັດ​ການ</th>
                                     </tr>
                                   </thead>
@@ -54,16 +56,18 @@
                                   @if(count($carandcus) > 0)
                                     @foreach ($carandcus as $cac)
                                       <tr>
-                                        <td>{{ $cac->cusid }}</td>
-                                        <td>{{ $cac->name }} {{ $cac->lastname }}</td>
                                         <td>{{ $cac->carid }}</td>
                                         <td>{{ $cac->license }}</td>
+                                        <td>{{ $cac->motornum }}</td>
+                                        <td>{{ $cac->bodynum }}</td>
                                         <td>{{ $cac->brandname }}</td>
                                         <td>{{ $cac->model }}</td>
                                         <td>{{ $cac->madeyear }}</td>
                                         <td>{{ $cac->color }}</td>
                                         <td>{{ $cac->distance }}</td>
                                         <td>{{ $cac->motor }}</td>
+                                        <td>{{ $cac->cusid }}</td>
+                                        <td>{{ $cac->name }} {{ $cac->lastname }}</td>
                                         <td>
                                           <div class="btn-group dropleft">
                                             <button class="btn btn-default btn-sm btn-icon btn-transparent font-xl" type="button" id="d350ad" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

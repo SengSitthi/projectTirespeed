@@ -30,5 +30,26 @@ $(document).ready(function(){
         });
         // $('#modaledit').modal('show');
     });
+
+    //search car data
+    $('body').on('click', '#btnSearchcar', function(){
+      var license = $('#searchcar').val();
+      if(license == ""){
+        swal("ຜິດ​ພາດ!", "ກະ​ລຸ​ນາ​ປ້ອນ​ປ້າຍ​ທະ​ບຽນ​ລົດ​ທີ່​ທ່ານ​ຕ້ອງ​ກາ​ນ​ຄົ້ນ​ຫາ!", "warning");
+      }else{
+        $.ajax({
+          url: '/searchcarbylicense',
+          type: 'POST',
+          data: {license:license},
+          dataType: 'json',
+          success:function(data){
+            $('#showsearchcar').html(data.result);
+            // console.log(data);
+          }, error: function(data){
+            console.log("Error: " + data);
+          }
+        })
+      }
+    });
     
 });

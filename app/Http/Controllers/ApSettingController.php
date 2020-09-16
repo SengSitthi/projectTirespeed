@@ -78,6 +78,53 @@ class ApSettingController extends Controller
                                             ->with('brands', $brands);
     }
 
+    // searkch car by car license
+    public function fnSearchcarbylicense(Request $req)
+    {
+      $result = "";
+      $license = $req->license;
+      $sqlsearchlicense = DB::table('carandcus')->where('license', 'like', '%'.$license.'%')->get();
+      if(count($sqlsearchlicense) > 0){
+        foreach ($sqlsearchlicense as $sscl) {
+          $result .= '
+          <tr>
+          <td>'.$sscl->carid.'</td>
+          <td>'.$sscl->license.'</td>
+          <td>'.$sscl->motornum.'</td>
+          <td>'.$sscl->bodynum.'</td>
+          <td>'.$sscl->brandname.'</td>
+          <td>'.$sscl->model.'</td>
+          <td>'.$sscl->madeyear.'</td>
+          <td>'.$sscl->color.'</td>
+          <td>'.$sscl->distance.'</td>
+          <td>'.$sscl->motor.'</td>
+          <td>'.$sscl->cusid.'</td>
+          <td>'.$sscl->name.' '.$sscl->lastname.'</td>
+          <td>
+            <div class="btn-group dropleft">
+              <button class="btn btn-default btn-sm btn-icon btn-transparent font-xl" type="button" id="d350ad" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="mdi mdi-dots-horizontal"></i>
+              </button>
+              <div class="dropdown-menu">
+                <button class="dropdown-item" id="btnEdit" value="'.$sscl->carid.'"><i class="mdi mdi-car"></i> ແກ້​ໄຂ</button>
+                  <a class="dropdown-item" id="btnDel" href="/deleteCar/'.$sscl->carid.'"><i class="mdi mdi-trash-can"></i> ລົບ</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+          ';
+        }
+      }else{
+        $result .= '
+        <tr>
+          <td colspan="12" class="text-center"><h4>ຍັງ​ບໍ່​ມີ​ຂໍ້​ມູນ​ລົດ​ເທື່ອ</h4></td>
+        </tr>
+        ';
+      }
+      $data = array('result' => $result);
+      echo json_encode($data);
+    }
+
     /// function get car data to edit form
     public function fnloadCartoEdit($carid)
     {

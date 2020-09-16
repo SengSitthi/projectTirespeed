@@ -12,7 +12,23 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header bg-transparent py-15">
-                            <h3>ຈັດ​ການ​ຂໍ້​ມູນ​ລົດ​ລູ​ກ​ຄ້າ</h3>
+                          <div class="row">    
+                            <div class="col-md-6">
+                              <h3>ຈັດ​ການ​ຂໍ້​ມູນ​ລົດ​ລູ​ກ​ຄ້າ</h3>
+                            </div>
+                            <div class="col-md-2">
+                              <a href="{{ url('car_setting') }}" class="btn btn-primary"><i class="mdi mdi-reload"></i> ຣີ​ໂຫຼດ​ຄືນ</a>
+                            </div>
+                            <div class="col-md-4">
+                              <div class="input-group">
+                                <div class="input-group-append">
+                                  <span class="input-group-text"><i class="mdi mdi-table-search"></i></span>
+                                </div>
+                                <input class="form-control" type="text" name="searchcar" id="searchcar" placeholder="ຄົ້ນ​ຫາ​ຕາມ​ທະ​ບຽນ​ລົດ...">
+                                <button class="btn btn-primary" type="button" id="btnSearchcar"><i class="mdi mdi-card-search-outline"></i> ຄົ້ນ​ຫາ</button>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                         <div class="card-body">
                             @if (count($errors) > 0)
@@ -52,7 +68,7 @@
                                     <th class="text-center">ຈັດ​ການ</th>
                                     </tr>
                                   </thead>
-                                  <tbody>
+                                  <tbody id="showsearchcar">
                                   @if(count($carandcus) > 0)
                                     @foreach ($carandcus as $cac)
                                       <tr>
@@ -79,7 +95,7 @@
                                             </div>
                                           </div>
                                         </td>
-                                      </tr>   
+                                      </tr>
                                     @endforeach
                                   @else
                                     <tr>

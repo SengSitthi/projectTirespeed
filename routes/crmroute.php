@@ -90,6 +90,8 @@ Route::post('/editcustomdata', 'ApSettingController@fnEditCusdata')->name('editc
 Route::get('/delcustomer/{cusid}', 'ApSettingController@fnDelCusdata');
 // Route show page for manage car data
 Route::get('/car_setting', 'ApSettingController@fnCarSetting')->name('car_setting');
+// search car data for edit
+Route::post('/searchcarbylicense', 'ApSettingController@fnSearchcarbylicense');
 // Route load car data to edit form
 Route::get('/loadCartoEdit/{carid}', 'ApSettingController@fnloadCartoEdit');
 // Route update car data

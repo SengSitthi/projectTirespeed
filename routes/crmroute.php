@@ -9,6 +9,11 @@ Route::get('/loadTypeCus', 'AppointController@fnloadTypeCus');
 Route::get('/loadCusofMonth', 'AppointController@fnloadCusofMonth');
 //////////////////////////////////// END CHART OF CRM ////////////////////////////////
 
+//////////////////////////////////// START CUSTOMER'S CAR RECEIVE /////////////////////
+// crv new page
+Route::get('/crvnew', 'CrvController@index')->name('crmnew');
+//////////////////////////////////// END CUSTOMER'S CAR RECEIVE ///////////////////////
+
 //////////////////////////////////// START QUOTATION /////////////////////////////////
 // new quotation page
 Route::get('/quotationnew', 'QuotationController@index')->name('quotationnew');

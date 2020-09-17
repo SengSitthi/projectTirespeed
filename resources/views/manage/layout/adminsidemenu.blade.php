@@ -28,6 +28,26 @@
               <i class="menu-icon mdi mdi-desktop-mac-dashboard"></i>
               <span class="menu-label">ພາບ​ລວມ​ການນັດ​ໝາຍ</span>
             </a>
+          </li><li class="menu-item">
+            <a href="javascript://" class="menu-link w3-large" data-toggle="collapse" data-target="#crv" aria-expanded="true" aria-controls="crv">
+              <i class="menu-icon mdi mdi-card-text"></i>
+              <span class="menu-label">ໃບ​ຮັບ​ລົດ</span>
+              <i class="menu-arrow mdi mdi-chevron-right"></i>
+            </a>
+            <ul class="menu collapse" data-parent="#menu-appointment" id="crv" style="margin-left: 10px">
+              <li class="menu-item">
+                <a href="{{ url('crvnew') }}" class="menu-link w3-large">
+                  <i class="menu-icon mdi mdi-file-document-box-plus"></i>
+                  <span class="menu-label">​ໃບ​ຮັບ​ລົດໃໝ່</span>
+                </a>
+              </li>
+              <li class="menu-item">
+                <a href="{{ url('crvlist') }}" class="menu-link w3-large">
+                  <i class="menu-icon mdi mdi-file-document-box-multiple"></i>
+                  <span class="menu-label">ລາຍ​ການໃບ​ຮັບ​ລົດ</span>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="menu-item">
             <a href="javascript://" class="menu-link w3-large" data-toggle="collapse" data-target="#quotation" aria-expanded="true" aria-controls="quotation">
@@ -39,7 +59,7 @@
               <li class="menu-item">
                 <a href="{{ url('quotationnew') }}" class="menu-link w3-large">
                   <i class="menu-icon mdi mdi-file-document-box-plus"></i>
-                  <span class="menu-label">​ເພີ່ມໃບ​ສະ​ເໜີ</span>
+                  <span class="menu-label">​ໃບ​ສະ​ເໜີໃໝ່</span>
                 </a>
               </li>
               <li class="menu-item">

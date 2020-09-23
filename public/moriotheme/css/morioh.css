@@ -6,7 +6,7 @@
  * Copyright 2019-2020 Morioh Team - https://morioh.com
  * Licensed under MIT (https://github.com/Morioh-Lab/morioh/blob/master/LICENSE)
  */
-:root {
+ :root {
   --blue: #3b73da;
   --indigo: #5603ad;
   --purple: #8965e0;
@@ -42,31 +42,6 @@
   --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
 
-@font-face {
-  font-family: "Phetsarath OT";
-  src: url(../fonts/Phetsarath_OT.ttf);
-}
-
-div {
-  font-family: "Phetsarath OT";
-  src: url(../fonts/Phetsarath_OT.ttf);
-}
-
-label {
-  font-size:1.1rem;
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    /* display: none; <- Crashes Chrome on hover */
-    -webkit-appearance: none;
-    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
-}
-
-input[type=number] {
-    -moz-appearance:textfield; /* Firefox */
-}
-
 *,
 *::before,
 *::after {
@@ -84,7 +59,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 body {
   margin: 0;
-  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -103,7 +78,8 @@ hr {
 
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
-  margin-bottom: 0.5rem; }
+  /* margin-bottom: 0.5rem;  */
+  margin-bottom: 0.1rem; }
 
 p {
   margin-top: 0;
@@ -337,7 +313,7 @@ template {
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.1rem;
   font-weight: 500;
   line-height: 1.2; }
 
@@ -1765,7 +1741,8 @@ pre {
   color: #495057; }
   .table th,
   .table td {
-    padding: 0.75rem;
+    /* padding: 0.75rem; */
+    padding: 0.1rem;
     vertical-align: top;
     border-top: 1px solid #f0f2f4; }
   .table thead th {
@@ -1776,7 +1753,9 @@ pre {
 
 .table-sm th,
 .table-sm td {
-  padding: 0.3rem; }
+  /* padding: 0.25rem; */
+  padding: 0.1rem;
+}
 
 .table-bordered {
   border: 1px solid #f0f2f4; }
@@ -2003,17 +1982,7 @@ pre {
   background-color: #343a40;
   border-color: #454d55; }
 
-.table .thead-blue th {
-  color: #fff;
-  background-color: #3b73da;
-  border-color: #3b73da; }
-
 .table .thead-light th {
-  color: #495057;
-  background-color: #e9ecef;
-  border-color: #f0f2f4; }
-
-.table .tbody-light td {
   color: #495057;
   background-color: #e9ecef;
   border-color: #f0f2f4; }
@@ -2868,29 +2837,6 @@ fieldset:disabled a.btn {
     .show > .btn-outline-primary.dropdown-toggle:focus {
       -webkit-box-shadow: 0 0 0 0.2rem rgba(59, 115, 218, 0.5);
               box-shadow: 0 0 0 0.2rem rgba(59, 115, 218, 0.5); }
-
-  .btn-outline-primary1 {
-    color: #3b73da;
-    border-color: #3b73da; }
-  .btn-outline-primary1:hover {
-    color: #3b73da;
-    background-color: #fff;
-    border-color: #3b73da; }
-  .btn-outline-primary1:focus, .btn-outline-primary1.focus {
-    -webkit-box-shadow: 0 0 0 0.2rem rgba(59, 115, 218, 0.5);
-    box-shadow: 0 0 0 0.2rem rgba(59, 115, 218, 0.5); }
-  .btn-outline-primary1.disabled, .btn-outline-primary1:disabled {
-    color: #3b73da;
-    background-color: transparent; }
-  .btn-outline-primary1:not(:disabled):not(.disabled):active, .btn-outline-primary1:not(:disabled):not(.disabled).active,
-  .show > .btn-outline-primary1.dropdown-toggle {
-    color: #3b73da;
-    background-color: #fff;
-    border-color: #3b73da; }
-  .btn-outline-primary1:not(:disabled):not(.disabled):active:focus, .btn-outline-primary1:not(:disabled):not(.disabled).active:focus,
-  .show > .btn-outline-primary1.dropdown-toggle:focus {
-    -webkit-box-shadow: 0 0 0 0.2rem rgba(59, 115, 218, 0.5);
-    box-shadow: 0 0 0 0.2rem rgba(59, 115, 218, 0.5); }
 
 .btn-outline-secondary {
   color: #e9ecef;
@@ -5650,14 +5596,14 @@ a.close.disabled {
   .modal-sm {
     max-width: 300px; } }
 
-@media (min-width: 1730px) {
+@media (min-width: 992px) {
   .modal-lg,
   .modal-xl {
-    max-width: 98%; } }
+    max-width: 800px; } }
 
-@media (min-width: 1730px) {
+@media (min-width: 1200px) {
   .modal-xl {
-    max-width: 98%; } }
+    max-width: 1140px; } }
 
 .tooltip {
   position: absolute;

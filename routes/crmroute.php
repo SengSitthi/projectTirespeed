@@ -12,6 +12,11 @@ Route::get('/loadCusofMonth', 'AppointController@fnloadCusofMonth');
 //////////////////////////////////// START CUSTOMER'S CAR RECEIVE /////////////////////
 // crv new page
 Route::get('/crvnew', 'CrvController@index')->name('crmnew');
+// insert rcs data
+Route::post('/insertrcs', 'CrvController@fnInsertrcs')->name('insertrcs');
+Route::get('/crvprint', function () {
+  return view('manage/crm/crvprint');
+});
 //////////////////////////////////// END CUSTOMER'S CAR RECEIVE ///////////////////////
 
 //////////////////////////////////// START QUOTATION /////////////////////////////////

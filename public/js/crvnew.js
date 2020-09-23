@@ -26,4 +26,20 @@ $(document).ready(function(){
       }
     });
   });
+
+  // function add row other_repair
+  var i = 1;
+  $('#btnAddrow').click(function(){
+    i++;
+    $('#other_repair').append('<tr id="row'+i+'">'
+    +'<td><input class="form-control" type="text" name="repairlist[]" id="repairlist" placeholder="ລາຍ​ການ​ສ້ອມ​ແປງ​ອື່ນໆ..."></td>'
+    +'<td><button class="btn btn-danger btnRemove" type="button" id="'+i+'"><i class="mdi mdi-trash-can"></i></button></td>'
+    +'</tr>');
+  });
+
+  // remove row other_repair
+  $(document).on('click', '.btnRemove', function(){
+    var btnid = $(this).attr("id");
+    $("#row"+btnid+"").remove();
+  });
 })

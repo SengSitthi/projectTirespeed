@@ -14,9 +14,22 @@ Route::get('/loadCusofMonth', 'AppointController@fnloadCusofMonth');
 Route::get('/crvnew', 'CrvController@index')->name('crmnew');
 // insert rcs data
 Route::post('/insertrcs', 'CrvController@fnInsertrcs')->name('insertrcs');
-Route::get('/crvprint', function () {
-  return view('manage/crm/crvprint');
-});
+// rcs list page
+Route::get('/crvlist', 'CrvController@fnCrvlist')->name('crvlist');
+// print rcs bill
+Route::get('/printRcs/{rcsid}', 'CrvController@fnPrintRcs');
+// get receivecars data to edit
+Route::post('/getrcsdata', 'CrvController@fnGetrcsdata');
+// update receice car data
+Route::post('/updateRcs', 'CrvController@fnUpdateRcs')->name('updateRcs');
+// show repair list
+Route::post('/showlist', 'CrvController@fnShowlist');
+// function add new list
+Route::post('/addnewrcslist', 'CrvController@fnAddnewRcslist');
+// function delete list
+Route::post('/delete_rcslist', 'CrvController@fnDeleteRcslist');
+// function delete receive car
+Route::get('/deleteRcsid/{rcsid}', 'CrvController@fnDeleteRcsid');
 //////////////////////////////////// END CUSTOMER'S CAR RECEIVE ///////////////////////
 
 //////////////////////////////////// START QUOTATION /////////////////////////////////

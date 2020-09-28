@@ -6,10 +6,7 @@ $(document).ready(function(){
   });
   $('#date_receive').bootstrapMaterialDatePicker({ time: false, clearButton: true });
   $('#time_receive').bootstrapMaterialDatePicker({ date: false, clearButton: true, shortTime: false, format: 'HH:mm'});
-  $('#date_checked').bootstrapMaterialDatePicker({ time: false, clearButton: true });
-  $('#time_checked').bootstrapMaterialDatePicker({ date: false, clearButton: true, shortTime: false, format: 'HH:mm'});
   $('#cusid').select2();
-  $('#appoint_no').select2();
   
   // show customer car after selected customer
   $('body').on('change', '#cusid', function(){
@@ -41,5 +38,14 @@ $(document).ready(function(){
   $(document).on('click', '.btnRemove', function(){
     var btnid = $(this).attr("id");
     $("#row"+btnid+"").remove();
+  });
+
+  $('body').on('change', '#rp_other', function(){
+    var data = $(this).val();
+    if(data === "yes"){
+      $('#showother_repair').show();
+    }else{
+      $('#showother_repair').hide();
+    }
   });
 })

@@ -312,9 +312,18 @@
                           </div>
                         </div>
                         <hr>
-                      
+                        
                         <div class="row">
                           <div class="col-md-12">
+                            <div class="form-group">
+                              <label for="rp_other">ລາຍ​ການ​ເພີ່ມ​ເຕີມ</label>
+                              <select id="rp_other" class="form-control" name="rp_other">
+                                <option value="no">ບໍ່​ມີ​ການ​ເພີ່ມ​ລາຍ​ການ</option>
+                                <option value="yes" selected>ມີ​ລາຍ​ການ​ເພີ່ມ​</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-md-12" id="showother_repair">
                             <label for="">ລາຍ​ການ​ສ້ອມ​ເພີ່ມ​ຕື່ມ</label>
                             <table class="table table-default" id="other_repair">
                               <tr>

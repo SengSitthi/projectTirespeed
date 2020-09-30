@@ -93,7 +93,7 @@
               <div class="col-md-12">
                 <div class="row">
                   <div class="col-md-8">
-                    <p>ເລກ​ຈັກ: <b></b></p>
+                    <p>ເລກ​ຈັກ: <b>{{ $quota->motornum }}</b></p>
                   </div>
                   <div class="col-md-4">
                     <p>ວັນ​ຄົບ​ກຳ​ນົດ: <b>{{ $quota->expire_date }}</b></p>
@@ -103,7 +103,7 @@
             </div>
             <div class="row ml-4">
               <div class="col-md-8">
-                <p>ເລກ​ຖັງ: <b></b></p>
+                <p>ເລກ​ຖັງ: <b>{{ $quota->bodynum }}</b></p>
               </div>
               <div class="col-md-4">
                 <p>ເຄ​ຣ​ດິດ: <b>{{ $quota->credit_day }}</b></p>

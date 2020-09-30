@@ -14,7 +14,7 @@ class CreateSparesTable extends Migration
     public function up()
     {
         Schema::create('spares', function (Blueprint $table) {
-            $table->string('sparesid', 10);
+            $table->string('sparesid', 15);
             $table->primary('sparesid');
             $table->string('sparesname', 100);
             $table->integer('typeserviceid')->unsigned();

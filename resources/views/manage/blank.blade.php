@@ -11,7 +11,14 @@
         <div class="col-lg-12">
           <div class="card">
             <div class="card-header bg-transparent py-15">
-              <h3>Header Text</h3>
+              <div class="row">
+                <div class="col-md-8">
+                  <h3>Header Text</h3>
+                </div>
+                <div class="col-md-4">
+                  <a href="" class="btn btn-primary"><i class="mdi mdi-link"></i> ໜ້າ</a>
+                </div>
+              </div>
             </div>
             <div class="card-body">
                             

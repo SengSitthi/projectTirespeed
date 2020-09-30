@@ -14,7 +14,7 @@ class CreateRepairsnoTable extends Migration
     public function up()
     {
         Schema::create('repairsno', function (Blueprint $table) {
-          $table->string('rpnoid', 6);
+          $table->string('rpnoid', 10);
           $table->primary('rpnoid');
           // $table->integer('typesparesid')->unsigned();
           // $table->foreign('typesparesid')->references('typesparesid')->on('typespares');

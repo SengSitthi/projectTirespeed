@@ -481,16 +481,52 @@
           </a>
           <ul class="menu collapse" data-parent="#repair-car" id="technical_setting">
             <li class="menu-item">
-              <a href="{{ url('addnewrepairid') }}" class="menu-link w3-large">
-                <i class="menu-icon mdi mdi-car"></i>
-                <span class="menu-label">ເພີ່ມ​ລະ​ຫັດ​ສ້ອມ</span>
+              <a href="javascript://" class="menu-link w3-large" data-toggle="collapse" data-target="#rpnoidsetting"
+                  aria-expanded="true" aria-controls="rpnoidsetting">
+                  <!-- <i class="menu-icon fas fa-tasks"></i> -->
+                  <i class="menu-icon mdi mdi-tools"></i>
+                  <span class="menu-label">ລະ​ຫັດ​ສ້ອມ​ແປງ</span>
+                  <i class="menu-arrow mdi mdi-chevron-right"></i>
               </a>
+      
+              <ul class="menu collapse" data-parent="#technical_setting" id="rpnoidsetting">
+                <li class="menu-item">
+                  <a href="{{ url('addnewrepairid') }}" class="menu-link w3-large">
+                    <i class="menu-icon mdi mdi-car"></i>
+                    <span class="menu-label">ເພີ່ມ​ລະ​ຫັດ​ສ້ອມ</span>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="{{ url('rpnoidlist') }}" class="menu-link w3-large">
+                    <i class="menu-icon mdi mdi-car"></i>
+                    <span class="menu-label">​ລາຍ​ການ​ລະ​ຫັດ​ສ້ອມ</span>
+                  </a>
+                </li>
+              </ul>
             </li>
             <li class="menu-item">
-              <a href="{{ url('rpnoidlist') }}" class="menu-link w3-large">
-                <i class="menu-icon mdi mdi-car"></i>
-                <span class="menu-label">​ລາຍ​ການ​ລະ​ຫັດ​ສ້ອມ</span>
+              <a href="javascript://" class="menu-link w3-large" data-toggle="collapse" data-target="#repairwage"
+                  aria-expanded="true" aria-controls="repairwage">
+                  <!-- <i class="menu-icon fas fa-tasks"></i> -->
+                  <i class="menu-icon mdi mdi-home-city-outline"></i>
+                  <span class="menu-label">ຄ່າ​ແຮງ​ງານ</span>
+                  <i class="menu-arrow mdi mdi-chevron-right"></i>
               </a>
+      
+              <ul class="menu collapse" data-parent="#technical_setting" id="repairwage">
+                <li class="menu-item">
+                  <a href="{{ url('wagenew') }}" class="menu-link w3-large">
+                    <i class="menu-icon mdi mdi-car"></i>
+                    <span class="menu-label">ເພີ່ມ​ຄ່າ​ແຮງ​ງານ</span>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="{{ url('wagelist') }}" class="menu-link w3-large">
+                    <i class="menu-icon mdi mdi-car"></i>
+                    <span class="menu-label">​ລາຍ​ການ​​ຄ່າ​ແຮງ​ງານ</span>
+                  </a>
+                </li>
+              </ul>
             </li>
           </ul>
         </li>

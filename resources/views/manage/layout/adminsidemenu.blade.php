@@ -528,6 +528,12 @@
                 </li>
               </ul>
             </li>
+            <li class="menu-item">
+              <a href="{{ url('unitrepairs') }}" class="menu-link w3-large">
+                <i class="menu-icon mdi mdi-car"></i>
+                <span class="menu-label">ຈັດ​ການ​ຫົວ​ໜ່ວຍ​ສ້ອມ​ແປງ</span>
+              </a>
+            </li>
           </ul>
         </li>
       </ul>

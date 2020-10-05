@@ -128,4 +128,83 @@ class TechrepairController extends Controller
     $data = array('result' => $result);
     echo json_encode($data);
   }
+
+  // function first unitrepair page
+  public function fnUnitRepairs()
+  {
+    return view('manage/technical/unitrepairs');
+  }
+
+  // function get unitrepair page
+  public function fnShowUnitrepair()
+  {
+    $result = "";
+    $i = 1;
+    $sqlunitrp = DB::table('unitrepairs')->orderBy('unitrpid', 'desc')->get();
+    if(count($sqlunitrp) > 0){
+      foreach($sqlunitrp as $unitrp){
+        $result .= '
+        <tr class="text-center">
+          <td>'.$i++.'</td>
+          <td>'.$unitrp->unitrpname.'</td>
+          <td>
+            <button class="btn btn-primary" type="button" id="btnEditUnitrp" value="'.$unitrp->unitrpid.'"><i class="mdi mdi-grease-pencil"></i></button>
+          </td>
+          <td>
+            <button class="btn btn-danger" type="button" id="btnDelUnitrp" value="'.$unitrp->unitrpid.'"><i class="mdi mdi-trash-can"></i></button>
+          </td>
+        </tr>
+        ';
+      }
+    }else{
+      $result .= '
+        <tr>
+          <td colspan="4" class="text-center"><h3>ບໍ່​ມີ​ຂໍ້​ມູນ​ໃນ​ລະ​ບົບ</h3></td>
+        </tr>
+      ';
+    }
+    $data  = array('result'=>$result);
+    echo json_encode($data);
+  }
+
+  // function insert new unit repair
+  public function fnAddnewUnitrp(Request $req)
+  {
+    $newrepairs = array('unitrpname'=>$req->unitrpname,'created_at'=>date('Y-m-d H:i:s'));
+    DB::table('unitrepairs')->insert($newrepairs);
+    $data = "ການ​ເພີ່ມ​ລາຍ​ການ​ໃໝ່ສຳ​ເລັດ!";
+    echo json_encode($data);
+  }
+
+  // funciton get unit data to edit
+  public function fngetUnitrpid(Request $req)
+  {
+    $unitrpid = $req->unitrpid;
+    $sqlgetunitrp = DB::table('unitrepairs')->where('unitrpid', $unitrpid)->get();
+    foreach($sqlgetunitrp as $gurp){
+      $unitrpname = $gurp->unitrpname;
+    }
+    $data = array('unitrpname'=>$unitrpname);
+    echo json_encode($data);
+  }
+
+  // function update unit repair
+  public function fnUpdateUnitrp(Request $req)
+  {
+    $unitrpid = $req->unitrpid;
+    $unitrpname = $req->unitrpname;
+    $dataupdate = array('unitrpname' => $unitrpname, 'updated_at' => date('Y-m-d H:i:s'));
+    DB::table('unitrepairs')->where('unitrpid', $unitrpid)->update($dataupdate);
+    $data = "ການ​ແກ້​ໄຂ​ຂໍ້​ມູນ​ສຳ​ເລັດ";
+    echo json_encode($data);
+  }
+
+  // function delete unit repair
+  public function fnDeleteUnitrp(Request $req)
+  {
+    $unitrpid = $req->unitrpid;
+    DB::table('unitrepairs')->where('unitrpid', $unitrpid)->delete();
+    $data = "ການ​ລົບ​ຂໍ້​ມູນ​ສຳ​ເລັດ!";
+    echo json_encode($data);
+  }
 }

@@ -15,8 +15,11 @@
                 <div class="col-md-8">
                   <h3>ລາຍ​ການ​ຄ່າ​ແຮງ​ງານ</h3>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                   <a href="{{ url('wagenew') }}" class="btn btn-primary"><i class="mdi mdi-link"></i> ເພີ່ມ​ຄ່າ​ແຮງ​ງານ​ໃໝ່</a>
+                </div>
+                <div class="col-md-2">
+                  <a href="{{ url('wagelist') }}" class="btn btn-primary"><i class="mdi mdi-link"></i> ເບິ່ງ​ລາຍກ​ານ​ທັງ​ໝົດ</a>
                 </div>
               </div>
             </div>

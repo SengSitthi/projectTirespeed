@@ -34,3 +34,35 @@ Route::post('/updateUnitrp', 'TechrepairController@fnUpdateUnitrp');
 // function delete unit repair
 Route::post('/deleteUnitrp', 'TechrepairController@fnDeleteUnitrp');
 ////////////////////////////////////////// END UNIT REPAIR ////////////////////////////////////////
+
+////////////////////////////////////////// START MANAGE TYPE CARS /////////////////////////////////
+// show manage page view
+Route::get('/managetypecars', 'TechrepairController@fnManageTypecar');
+// function load type of car to show
+Route::post('/showtypecars', 'TechrepairController@fnShowTypecars');
+// function add new type car data
+Route::post('/insertnewtypecar', 'TechrepairController@fnInsertTypecar');
+// function get type data to edit
+Route::post('/getTypecardata', 'TechrepairController@fngetTypecar');
+// function update type car data
+Route::post('/updateTypecar', 'TechrepairController@fnUpdateTypecar');
+// function delete type car data
+Route::post('/deleteTypecus', 'TechrepairController@fnDeltypecus');
+////////////////////////////////////////// END MANAGE TYPE CARS ///////////////////////////////////
+
+////////////////////////////////////////// START WAGES REPAIR /////////////////////////////////////
+//function show insert wages form page
+Route::get('/wagenew', 'WageController@index')->name('wagenew');
+// function insert new wages
+Route::post('/insertwage', 'WageController@fnInsertWage')->name('insertwage');
+// function show list wages
+Route::get('/wagelist', 'WageController@fnWagelist')->name('wagelist');
+// route get wage data to edit form
+Route::post('/getWagedata', 'WageController@fnGetWagedata');
+// route to update wage data
+Route::post('/updateWages', 'WageController@fnUpdateWages')->name('updateWages');
+// route to delete wage data
+Route::get('/deletewage/{wageid}', 'WageController@fnDeleteWages');
+// route to search wage data
+Route::post('/searchWagedata', 'WageController@fnSearchWage');
+////////////////////////////////////////// END WAGES REPAIR ///////////////////////////////////////

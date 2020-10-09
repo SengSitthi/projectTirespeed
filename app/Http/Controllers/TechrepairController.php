@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 
 class TechrepairController extends Controller
 {
+  ////////////////////////////////////////////////// repair no data /////////////////////////////////////////////
   public function index()
   {
     $typespares = DB::table('typespares')->orderBy('typesparename', 'asc')->get();
@@ -128,7 +129,7 @@ class TechrepairController extends Controller
     $data = array('result' => $result);
     echo json_encode($data);
   }
-
+///////////////////////////////////////////////////////////////// units repair //////////////////////////////////////////////////////////////
   // function first unitrepair page
   public function fnUnitRepairs()
   {
@@ -205,6 +206,82 @@ class TechrepairController extends Controller
     $unitrpid = $req->unitrpid;
     DB::table('unitrepairs')->where('unitrpid', $unitrpid)->delete();
     $data = "ການ​ລົບ​ຂໍ້​ມູນ​ສຳ​ເລັດ!";
+    echo json_encode($data);
+  }
+
+////////////////////////////////////////////// manage type cars //////////////////////////////////////
+  // function show manage type car page
+  public function fnManageTypecar()
+  {
+    return view('manage/technical/typecars');
+  }
+
+  // function show type of car
+  public function fnShowTypecars(Request $req)
+  {
+    $result = "";
+    $sqltypecars = DB::table('typecars')->orderBy('tcarid', 'desc')->get();
+    $i = 1;
+    if(count($sqltypecars) > 0){
+      foreach($sqltypecars as $stc){
+        $result .= '
+        <tr class="text-center">
+          <td>'.$i++.'</td>
+          <td>'.$stc->tcarname.'</td>
+          <td>
+            <button class="btn btn-primary btn-sm" type="button" id="btnEditTC" value="'.$stc->tcarid.'"><i class="mdi mdi-grease-pencil"></i></button>
+          </td>
+          <td>
+            <button class="btn btn-danger btn-sm" type="button" id="btnDelTC" value="'.$stc->tcarid.'"><i class="mdi mdi-trash-can"></i></button>
+          </td>
+        </tr>
+        ';
+      }
+    }else{
+      $result .= '<tr><td colspan="4" class="text-center">ຍັງ​ບໍ່​ມີ​ຂໍ້​ມູນ​ໃນ​ລະ​ບົບ!</td></tr>';
+    }
+    $data = array('result'=>$result);
+    echo json_encode($data);
+  }
+
+  // function insert new type car
+  public function fnInsertTypecar(Request $req)
+  {
+    $tcarname = $req->tcarname;
+    $insertdata = array('tcarname'=>$tcarname, 'created_at'=>date('Y-m-d H:i:s'));
+    DB::table('typecars')->insert($insertdata);
+    $data = "ການ​ບັນ​ທຶກ​ສຳ​ເລັດ";
+    echo json_encode($data);
+  }
+
+  // function get type data to edit form
+  public function fngetTypecar(Request $req)
+  {
+    $tcarid = $req->tcarid;
+    $gettcarid = DB::table('typecars')->where('tcarid', $tcarid)->get();
+    foreach($gettcarid as $gtc){
+      $tcarname = $gtc->tcarname;
+    }
+    $data = array('tcarname' => $tcarname);
+    echo json_encode($data);
+  }
+
+  // function update type of car
+  public function fnUpdateTypecar(Request $req)
+  {
+    $tcarid = $req->tcarid;
+    $dataupdate = array('tcarname'=>$req->tcarname, 'updated_at'=>date('Y-m-d H:i:s'));
+    DB::table('typecars')->where('tcarid', $tcarid)->update($dataupdate);
+    $data = "ການ​ແກ້​ໄຂ​ຂໍ້​ມູນ​ສ​ຳ​ເລັດ!";
+    echo json_encode($data);
+  }
+
+  // function delete type of car
+  public function fnDeltypecus(Request $req)
+  {
+    $tcarid = $req->tcarid;
+    DB::table('typecars')->where('tcarid', $tcarid)->delete();
+    $data = "ການ​ລຶບ​ຂໍ້​ມູນ​ສຳ​ເລັດ!";
     echo json_encode($data);
   }
 }

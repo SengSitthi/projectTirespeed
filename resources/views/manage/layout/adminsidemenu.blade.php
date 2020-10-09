@@ -508,7 +508,7 @@
               <a href="javascript://" class="menu-link w3-large" data-toggle="collapse" data-target="#repairwage"
                   aria-expanded="true" aria-controls="repairwage">
                   <!-- <i class="menu-icon fas fa-tasks"></i> -->
-                  <i class="menu-icon mdi mdi-home-city-outline"></i>
+                  <i class="menu-icon mdi mdi-home-currency-usd"></i>
                   <span class="menu-label">ຄ່າ​ແຮງ​ງານ</span>
                   <i class="menu-arrow mdi mdi-chevron-right"></i>
               </a>
@@ -516,17 +516,23 @@
               <ul class="menu collapse" data-parent="#technical_setting" id="repairwage">
                 <li class="menu-item">
                   <a href="{{ url('wagenew') }}" class="menu-link w3-large">
-                    <i class="menu-icon mdi mdi-car"></i>
+                    <i class="menu-icon mdi mdi-home-currency-usd"></i>
                     <span class="menu-label">ເພີ່ມ​ຄ່າ​ແຮງ​ງານ</span>
                   </a>
                 </li>
                 <li class="menu-item">
                   <a href="{{ url('wagelist') }}" class="menu-link w3-large">
-                    <i class="menu-icon mdi mdi-car"></i>
+                    <i class="menu-icon mdi mdi-currency-eth"></i>
                     <span class="menu-label">​ລາຍ​ການ​​ຄ່າ​ແຮງ​ງານ</span>
                   </a>
                 </li>
               </ul>
+            </li>
+            <li class="menu-item">
+              <a href="{{ url('managetypecars') }}" class="menu-link w3-large">
+                <i class="menu-icon mdi mdi-car"></i>
+                <span class="menu-label">ຈັດ​ການ​ປະ​ເພດ​ລົດ</span>
+              </a>
             </li>
             <li class="menu-item">
               <a href="{{ url('unitrepairs') }}" class="menu-link w3-large">

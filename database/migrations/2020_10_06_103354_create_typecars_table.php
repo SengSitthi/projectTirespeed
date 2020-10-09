@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUnitrepairsTable extends Migration
+class CreateTypecarsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateUnitrepairsTable extends Migration
      */
     public function up()
     {
-      Schema::create('unitrepairs', function (Blueprint $table) {
-        $table->increments('unitrpid');
-        $table->string('unitrpname', 30);
-        $table->timestamps();
-      });
+        Schema::create('typecars', function (Blueprint $table) {
+            $table->increments('tcarid');
+            $table->string('tcarname', 60);
+            $table->timestamps();
+        });
     }
 
     /**
@@ -27,6 +27,6 @@ class CreateUnitrepairsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('unitrepairs');
+        Schema::dropIfExists('typecars');
     }
 }

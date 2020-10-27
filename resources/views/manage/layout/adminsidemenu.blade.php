@@ -434,21 +434,21 @@
             aria-expanded="true" aria-controls="open-repair">
             <!-- <i class="menu-icon fas fa-tasks"></i> -->
             <i class="menu-icon mdi mdi-car-side"></i>
-            <span class="menu-label">ໃບ​ແຈ້ງ​ສ້ອມ</span>
+            <span class="menu-label">ໃບ​ເປີດ​ງານ​ສ້ອມ​</span>
             <i class="menu-arrow mdi mdi-chevron-right"></i>
           </a>
 
           <ul class="menu collapse" data-parent="#repair-car" id="open-repair">
             <li class="menu-item">
-              <a href="form-general.html" class="menu-link w3-large">
+              <a href="{{ url('repairbillnew') }}" class="menu-link w3-large">
                 <i class="menu-icon mdi mdi-file-document-box-plus"></i>
-                <span class="menu-label">​ໃບ​ແຈ້ງ​ສ້ອມ​​ໃໝ່</span>
+                <span class="menu-label">ໃບ​ເປີດ​ງານ​ສ້ອມໃໝ່</span>
               </a>
             </li>
             <li class="menu-item">
-              <a href="form-advanced.html" class="menu-link w3-large">
+              <a href="{{ url('repairbill_list') }}" class="menu-link w3-large">
                 <i class="menu-icon mdi mdi-file-document-box-multiple"></i>
-                <span class="menu-label">ລາຍ​​ການ​ໃບສ້ອມໃໝ່</span>
+                <span class="menu-label">ລາຍ​ການໃບ​ເປີດ​ງານ​ສ້ອມ</span>
               </a>
             </li>
           </ul>

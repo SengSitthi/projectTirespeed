@@ -66,3 +66,32 @@ Route::get('/deletewage/{wageid}', 'WageController@fnDeleteWages');
 // route to search wage data
 Route::post('/searchWagedata', 'WageController@fnSearchWage');
 ////////////////////////////////////////// END WAGES REPAIR ///////////////////////////////////////
+
+////////////////////////////////////////// START REPAIR BILL //////////////////////////////////////
+// route to show new repair bill
+Route::get('/repairbillnew', 'RepairbillController@index')->name('repairbillnew');
+// route get spare name to on repair bill
+Route::post('/getsparename', 'RepairbillController@fnGetSparename');
+// route get wage data to on repair bill
+Route::post('/getwagedata', 'RepairbillController@fnGetwagedata');
+// route to insert new repair bill
+Route::post('/insertnewrpbill', 'RepairbillController@fnInsertnewrpbill')->name('insertnewrpbill');
+// route show repair bill list
+Route::get('/repairbill_list', 'RepairbillController@fnRpbillList')->name('repairbill_list');
+// route print repair bill
+Route::get('/printrpbill/{rpbid}', 'RepairbillController@fnPrintrpbill');
+// route to get repair bill detail table to show
+Route::post('/getShowrpbdetail', 'RepairbillController@fnGetShowrpbdetail');
+// route to add new list to rpb detail
+Route::post('/addnewrpblist', 'RepairbillController@fnAddnewrplist');
+// route to delete list on rpb detail
+Route::post('/delrpblistdata', 'RepairbillController@fnDelrpblistdata');
+// route to get repair bill data to edit
+Route::post('/geteditrpbdata', 'RepairbillController@fnGeteditrpbdata');
+// route to update repair bill date
+Route::post('/updateRpbdate', 'RepairbillController@fnUpdateRpbdate');
+// route to delete repair bill
+Route::get('/deleterpbdata/{rpbid}', 'RepairbillController@fnDeleterpb');
+// route to search repair bill
+Route::post('/searchrepairbill', 'RepairbillController@fnSearchrpb');
+////////////////////////////////////////// END REPAIR BILL ////////////////////////////////////////

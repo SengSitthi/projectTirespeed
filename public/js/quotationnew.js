@@ -40,95 +40,37 @@ $(document).ready(function(){
         clearButton: true
     });
 
-    $('#cusid').select2();
 
-    $('body').on('change', '#cusid', function(){
-      var cusid = $(this).val();
-      $.ajax({
-        url: "/getCuscar",
-        type: 'POST',
-        data: {cusid:cusid},
-        dataType: 'json',
-        success: function(data){
-          $('#carid').html(data.result);
-        }, error: function(data){
-          console.log('Error: ' +data);
-        }
-      });
-    });
-    
-    // function add row detail
-    var i = 1;
-    $('#addrow').click(function(){
-      i++;
-      $('#quotation_detail').append('<tr id="row'+i+'">'
-      +'<td><input class="form-control sparesid" type="number" name="sparesid[]" id="sparesid'+i+'" maxlength="13" placeholder="ຄົ້ນ​ຫາ​ລະ​ຫັດ"></td>'
-      +'<td><input class="form-control" type="text" name="sparesname[]" id="sparesname'+i+'" readonly></td>'
-      +'<td><input class="form-control" type="text" name="unitname[]" id="unitname'+i+'" readonly></td>'
-      +'<td><input class="form-control qty" type="number" name="qty[]" id="qty'+i+'"></td>'
-      +'<td><input class="form-control" type="text" name="price[]" id="price'+i+'" readonly></td>'
-      +'<td><input class="form-control" type="number" name="wages[]" id="wages'+i+'"></td>'
-      +'<td><input class="form-control" type="text" name="total[]" id="total'+i+'" value="0" readonly></td>'
-      +'<td><button class="btn btn-danger btn_removerow" type="button" id="'+i+'"><i class="mdi mdi-minus"></i></button></td>'
-      +'</tr>');
-    });
+  // function to show repairbill detail on new quotation
+  $('body').on('change', '#rpbid', function(){
+    var rpbid = $(this).val();
+    if(rpbid === ""){
 
-    $(document).on('click', '.btn_removerow', function(){
-      var button_id = $(this).attr("id");
-      $("#row"+button_id+"").remove();
-    });
-
-  $('body').on('keyup', '.sparesid', function(){
-    var textid = $(this).attr("id");
-    var id = textid.substring(8, 10);
-    var sparesid = $(this).val();
-    // alert(id);
-    if(sparesid.length === 13){
-      $.ajax({
-        url: '/loadSparetoQT',
-        type: 'POST',
-        data: {sparesid:sparesid},
-        dataType: 'json',
-        success: function(data){
-          console.log(data);
-          $('#sparesname'+id).val(data.sparesname);
-          $('#price'+id).val(data.sellprice);
-          $('#unitname'+id).val(data.unitname);
-          // $('#qty'+id).focus();
-        }, error: function(data){
-          console.log('Error: ' + data);
-        }
-      });
-    }else if(sparesid.length === 12){
-      $.ajax({
-        url: '/loadSparetoQT',
-        type: 'POST',
-        data: {sparesid:sparesid},
-        dataType: 'json',
-        success: function(data){
-          console.log(data);
-          $('#sparesname'+id).val(data.sparesname);
-          $('#price'+id).val(data.sellprice);
-          $('#unitname'+id).val(data.unitname);
-          // $('#qty'+id).focus();
-        }, error: function(data){
-          console.log('Error: ' + data);
-        }
-      });
     }else{
-      $('#sparesname'+id).val("");
-      $('#price'+id).val("");
-      $('#unitname'+id).val("");
+      $.ajax({
+        url: '/getrpbdetaildata',
+        type: 'POST',
+        data: {rpbid:rpbid},
+        dataType: 'json',
+        success: function(data){
+          // console.log(data);
+          $('#showrpbdetail').html(data.result);
+        }, error: function(data){
+          console.log('Error: ' + data);
+        }
+      });
     }
   });
 
-  $('body').on('keyup', '.qty', function(){
-    var textid = $(this).attr("id");
-    var id = textid.substring(3, 5);
-    var qty = $(this).val();
-    var price = $('#price'+id).val();
-    $('#total'+id).val(price*qty);
-  });
+  $('#rpbid').select2();
+
+  // $('body').on('keyup', '.qty', function(){
+  //   var textid = $(this).attr("id");
+  //   var id = textid.substring(3, 5);
+  //   var qty = $(this).val();
+  //   var price = $('#price'+id).val();
+  //   $('#total'+id).val(price*qty);
+  // });
 
   $('body').on('change', '#expire_date', function(){
     var enddate = $(this).val();

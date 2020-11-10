@@ -36,24 +36,57 @@ class QuotationController extends Controller
     $qtid = "QT".$num."-".date('m.Y');
 
     
-    $customers = DB::table('customers')->orderBy('name', 'asc')->get();
-    return view('/manage/crm/quotationnew')->with('customers', $customers)->with('qtid', $qtid);
+    $repairbill = DB::table('repairbill')->orderBy('rpbid', 'desc')->get();
+    return view('/manage/crm/quotationnew')->with('repairbill', $repairbill)->with('qtid', $qtid);
   }
 
-  // function get car data by cusid
-  public function fnGetCuscar(Request $req)
+  // function get repair bill data to show quotation table list
+  public function fnGetrpbdetaildata(Request $req)
   {
     $result = "";
-    $customers = DB::table('cars')->where('cusid', $req->cusid)->get();
-    if(count($customers) > 0){
-      $result = '<option value="">ເລືອກ​ລົດ​ລູ​ກ​ຄ້າ</option>';
-      foreach ($customers as $cus) {
-        $result .= '<option value="'.$cus->carid.'">'.$cus->license.'</option>';
-      }
-    }else{
-      $result .= '<option value="">ຍັງ​ບໍ່​ມີ​ລົດ​ຂອງ​ລູກ​ຄ້າ​ຄົນ​ນີ້</option>';
+    $rpbid = $req->rpbid;
+    $rpbdetail = DB::table('repairbill_detail')
+    ->join('repairsno', 'repairsno.rpnoid', '=', 'repairbill_detail.rpnoid')
+    ->join('spares', 'spares.sparesid', '=', 'repairsno.sparesid')
+    ->join('unitspare', 'unitspare.unitid', '=', 'spares.unitid')
+    ->join('wages', 'wages.wageid', '=', 'repairbill_detail.wageid')
+    ->where('repairbill_detail.rpbid', '=', $rpbid)
+    ->select('repairsno.rpnoid','spares.sparesname','unitspare.unitname','repairbill_detail.useqty','spares.sellprice','wages.*')->get();
+    foreach($rpbdetail as $rpbd){
+      $result .= '
+      <tr>
+        <td>
+          <input class="form-control" type="text" name="rpnoid[]" value="'.$rpbd->rpnoid.'" readonly>
+        </td>
+        <td>
+          <input class="form-control" type="text" name="sparename" value="'.$rpbd->sparesname.'" readonly>
+        </td>
+        <td>
+          <input class="form-control" type="text" name="unitspare" value="'.$rpbd->unitname.'" readonly>
+        </td>
+        <td>
+          <input class="form-control" type="text" name="qty[]" value="'.$rpbd->useqty.'" readonly>
+        </td>
+        <td>
+          <input type="hidden" name="price[]" value="'.$rpbd->sellprice.'">
+          <input class="form-control" type="text" name="showprice" value="'.number_format($rpbd->sellprice).'" readonly>
+        </td>
+        <td>
+          <input type="hidden" name="total[]" value="'.$rpbd->sellprice * $rpbd->useqty.'" readonly>
+          <input class="form-control" type="text" name="showtotal" value="'.number_format($rpbd->sellprice * $rpbd->useqty).'" readonly>
+        </td>
+        <td>
+          <input class="form-control" type="text" name="wageid[]" value="'.$rpbd->wageid.'" readonly>
+        </td>
+        <td>
+          <input class="form-control" type="text" name="wagename" value="'.$rpbd->wagename.'" readonly>
+        </td>
+        <td>
+          <input class="form-control" type="text" name="wagecost" value="'.number_format($rpbd->cost).'" readonly>
+        </td>
+      </tr>
+      ';
     }
-
     $data = array('result' => $result);
     echo json_encode($data);
   }
@@ -85,31 +118,29 @@ class QuotationController extends Controller
   public function fnInsertNewQT(Request $req)
   {
     $this->validate($req, [
-      'cusid' => 'required',
-      'carid' => 'required'
+      'rpbid' => 'required'
     ]);
     
     $quotationdata = array(
-      'qtid' => $req->input('qtid'),
-      'cusid' => $req->input('cusid'),'carid' => $req->input('carid'),
+      'qtid' => $req->input('qtid'),'rpbid' => $req->input('rpbid'),
       'part' => $req->input('part'),'checkin_date' => $req->input('checkin_date'),
       'checkin_time' => $req->input('checkin_time'),'checkout_date' => $req->input('checkout_date'),
       'checkout_time' => $req->input('checkout_time'),'expire_date' => $req->input('expire_date'),
       'credit_day' => $req->input('credit_day'),'instance' => $req->input('instance'),
       'receive_bill' => $req->input('receive_bill'),'document_date' => $req->input('document_date'),
-      'created_at' => date('Y-m-d')
+      'created_at' => date('Y-m-d H:i:s')
     );
-    $sparesid = $req->input('sparesid');
-    for ($i=0; $i < count($sparesid); $i++) {
+    $rpnoid = $req->input('rpnoid');
+    for ($i=0; $i < count($rpnoid); $i++) {
       $qtdetaildata = array(
         'qtid' => $req->input('qtid'),
-        'sparesid' => $req->input('sparesid')[$i],
+        'rpnoid' => $req->input('rpnoid')[$i],
         'qty' => $req->input('qty')[$i],
         'price' => $req->input('price')[$i],
-        'wages' => $req->input('wages')[$i],
+        'wageid' => $req->input('wageid')[$i],
         'total' => $req->input('total')[$i],
         'status' => "0",
-        'created_at' => date('Y-m-d')
+        'created_at' => date('Y-m-d H:i:s')
       );
       $detaildata[] = $qtdetaildata;
     }
@@ -118,127 +149,162 @@ class QuotationController extends Controller
       return back()->with('qtidalready', 'ລະ​ຫັດ​ນີ້​ມີ​ໃນ​ລະ​ບົບ​ແລ້ວ');
     }else{
       DB::table('quotations')->insert($quotationdata);
-      DB::table('qt_details')->insert($detaildata);
+      DB::table('quotations_detail')->insert($detaildata);
       $quotations = DB::table('quotations')
-      ->join('customers', 'customers.cusid', '=', 'quotations.cusid')
-      ->join('cars', 'cars.carid', '=', 'quotations.carid')
+      ->join('repairbill', 'repairbill.rpbid', '=', 'quotations.rpbid')
+      ->join('receivecars', 'receivecars.rcsid', '=', 'repairbill.rcsid')
+      ->join('customers', 'customers.cusid', '=', 'receivecars.cusid')
+      ->join('cars', 'cars.carid', '=', 'receivecars.carid')
       ->join('brands', 'brands.brandid', '=', 'cars.brandid')
       ->join('districts', 'districts.disid', '=', 'customers.disid')
       ->join('provinces', 'provinces.proid', '=', 'customers.proid')
-      ->where('quotations.qtid', '=', $req->input('qtid'))->where('quotations.cusid', '=', $req->input('cusid'))->where('quotations.carid', '=', $req->input('carid'))
+      ->where('quotations.qtid', '=', $req->input('qtid'))
       ->select('quotations.*','customers.*','cars.*','brands.brandname','districts.disname','provinces.proname')
       ->get();
-      $quodetail = DB::table('qt_details')
-      ->join('spares', 'spares.sparesid', '=', 'qt_details.sparesid')
+      
+      $quodetail = DB::table('quotations_detail')
+      ->join('repairsno', 'repairsno.rpnoid', '=', 'quotations_detail.rpnoid')
+      ->join('spares', 'spares.sparesid', '=', 'repairsno.sparesid')
       ->join('unitspare', 'unitspare.unitid', '=', 'spares.unitid')
-      ->where('qt_details.qtid', '=', $req->input('qtid'))
-      ->select('qt_details.*','spares.sparesid','spares.sparesname','unitspare.unitname')->get();
-      $sumwages = DB::table('qt_details')->where('qtid', $req->input('qtid'))->sum('wages');
-      $sumtotal = DB::table('qt_details')->where('qtid', $req->input('qtid'))->sum('total');
+      ->where('quotations_detail.qtid', '=', $req->input('qtid'))->whereNotIn('quotations_detail.rpnoid', ['CHECK000'])
+      ->select('quotations_detail.*','repairsno.rpnoid','spares.sparesid','spares.sparesname','unitspare.unitname')->get();
+
+      $wagelist = DB::table('quotations_detail')
+      ->join('wages', 'wages.wageid', '=', 'quotations_detail.wageid')
+      ->join('typecars', 'typecars.tcarid', '=', 'wages.tcarid')
+      ->join('unitrepairs', 'unitrepairs.unitrpid', '=', 'wages.unitrpid')
+      ->where('quotations_detail.qtid', '=', $req->input('qtid'))
+      ->select('wages.*','typecars.tcarname','unitrepairs.unitrpname')->get();
+
+      $sumwages = DB::table('quotations_detail')
+      ->join('wages', 'wages.wageid', '=', 'quotations_detail.wageid')
+      ->where('quotations_detail.qtid', $req->input('qtid'))->sum('wages.cost');
+      $sumtotal = DB::table('quotations_detail')->where('qtid', $req->input('qtid'))->sum('total');
       $no = 1;
+      $w = 1;
       $url = "quotationnew";
       return view('/manage/crm/quotationprint')->with('quotations', $quotations)->with('quodetail',$quodetail)
-      ->with('sumwages', $sumwages)->with('sumtotal', $sumtotal)->with('no', $no)->with('url', $url);
+      ->with('sumwages', $sumwages)->with('sumtotal', $sumtotal)->with('no', $no)->with('url', $url)
+      ->with('w', $w)->with('wagelist', $wagelist);
     }
 
   }
 
   public function fnQTList(Request $req)
   {
-    $quotations = DB::table('quotations')
-    ->join('customers', 'customers.cusid', '=', 'quotations.cusid')
-    ->join('cars', 'cars.carid', '=', 'quotations.carid')
-    ->select('quotations.*','customers.*','cars.*')
-    ->orderBy('qtid', 'desc')->paginate(35);
-    $customers = DB::table('customers')->get();
-    return view('/manage/crm/quotationlist')->with('quotations', $quotations)->with('customers', $customers);
+    $repairbill = DB::table('repairbill')->orderBy('rpbid', 'desc')->get();
+    $quotations = DB::table('quotations')->orderBy('qtid', 'desc')->paginate(35);
+    return view('/manage/crm/quotationlist')->with('quotations', $quotations)->with('repairbill', $repairbill);
   }
 
   public function fnPrintQuotation($qtid)
   {
     $quotations = DB::table('quotations')
-      ->join('customers', 'customers.cusid', '=', 'quotations.cusid')
-      ->join('cars', 'cars.carid', '=', 'quotations.carid')
+      ->join('repairbill', 'repairbill.rpbid', '=', 'quotations.rpbid')
+      ->join('receivecars', 'receivecars.rcsid', '=', 'repairbill.rcsid')
+      ->join('customers', 'customers.cusid', '=', 'receivecars.cusid')
+      ->join('cars', 'cars.carid', '=', 'receivecars.carid')
       ->join('brands', 'brands.brandid', '=', 'cars.brandid')
       ->join('districts', 'districts.disid', '=', 'customers.disid')
       ->join('provinces', 'provinces.proid', '=', 'customers.proid')
       ->where('quotations.qtid', '=', $qtid)
       ->select('quotations.*','customers.*','cars.*','brands.brandname','districts.disname','provinces.proname')
       ->get();
-      $quodetail = DB::table('qt_details')
-      ->join('spares', 'spares.sparesid', '=', 'qt_details.sparesid')
+      
+      $quodetail = DB::table('quotations_detail')
+      ->join('repairsno', 'repairsno.rpnoid', '=', 'quotations_detail.rpnoid')
+      ->join('spares', 'spares.sparesid', '=', 'repairsno.sparesid')
       ->join('unitspare', 'unitspare.unitid', '=', 'spares.unitid')
-      ->where('qt_details.qtid', '=', $qtid)
-      ->select('qt_details.*','spares.sparesid','spares.sparesname','unitspare.unitname')->get();
-      $sumwages = DB::table('qt_details')->where('qtid', $qtid)->sum('wages');
-      $sumtotal = DB::table('qt_details')->where('qtid', $qtid)->sum('total');
+      ->where('quotations_detail.qtid', '=', $qtid)->whereNotIn('quotations_detail.rpnoid', ['CHECK000'])
+      ->select('quotations_detail.*','repairsno.rpnoid','spares.sparesid','spares.sparesname','unitspare.unitname')->get();
+
+      $wagelist = DB::table('quotations_detail')
+      ->join('wages', 'wages.wageid', '=', 'quotations_detail.wageid')
+      ->join('typecars', 'typecars.tcarid', '=', 'wages.tcarid')
+      ->join('unitrepairs', 'unitrepairs.unitrpid', '=', 'wages.unitrpid')
+      ->where('quotations_detail.qtid', '=', $qtid)
+      ->select('wages.*','typecars.tcarname','unitrepairs.unitrpname')->get();
+
+      $sumwages = DB::table('quotations_detail')
+      ->join('wages', 'wages.wageid', '=', 'quotations_detail.wageid')
+      ->where('quotations_detail.qtid', $qtid)->sum('wages.cost');
+      $sumtotal = DB::table('quotations_detail')->where('qtid', $qtid)->sum('total');
       $no = 1;
-      $url = "quotationlist";
+      $w = 1;
+      $url = "quotationnew";
       return view('/manage/crm/quotationprint')->with('quotations', $quotations)->with('quodetail',$quodetail)
-      ->with('sumwages', $sumwages)->with('sumtotal', $sumtotal)->with('no', $no)->with('url', $url);
+      ->with('sumwages', $sumwages)->with('sumtotal', $sumtotal)->with('no', $no)->with('url', $url)
+      ->with('w', $w)->with('wagelist', $wagelist);
   }
-  
-  // function get quotation detail to table on modal
-  public function fnModalloadQT(Request $req)
+
+  // function get data to show on quotation detail modal
+  public function fnQtdetaildata(Request $req)
   {
     $result = "";
     $qtid = $req->qtid;
-    $qtdetail = DB::table('qt_details')
-    ->join('spares', 'spares.sparesid', '=', 'qt_details.sparesid')
-    ->join('unitspare', 'unitspare.unitid', '=', 'spares.unitid')
-    ->where('qt_details.qtid', '=', $qtid)
-    ->select('qt_details.*','spares.sparesid','spares.sparesname','unitspare.unitname')->get();
-    $i = 1;
-    if(count($qtdetail) > 0){
-      foreach ($qtdetail as $qtdt) {
-        $result .= '
-        <tr>
-          <td class="text-center">'.$i++.'</td>
-          <td>'.$qtdt->sparesid.'</td>
-          <td>'.$qtdt->sparesname.'</td>
-          <td class="text-center">'.$qtdt->unitname.'</td>
-          <td class="text-center">'.$qtdt->qty.'</td>
-          <td class="text-right">'.number_format($qtdt->price).'</td>
-          <td class="text-right">'.number_format($qtdt->total).'</td>
-          <td class="text-right">'.number_format($qtdt->wages).'</td>
-          <td class="text-center">
-            <button class="btn btn-danger" type="button" id="btnTrash" value="'.$qtdt->qtdetailid.'"><i class="mdi mdi-trash-can"></i></button>
-          </td>
-        </tr>
-        ';
+    $qtdtdata = DB::table('quotations_detail')->join('repairsno', 'repairsno.rpnoid', '=', 'quotations_detail.rpnoid')
+                                              ->join('spares', 'spares.sparesid', '=', 'repairsno.sparesid')
+                                              ->join('wages', 'wages.wageid', '=', 'quotations_detail.wageid')
+                                              ->where('quotations_detail.qtid', '=', $qtid)
+                                              ->select('quotations_detail.*','spares.sparesname','wages.*')->get();
+                                              // ->whereNotIn('quotations_detail.rpnoid', ['CHECK000'])
+    foreach($qtdtdata as $qdt){
+      if($qdt->status == "0"){
+        $status = "ຍັງ​ບໍ່​ໄດ້​ອະ​ນຸ​ມັດ";
+        $statustext = "";
+        $value = 1;
+      }else{
+        $status = "ອະ​ນຸ​ມັດ";
+        $statustext = "checked";
+        $value = 0;
       }
-    }else{
-      $result .= '<tr><td colspan="9"><h4 class="text-center">ຍັງ​ບໍ່​ມີ​ຂໍ້​ມູນ​ລາຍ​ການ​ຂອງ​ໃບ​ສະ​ເໜີ​ບິນ​ນີ້ '.$qtid.'</h4></td></tr>';
+      $result .= '
+      <tr>
+        <td>
+          <input class="form-control" type="text" name="rpnoid" value="'.$qdt->rpnoid.'" readonly>
+        </td>
+        <td>
+          <input class="form-control" type="text" name="sparesname" value="'.$qdt->sparesname.'" readonly>
+        </td>
+        <td>
+          <input class="form-control" type="text" name="qty" value="'.$qdt->qty.'" readonly>
+        </td>
+        <td>
+          <input class="form-control" type="text" name="price" value="'.$qdt->price.'" readonly>
+        </td>
+        <td>
+          <input class="form-control" type="text" name="total" value="'.$qdt->total.'" readonly>
+        </td>
+        <td>
+          <input class="form-control" type="text" name="wageid" value="'.$qdt->wageid.'" readonly>
+        </td>
+        <td>
+          <input class="form-control" type="text" name="wagename" value="'.$qdt->wagename.'" readonly>
+        </td>
+        <td>
+          <input class="form-control" type="text" name="status" value="'.$status.'" readonly>
+        </td>
+        <td class="text-center">
+          <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input confirm" id="'.$qdt->qtdetailid.'" name="confirm[]" value="'.$value.'" '.$statustext.'>
+            <label class="custom-control-label" for="'.$qdt->qtdetailid.'"></label>
+          </div>
+        </td>
+      </tr>
+      ';
     }
-    $data = array('result'=>$result);
+    $data = array('result' => $result);
     echo json_encode($data);
   }
 
-  // function insert new spares data to quotation detail
-  public function fnInsertQtdetaildata(Request $req)
+  // function confirm quotation list
+  public function fnUpdatestatus(Request $req)
   {
-    $checkrow = DB::table('qt_details')->where('qtid', $req->qtid)->where('sparesid', $req->sparesid)->get();
-    if(count($checkrow) > 0){
-      foreach($checkrow as $row){
-        $qty = $row->qty;
-        $total = $row->total;
-        $wages = $row->wages;
-      }
-      $dataupdate = array('qty'=>(int)$qty+(int)$req->qty,'wages'=>$req->wages, 'total' => (int)$total+(int)$req->total,'updated_at'=>date('Y-m-d'));
-      DB::table('qt_details')->where('qtid', $req->qtid)->where('sparesid', $req->sparesid)->update($dataupdate);
-    }else{
-      $datainsert = array('qtid'=>$req->qtid,'sparesid'=>$req->sparesid,'qty'=>$req->qty,'price'=>$req->price,'wages'=>$req->wages,'total'=>$req->total,'status'=>"0",'created_at'=>date('Y-m-d'));
-      DB::table('qt_details')->insert($datainsert);
-    }
-    $data = "ການ​ດຳ​ເນີນ​ການ​ສຳ​ເລັດ";
-    echo json_encode($data);
-  }
-
-  public function fnTrashQtlist(Request $req)
-  {
+    $status = $req->status;
     $qtdetailid = $req->qtdetailid;
-    DB::table('qt_details')->where('qtdetailid', $qtdetailid)->delete();
-    $data = "ການ​ດຳ​ເນີນ​ການ​ສຳ​ເລັດ";
+    $updatestatus = array('status' => $status);
+    DB::table('quotations_detail')->where('qtdetailid', $qtdetailid)->update($updatestatus);
+    $data = "ການ​ອັບ​ເດດ​ສ​ະ​ຖາ​ນະ​ສຳ​ເລັດ";
     echo json_encode($data);
   }
 
@@ -247,8 +313,7 @@ class QuotationController extends Controller
     $qtid = $req->qtid;
     $quotations = DB::table('quotations')->where('qtid', $qtid)->get();
     foreach ($quotations as $quot) {
-      $cusid = $quot->cusid;
-      $carid = $quot->carid;
+      $rpbid = $quot->rpbid;
       $part = $quot->part;
       $checkin_date = $quot->checkin_date;
       $checkin_time = $quot->checkin_time;
@@ -262,7 +327,7 @@ class QuotationController extends Controller
     }
 
     $qttdata = array(
-      'cusid' => $cusid,'carid' => $carid,'part' => $part,'checkin_date' => $checkin_date,'checkin_time' => $checkin_time,'checkout_date' => $checkout_date,'checkout_time' => $checkout_time,
+      'rpbid' => $rpbid,'part' => $part,'checkin_date' => $checkin_date,'checkin_time' => $checkin_time,'checkout_date' => $checkout_date,'checkout_time' => $checkout_time,
       'expire_date' => $expire_date,'credit_day' => $credit_day,'instance' => $instance,'receive_bill' => $receive_bill,'document_date' => $document_date,
     );
     echo json_encode($qttdata);
@@ -271,14 +336,9 @@ class QuotationController extends Controller
   // function update quotation data
   public function fnUpdatequotations(Request $req)
   {
-    $this->validate($req, [
-      'cusid' => 'required',
-      'carid' => 'required'
-    ]);
-
-    $qtid = $req->input('editqtid');
+    $qtid = $req->input('qtid');
     $dataupdate = array(
-      'cusid' => $req->input('cusid'),'carid' => $req->input('carid'),'part' => $req->input('part'),'checkin_date' => $req->input('checkin_date'),
+      'rpbid' => $req->input('rpbid'),'part' => $req->input('part'),'checkin_date' => $req->input('checkin_date'),
       'checkin_time' => $req->input('checkin_time'),'checkout_date' => $req->input('checkout_date'),'checkout_time' => $req->input('checkout_time'),'expire_date' => $req->input('expire_date'),
       'credit_day' => $req->input('credit_day'),'instance' => $req->input('instance'),'receive_bill' => $req->input('receive_bill'),'document_date' => $req->input('document_date'),
     );
@@ -291,44 +351,15 @@ class QuotationController extends Controller
   public function fnSearchQuotation(Request $req)
   {
     $result = "";
-    $style = $req->style;
     $datasearch = $req->datasearch;
-    if($style == "txtsearchdate"){
-      $sqlquotation = DB::table('quotations')
-      ->join('customers', 'customers.cusid', '=', 'quotations.cusid')
-      ->join('cars', 'cars.carid', '=', 'quotations.carid')
-      ->where('quotations.document_date', 'like', '%'.$datasearch.'%')
-      ->select('quotations.*','customers.*','cars.*')
-      ->orderBy('qtid', 'desc')->get();
-    }elseif($style == "txtsearchid"){
-      $sqlquotation = DB::table('quotations')
-      ->join('customers', 'customers.cusid', '=', 'quotations.cusid')
-      ->join('cars', 'cars.carid', '=', 'quotations.carid')
-      ->where('quotations.qtid', '=', $datasearch)
-      ->select('quotations.*','customers.*','cars.*')
-      ->orderBy('qtid', 'desc')->get();
-    }elseif($style == "txtsearchname"){
-      $sqlquotation = DB::table('quotations')
-      ->join('customers', 'customers.cusid', '=', 'quotations.cusid')
-      ->join('cars', 'cars.carid', '=', 'quotations.carid')
-      ->where('customers.name', 'like', '%'.$datasearch.'%')
-      ->select('quotations.*','customers.*','cars.*')
-      ->orderBy('qtid', 'desc')->get();
-    }else{
-      $sqlquotation = DB::table('quotations')
-      ->join('customers', 'customers.cusid', '=', 'quotations.cusid')
-      ->join('cars', 'cars.carid', '=', 'quotations.carid')
-      ->where('quotations.document_date', 'like', '%'.$datasearch.'%')
-      ->select('quotations.*','customers.*','cars.*')
-      ->orderBy('qtid', 'desc')->get();
-    }
+    $sqlquotation = DB::table('quotations')->where('qtid', 'like', '%'.$datasearch.'%')->orWhere('rpbid', 'like', '%'.$datasearch.'%')
+    ->orWhere('document_date', 'like', '%'.$datasearch.'%')->get();
     if(count($sqlquotation) > 0){
       foreach($sqlquotation as $squot){
         $result .='
         <tr>
         <td>'.$squot->qtid.'</td>
-        <td>'.$squot->name.' ('.$squot->workaddress.')</td>
-        <td>'.$squot->license.'</td>
+        <td>'.$squot->rpbid.'</td>
         <td>'.$squot->part.'</td>
         <td>'.$squot->checkin_date.' '.$squot->checkin_time.'</td>
         <td>'.$squot->checkout_date.' '.$squot->checkout_time.'</td>

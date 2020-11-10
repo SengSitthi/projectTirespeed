@@ -6,27 +6,14 @@
   @include('manage.layout.sidemenu')
 
     <div class="container-fluid mt-30">
-      @error('cusid')
+      @error('rpbid')
         <div class="amaran-wrapper bottom right">
           <div class="amaran-wrapper-inner">
             <div class="amaran awesome error" style="display: block;">
               <i class="icon fa fa-ban icon-large"></i>
               <p class="bold">ຜິດ​ພາດ!</p>
-              <p><span>​ທ່ານ​ຍັງ​ບໍ່​ໄດ້​ເລືອກລູກ​ຄ້າ​ເທື່ອ​</span>
+              <p><span>ທ່າຍ​ຍັງ​ບໍ່​ໄດ້​ເລືອກ​ໃບ​ເປີ​ດ​ງານ​ເທື່ອ!</span>
                 <span class="light">​ກະ​ລ​ຸ​ນາ​ເລືອກ​ລູກ​ຄ້າ​ກ່ອນ</span>
-              </p>
-            </div>
-          </div>
-        </div>
-      @enderror
-      @error('carid')
-        <div class="amaran-wrapper bottom right">
-          <div class="amaran-wrapper-inner">
-            <div class="amaran awesome error" style="display: block;">
-              <i class="icon fa fa-ban icon-large"></i>
-              <p class="bold">ຜິດ​ພາດ!</p>
-              <p><span>​ທ່ານ​ຍັງ​ບໍ່​ໄດ້​ເລືອກລົດລູກ​ຄ້າ​ເທື່ອ​</span>
-                <span class="light">​ກະ​ລ​ຸ​ນາ​ເລືອກ​​ລົດລູກ​ຄ້າ​ກ່ອນ</span>
               </p>
             </div>
           </div>
@@ -36,7 +23,14 @@
         <div class="col-lg-12">
           <div class="card">
             <div class="card-header bg-transparent py-15">
-              <h3>ໃບ​ສະ​ເໜີ​ໃໝ່</h3>
+              <div class="row">
+                <div class="col-md-8">
+                  <h3>ໃບ​ສະ​ເໜີ​ໃໝ່</h3>
+                </div>
+                <div class="col-md-4">
+                  <a href="{{ url('quotationlist') }}" class="btn btn-primary"><i class="mdi mdi-link"></i> ລາຍ​ການ​ໃບ​ສະ​ເໜີ</a>
+                </div>
+              </div>
             </div>
             <form class="card-body" action="{{ url('insertnewqt') }}" method="POST">
               {{ csrf_field() }}
@@ -44,32 +38,26 @@
                 <li class="nav-item">
                     <a href="#" class="nav-link w3-blue w3-large"><i class="mdi mdi-car"></i> ຂໍ້​ມູນ​ລູ​ກ​ຄ້າ</a>
                 </li>
-                <li>
-                    <a href="#" class="nav-link w3-large">ລະ​ຫັດ​ໃບ​ສະ​ເໜີ <b>{{ $qtid }}</b></a>
-                </li>
               </ul>
               <div class="row">
                 <div class="col-md-2">
                   <div class="form-group">
-                    <input type="hidden" name="qtid" value="{{ $qtid }}">
-                    <label for="cusid">ລູກ​ຄ້າ</label>
-                    <select id="cusid" class="form-control" name="cusid">
-                      <option value="">ເລືອກ​ລູກ​ຄ້າ</option>
-                    @if (count($customers) > 0)
-                      @foreach ($customers as $cus)
-                        <option value="{{ $cus->cusid }}">{{ $cus->name }}</option>
-                      @endforeach
-                    @else
-                    <option value="">ບໍ່​ມີ​ລູກ​ຄ້າໃນ​ລະ​ບົບ</option>
-                    @endif
-                    </select>
+                    <label for="qtid">ລະ​ຫັດ​ໃບ​ສະ​ເໜີ</label>
+                    <input class="form-control" type="text" id="qtid" name="qtid" value="{{ $qtid }}" readonly>
                   </div>
                 </div>
                 <div class="col-md-2">
                   <div class="form-group">
-                    <label for="carid">ເລືອກ​ລົດ​ລ​ູກ​ຄ້າ</label>
-                    <select id="carid" class="form-control" name="carid">
-                      <option value="">ເລືອກ​ລົດ​ລູກ​ຄ້າ</option>
+                    <label for="rpbid">ເລືອກ​ໃບ​ເປີດ​ງານ</label>
+                    <select name="rpbid" id="rpbid" class="form-control">
+                      <option value="">ເລືອກ​ໃບ​ເປີດ​ງານ</option>
+                      @if(count($repairbill) > 0)
+                        @foreach ($repairbill as $rpb)
+                          <option value="{{ $rpb->rpbid }}">{{ $rpb->rpbid }}</option>
+                        @endforeach
+                      @else
+                        <option value="">ບໍ່​ມີ​ຂໍ້​ມູນ​ໃບ​ເປີດ​ງານ</option>
+                      @endif
                     </select>
                   </div>
                 </div>
@@ -150,27 +138,19 @@
                   <table class="table table-bordered table-striped">
                     <thead class="text-center">
                       <tr>
-                        <th>ລະ​ຫັດ​ອະ​ໄຫຼ່</th>
+                        <th>ລະ​ຫັດ​ບໍ​ລິ​ການ</th>
                         <th>ຊື່ອະ​ໄຫຼ່</th>
                         <th>​ຫົວ​ໜ່ວຍ​ອະ​ໄຫຼ່</th>
                         <th>ຈຳ​ນວນ</th>
                         <th>ລາ​ຄາ​ຂາຍ (ກີບ)</th>
-                        <th>ຄ່າ​ແຮງ​ງານ</th>
                         <th>ລວມ (ກີບ)</th>
-                        <th></th>
+                        <th>ລະ​ຫັດ​ແຮງ​ງານ</th>
+                        <th>ຊື່​ຄ່າແຮງ​ງານ</th>
+                        <th>ຄ່າ​ແຮງ​ງານ</th>
                       </tr>
                     </thead>
-                    <tbody id="quotation_detail">
-                      <tr>
-                        <td><input class="form-control sparesid" type="number" name="sparesid[]" id="sparesid1" maxlength="13" placeholder="ຄົ້ນ​ຫາ​ລະ​ຫັດ"></td>
-                        <td><input class="form-control" type="text" name="sparesname[]" id="sparesname1" readonly></td>
-                        <td><input class="form-control" type="text" name="unitname[]" id="unitname1" readonly></td>
-                        <td><input class="form-control qty" type="number" name="qty[]" id="qty1"></td>
-                        <td><input class="form-control" type="text" name="price[]" id="price1" readonly></td>
-                        <td><input class="form-control" type="number" name="wages[]" id="wages1"></td>
-                        <td><input class="form-control" type="number" name="total[]" id="total1" value="0" readonly></td>
-                        <td><button class="btn btn-info" type="button" id="addrow"><i class="mdi mdi-plus"></i></button></td>
-                      </tr>
+                    <tbody id="showrpbdetail">
+                      
                     </tbody>
                   </table>
                 </div>

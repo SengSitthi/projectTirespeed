@@ -35,24 +35,22 @@ Route::get('/deleteRcsid/{rcsid}', 'CrvController@fnDeleteRcsid');
 //////////////////////////////////// START QUOTATION /////////////////////////////////
 // new quotation page
 Route::get('/quotationnew', 'QuotationController@index')->name('quotationnew');
-// get car to select by cusid
-Route::post('/getCuscar', 'QuotationController@fnGetCuscar');
+// route to get repair bill detail data
+Route::post('/getrpbdetaildata', 'QuotationController@fnGetrpbdetaildata');
 // get spares data
 Route::post('/loadSparetoQT', 'QuotationController@fnloadSparetoQT');
 // function insert new quotation
 Route::post('/insertnewqt', 'QuotationController@fnInsertNewQT')->name('insertnewqt');
 // quotation list
-Route::get('/quotationlist', 'QuotationController@fnQTList')->name('listquotation');
-// get quotation detail to modal
-Route::post('/modalloadQTDetail', 'QuotationController@fnModalloadQT');
-// function insert new spare to quotation detail
-Route::post('/insertQtdetaildata', 'QuotationController@fnInsertQtdetaildata');
-// trash qt_detail list
-Route::post('/trashQtlist', 'QuotationController@fnTrashQtlist');
-// function edit quotation
+Route::get('/quotationlist', 'QuotationController@fnQTList')->name('quotationlist');
+// route to get data to show on quotation detail
+Route::post('/modalloadQTDetail', 'QuotationController@fnQtdetaildata');
+// route to update status of quotation list
+Route::post('/updateqtdetailstatus', 'QuotationController@fnUpdatestatus'); 
+// route to edit quotation data
 Route::post('/loadQuotations', 'QuotationController@fnloadQuotations');
-// function update quotation
-Route::post('/updatequotations', 'QuotationController@fnUpdatequotations')->name('updatequotations');
+// route to update quotation data
+Route::post('/updatequotaion', 'QuotationController@fnUpdatequotations')->name('updatequotaion');
 // route delete quotation data
 Route::get('/deleteQuotation/{qtid}', 'QuotationController@fnDeleteQuo');
 // print quotation

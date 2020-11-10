@@ -142,7 +142,8 @@
                   <thead class="text-center">
                     <tr>
                       <th style="border: 1px solid #000">ລຳ​ດັບ</th>
-                      <th style="border: 1px solid #000">ລະ​ຫັດ​ອະ​ໄຫຼ່</th>
+                      <th style="border: 1px solid #000">ລະ​ຫັດ​ບໍ​ລິ​ການ</th>
+                      <th style="border: 1px solid #000">ລະ​ຫັດ​ບາ​ຣ໌​ໂຄດ​ອະ​ໄຫຼ່</th>
                       <th style="border: 1px solid #000">​ລາຍ​ການ​ອະ​ໄຫຼ່</th>
                       <th style="border: 1px solid #000">​ຫົວ​ໜ່ວຍ</th>
                       <th style="border: 1px solid #000">​ຈຳ​ນວນ</th>
@@ -155,6 +156,7 @@
                   @foreach($quodetail as $quodt)
                     <tr>
                       <td class="text-center" style="border: 1px solid #000">{{ $no++ }}</td>
+                      <td style="border: 1px solid #000">{{ $quodt->rpnoid }}</td>
                       <td style="border: 1px solid #000">{{ $quodt->sparesid }}</td>
                       <td style="border: 1px solid #000">{{ $quodt->sparesname }}</td>
                       <td class="text-center" style="border: 1px solid #000">{{ $quodt->unitname }}</td>
@@ -164,14 +166,47 @@
                     </tr>
                   @endforeach
                 @endif
-                  </tbody>
-                  <tfoot>
+                
                     <tr>
-                      <th class="text-center" colspan="6" style="border: 1px solid #000">ລວມ​ຄ່າແຮງ​ງານ​​ສ້ອມ​ແປງ​</th>
+                      <th colspan="8" class="text-center" style="border: 1px solid #000">ຄ່າ​ແຮງ​ງານ</th>
+                    </tr>
+                    <tr class="text-center">
+                      <th style="border: 1px solid #000">ລຳ​ດັບ</th>
+                      <th style="border: 1px solid #000">ລະ​ຫັດ​ຄ່າ​ແຮງ​ງານ</th>
+                      <th style="border: 1px solid #000">​ປະ​ເພດ​ລົດ</th>
+                      <th style="border: 1px solid #000">​ລາຍ​ການ​ແຮງ​ງານ</th>
+                      <th style="border: 1px solid #000">​ຫົວ​ໜ່ວຍ</th>
+                      <th style="border: 1px solid #000">ຮັບ​ປະ​ກັນ</th>
+                      <th style="border: 1px solid #000"></th>
+                      <th style="border: 1px solid #000">ຈຳ​ນວນ​ເງິນ (ກີບ)</th>
+                    </tr>
+                    @if(count($wagelist) > 0)
+                      @foreach($wagelist as $ws)
+                      <tr>
+                        <td class="text-center" style="border: 1px solid #000">{{ $w }}</td>
+                        <td style="border: 1px solid #000">{{ $ws->wageid }}</td>
+                        <td style="border: 1px solid #000">{{ $ws->tcarname }}</td>
+                        <td style="border: 1px solid #000">{{ $ws->wagename }}</td>
+                        <td class="text-center" style="border: 1px solid #000">{{ $ws->unitrpname }}</td>
+                        <td class="text-center" style="border: 1px solid #000">{{ $ws->guaranty }}</td>
+                        <td class="text-center" style="border: 1px solid #000"></td>
+                        <td class="text-right" style="border: 1px solid #000">{{ number_format($ws->cost) }}</td>
+                      </tr>
+                      @endforeach
+                    @endif
+                  </tbody>
+                  
+                  <tfoot>
+                    {{-- <tr>
+                      <th class="text-center" colspan="7" style="border: 1px solid #000">ລວມ​ຄ່າແຮງ​ງານ​​ສ້ອມ​ແປງ​</th>
                       <th class="text-right" style="border: 1px solid #000">{{ number_format($sumwages) }}</th>
+                    </tr> --}}
+                    <tr>
+                      <th colspan="6" rowspan="4" class="ml-4"><b>ໝາຍ​ເຫດ:</b></th>
+                      <th class="text-right" style="border: 1px solid #000">ລວມ​ຄ່າແຮງ​ງານ​​ສ້ອມ​ແປງ​:</th>
+                      <th style="border: 1px solid #000" class="text-right">{{ number_format($sumwages) }}</th>
                     </tr>
                     <tr>
-                      <th colspan="5" rowspan="3" class="ml-4"><b>ໝາຍ​ເຫດ:</b></th>
                       <th class="text-right" style="border: 1px solid #000">ລວມ​ຈຳ​ນວນ​ເງິນ:</th>
                       <th style="border: 1px solid #000" class="text-right">{{ number_format($sumtotal+$sumwages) }}</th>
                     </tr>
@@ -222,6 +257,7 @@
             </div>
           </div>
         </div>
+        <br><br>
         <div class="row">
           <div class="col-md-12">
             <div class="text-center">

@@ -25,6 +25,12 @@
                 style="height: 50px;">
         </a>
         @endrole
+        @role('Technician')
+        <a class="menubar-brand" href="{{ url('stockdashboard') }}">
+            <img src="{{ url('images/tslogo.png') }}" title="Tirespeed" class="menubar-logo img-fluid"
+                style="height: 50px;">
+        </a>
+        @endrole
     </div>
 
     <div class="menubar-body">
@@ -44,7 +50,9 @@
       @include('manage.layout.stocksidemenu')
       {{-- include stock sidebar --}}
 
-
+      {{-- include Technician sidebar --}}
+      @include('manage.layout.technician')
+      {{-- include Technician sidebar --}}
     </div>
 
     <div class="menubar-footer bg-dark p-10">

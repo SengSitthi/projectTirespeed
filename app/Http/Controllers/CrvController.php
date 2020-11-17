@@ -43,6 +43,25 @@ class CrvController extends Controller
                                     ->with('customers', $customers);
   }
 
+  // function get car data to selected
+  public function fngetCuscar(Request $req)
+  {
+    $result = "";
+    $carsql = DB::table('cars')->where('cusid', $req->cusid)->get();
+    if(count($carsql) > 0){
+      $result .= '<option value="">*** ເລືອກ​ລົດ​ລູກ​ຄ້າ ***</option>';
+      foreach($carsql as $c){
+        $result .= '
+        <option value="'.$c->carid.'">'.$c->license.'</option>
+      ';
+      }
+    }else{
+      $result .= '<option value="">ບໍ່​ມີ​ຂໍ້​ມູນ​ລົດ​ຂອງ​ລູກ​ຄ້າ​ຄົນ​ນີ້</option>';
+    }
+    $data = array('result' => $result);
+    echo json_encode($data);
+  }
+
   public function fnInsertrcs(Request $req)
   {
     $this->validate($req, [

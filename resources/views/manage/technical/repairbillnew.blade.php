@@ -36,7 +36,7 @@
                   <div class="col-md-3">
                     <div class="form-group">
                       <label for="rcsid">ເລກ​ທີໃບ​ຮັບ​ລົດ</label>
-                      <select id="rcsid" class="form-control" name="rcsid">
+                      <select id="rcsid" name="rcsid" class="form-control">
                         @if (count($receivecars) > 0)
                           @foreach ($receivecars as $rcs)
                           <option value="{{ $rcs->rcsid }}">{{ $rcs->rcsid }}</option>
@@ -65,7 +65,7 @@
                           <th>ລະ​ຫັດ​ບໍ​ລິ​ການ</th>
                           <th>​ຊື່​ອະ​ໄຫຼ່</th>
                           <th>ຈຳ​ນວນ​ຕ້ອງ​ໃຊ້</th>
-                          <th>​ລະ​ຫັດ​ແຮງ​ງານ</th>
+                          <th>​ລະ​ຫັດ​ແຮງ​ງານ </th>
                           <th>ຊື່​ແຮງ​ງານ​</th>
                           {{-- <th>ຈຳ​ນວນ</th> --}}
                           <th>​ຫົວ​ໜ່ວຍ</th>

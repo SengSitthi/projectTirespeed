@@ -284,4 +284,10 @@ class TechrepairController extends Controller
     $data = "ການ​ລຶບ​ຂໍ້​ມູນ​ສຳ​ເລັດ!";
     echo json_encode($data);
   }
+
+  //////////////////////////// TECHNICAL DASHBOARD ////////////////////////////
+  public function fnDashboard(Request $req)
+  {
+    return view('manage/technical/index');
+  }
 }

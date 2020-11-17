@@ -49,7 +49,7 @@
                 <div class="col-md-2">
                   <div class="form-group">
                     <label for="rpbid">ເລືອກ​ໃບ​ເປີດ​ງານ</label>
-                    <select name="rpbid" id="rpbid" class="form-control">
+                    <select name="rpbid" id="rpbid" class="form-control" style="width: 100%">
                       <option value="">ເລືອກ​ໃບ​ເປີດ​ງານ</option>
                       @if(count($repairbill) > 0)
                         @foreach ($repairbill as $rpb)

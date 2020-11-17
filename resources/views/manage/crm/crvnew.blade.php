@@ -46,7 +46,7 @@
                     <h4>ຂໍ້​ມູນ​ລົດ</h4>
                     <div class="form-group">
                       <label for="cusid">ເລືອກ​ລູກ​ຄ້າ</label>
-                      <select id="cusid" class="form-control" name="cusid">
+                      <select id="cusid" name="cusid" class="form-control" style="width: 100%">
                         <option value="">*** ເລືອກລູກ​ຄ້າ ***</option>
                       @if (count($customers) > 0)
                         @foreach ($customers as $cus)

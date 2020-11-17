@@ -12,6 +12,8 @@ Route::get('/loadCusofMonth', 'AppointController@fnloadCusofMonth');
 //////////////////////////////////// START CUSTOMER'S CAR RECEIVE /////////////////////
 // crv new page
 Route::get('/crvnew', 'CrvController@index')->name('crmnew');
+// route to get car by customer id
+Route::post('/getCuscar', 'CrvController@fngetCuscar');
 // insert rcs data
 Route::post('/insertrcs', 'CrvController@fnInsertrcs')->name('insertrcs');
 // rcs list page

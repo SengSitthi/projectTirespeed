@@ -5,7 +5,22 @@ $(document).ready(function(){
     }
   });
   
-  //function load quotations
+  //function load quotations detail data
+  $('body').on('change', '#qtid', function(){
+    var qtid = $(this).val();
+    $.ajax({
+      url: '/getQuotationdt',
+      type: 'POST',
+      data: {qtid:qtid},
+      dataType: 'json',
+      success: function(data){
+        // console.log(data);
+        $('#invoice_detail').html(data.result);
+      }, error: function(data){
+        console.log('Error: ' + data);
+      }
+    })
+  });
   
   
   $('body').on('change', '#expire_date', function(){

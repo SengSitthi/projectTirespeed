@@ -42,7 +42,7 @@
       </div>
       @endforeach
       <div class="row">
-        <table class="table table-light table-bordered">
+        <table class="table">
           <thead>
             <tr>
               <th class="text-center" style="border: 2px solid black">I.</th>

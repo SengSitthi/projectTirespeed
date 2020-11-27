@@ -598,14 +598,14 @@
     
           <ul class="menu collapse" data-parent="#menu-account" id="menu-receitp">
             <li class="menu-item">
-              <a href="{{ url('newinvoice') }}" class="menu-link w3-large">
+              <a href="{{ url('newreceipt') }}" class="menu-link w3-large">
                 <i class="menu-icon">₭</i>
                 <span class="menu-label">​ໃບ​ຮັບ​ເງິນ​ໃໝ່</span>
               </a>
             </li>
     
             <li class="menu-item">
-              <a href="" class="menu-link w3-large">
+              <a href="{{ url('receiptlist') }}" class="menu-link w3-large">
                 <i class="menu-icon">₭</i>
                 <span class="menu-label">ລາຍ​ການ​ໃບ​ຮັບ​ເງິນ</span>
               </a>

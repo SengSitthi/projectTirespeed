@@ -32,7 +32,7 @@ class AccInvoiceController extends Controller
       }else if(strlen($sum) == 6){
         $id = "0".$sum;
       }else{
-        $id = "INV".$sum;
+        $id = $sum;
       }
       $invid = "INV".$id;
     }else{
@@ -72,7 +72,7 @@ class AccInvoiceController extends Controller
           <input class="form-control" type="text" name="total[]" value="'.$qtdt->total.'" readonly>
         </td>
         <td>
-          <input class="form-control" type="number" name="dicount[]" value="0">
+          <input class="form-control" type="number" name="discount[]" value="0">
         </td>
         <td>
           <input class="form-control" type="text" name="wageid[]" value="'.$qtdt->wageid.'" readonly>
@@ -150,7 +150,8 @@ class AccInvoiceController extends Controller
       $wages = DB::table('invoice_detail')->join('wages', 'wages.wageid', '=', 'invoice_detail.wageid')
       ->where('invoice_detail.invoiceid', '=', $req->input('invoiceid'))->select('wages.*')->get();
       $sumspares = DB::table('invoice_detail')->where('invoiceid', $req->input('invoiceid'))->sum('price');
-      $sumwages = DB::table('invoice_detail')->join('wages', 'wages.wageid', '=', 'invoice_detail.wageid')->sum('wages.cost');
+      $sumwages = DB::table('invoice_detail')->join('wages', 'wages.wageid', '=', 'invoice_detail.wageid')
+      ->where('invoiceid', $req->input('invoiceid'))->sum('wages.cost');
       $url = "newinvoice";
       $i = 1;
       $w = 1;
@@ -188,7 +189,7 @@ class AccInvoiceController extends Controller
     $wages = DB::table('invoice_detail')->join('wages', 'wages.wageid', '=', 'invoice_detail.wageid')
     ->where('invoice_detail.invoiceid', '=', $invoiceid)->select('wages.*')->get();
     $sumspares = DB::table('invoice_detail')->where('invoiceid', $invoiceid)->sum('price');
-    $sumwages = DB::table('invoice_detail')->join('wages', 'wages.wageid', '=', 'invoice_detail.wageid')->sum('wages.cost');
+    $sumwages = DB::table('invoice_detail')->join('wages', 'wages.wageid', '=', 'invoice_detail.wageid')->where('invoiceid', $invoiceid)->sum('wages.cost');
     $url = "invoicelist";
     $i = 1;
     $w = 1;

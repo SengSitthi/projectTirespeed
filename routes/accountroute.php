@@ -48,3 +48,26 @@ Route::post('/updatecompany', 'AccountController@fnUpdatecompany');
 // route to delete company data
 Route::post('/delcompanydata', 'AccountController@fnDelCompany');
 /////////////////////////////////// END COMPANY ////////////////////////////////////
+
+/////////////////////////////////// START RECEIPT //////////////////////////////////
+// new receipt page
+Route::get('/newreceipt', 'ReceiptController@index')->name('newreceipt');
+// route to load invoice data
+Route::post('/loadInvoicedata', 'ReceiptController@fnLoadInvoicedata');
+// route to insert new receipt
+Route::post('/innewreceipt', 'ReceiptController@fnInNewreceipt')->name('innewreceipt');
+// route to show receipt list page
+Route::get('/receiptlist', 'ReceiptController@fnReceiptlist')->name('receiptlist');
+// route to print receipt bill
+Route::get('/printreceipt/{receiptid}', 'ReceiptController@fnPrintReceipt');
+//route to load receipt detail to show on modal
+Route::post('/loadReceiptdetail', 'ReceiptController@fnLoadReceiptdetail');
+//route to load receipt data to edit form
+Route::post('/getreceipt', 'ReceiptController@fnGetreceipt');
+// route to update receipt data
+Route::post('/updateReceipt', 'ReceiptController@fnUpdateReceipt')->name('updateReceipt');
+// route to delete receipt data
+Route::post('/deleteReceipt/{receiptid}', 'ReceiptController@fnDeleteReceipt');
+// route to search receipt data
+Route::post('/searchReceipt', 'ReceiptController@fnSearchReceipt');
+//////////////////////////////////// END RECEIPT ///////////////////////////////////

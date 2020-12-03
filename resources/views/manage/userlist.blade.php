@@ -23,7 +23,7 @@
                             <h3>ລາຍ​ການ​ຜູ້​ໃຊ້</h3>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive">
+                            {{-- <div class="table-responsive"> --}}
                                 <table class="table table-dark table-striped table-bordered">
                                     <thead class="thead-blue">
                                         <tr>
@@ -38,7 +38,7 @@
                                         
                                     </tbody>
                                 </table>
-                            </div>
+                            {{-- </div> --}}
                         </div>
                     </div>
                     {{-- modal form update password --}}

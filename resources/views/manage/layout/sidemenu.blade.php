@@ -26,7 +26,7 @@
         </a>
         @endrole
         @role('Technician')
-        <a class="menubar-brand" href="{{ url('stockdashboard') }}">
+        <a class="menubar-brand" href="{{ url('technic_dashboard') }}">
             <img src="{{ url('images/tslogo.png') }}" title="Tirespeed" class="menubar-logo img-fluid"
                 style="height: 50px;">
         </a>

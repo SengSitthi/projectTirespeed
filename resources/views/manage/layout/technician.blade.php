@@ -1,14 +1,15 @@
 @role('Technician')
   {{-- Start Technical --}}
-  <li class="menu-item">
+  {{-- <li class="menu-item">
     <a href="javascript://" class="menu-link w3-large" data-toggle="collapse" data-target="#repair-car" aria-expanded="true" aria-controls="repair-car">
       <i class="menu-icon mdi mdi-vector-square"></i>
       <!-- <i class="menu-icon fas fa-vector-square"></i> -->
       <span class="menu-label">ງານ​ສ້ອມ​ແປງລົດ</span>
       <i class="menu-arrow mdi mdi-chevron-right"></i>
-    </a>
+    </a> --}}
 
-    <ul class="menu collapse" data-parent="#main-menu" id="repair-car">
+    {{-- <ul class="menu collapse" data-parent="#main-menu" id="repair-car"> --}}
+      <ul class="menu accordion" data-parent="#main-menu" id="repair-car">
       <li class="menu-item">
         <a href="javascript://" class="menu-link w3-large" data-toggle="collapse" data-target="#open-repair"
           aria-expanded="true" aria-controls="open-repair">
@@ -122,7 +123,7 @@
           </li>
         </ul>
       </li>
-    </ul>
-  </li>
+    {{-- </ul> --}}
+  {{-- </li> --}}
   {{-- End Technical --}}
 @endrole

@@ -41,7 +41,7 @@ class LoginController extends Controller
               return redirect('stockdashboard');
             }else{
                 DB::table('userlog')->insert($userdata);
-                return redirect('appointment');
+                return redirect('technic_dashboard');
             }
         }else{
             return back()->with('error', 'ບໍ່​ມີ​ບັນ​ຊີ​ນີ້​ໃນ​ລະ​ບົບ');

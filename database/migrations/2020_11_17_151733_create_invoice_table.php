@@ -22,6 +22,7 @@ class CreateInvoiceTable extends Migration
         $table->integer('cpid')->unsigned();
         $table->foreign('cpid')->references('cpid')->on('company');
         $table->date('invoice_date');
+        $table->date('bill_date');
         $table->date('expire_date');
         $table->integer('credit');
         $table->string('status', 50);

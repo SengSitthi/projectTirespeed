@@ -46,6 +46,7 @@
                         <th>​ເລກ​ທີ​ໃບ​ສະ​ເໜີ</th>
                         <th>ຊື່​ບໍ​ລິ​ສັດ</th>
                         <th>​ວັນ​ທີ​ອອກ​ໃບ​ຮຽກ​ເກັບ</th>
+                        <th>ວັນ​ທີ​ວາງ​ບິນ</th>
                         <th>ວັນ​ທີ​ໝົດ​ກຳ​ນົດ</th>
                         <th>ເຄ​ດິດ​ມື້</th>
                         <th>ພິມ​ໃບ​ບິນ</th>
@@ -60,6 +61,7 @@
                           <td>{{ $inv->qtid }}</td>
                           <td>{{ $inv->cpname }}</td>
                           <td class="text-center">{{ $inv->invoice_date }}</td>
+                          <td class="text-center">{{ $inv->bill_date }}</td>
                           <td class="text-center">{{ $inv->expire_date }}</td>
                           <td class="text-center">{{ $inv->credit }}</td>
                           <td class="text-center">
@@ -124,6 +126,9 @@
                         <div class="form-group">
                           <label for="invoice_date">ວັນ​ທີ່ອອ​ກ​ໃບ​ຮຽກ​ເກັບ</label>
                           <input id="invoice_date" class="form-control" type="text" name="invoice_date" value="{{ date('Y-m-d') }}" required>
+                        </div><div class="form-group">
+                          <label for="bill_date">ວັນ​ທີ່ອອ​ກ​ໃບ​ຮຽກ​ເກັບ</label>
+                          <input id="bill_date" class="form-control" type="text" name="bill_date" value="{{ date('Y-m-d') }}" required>
                         </div>
                         <div class="form-group">
                           <label for="expire_date">ວັນ​ທີ່​ໝົດ​ກຳ​ນົດ</label>

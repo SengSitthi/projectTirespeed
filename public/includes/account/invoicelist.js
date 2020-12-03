@@ -13,10 +13,11 @@ $(document).ready(function(){
       data: {invoiceid:invoiceid},
       dataType: 'json',
       success: function(data){
-        // console.log(data);
+        console.log(data);
         $('#invoiceid').val(invoiceid);
         $('#cpid option[value="'+data.cpid+'"').attr('selected', true);
         $('#invoice_date').val(data.invoice_date);
+        $('#bill_date').val(data.bill_date);
         $('#expire_date').val(data.expire_date);
         $('#credit').val(data.credit);
         $('#modalEdit').modal('show');
@@ -102,6 +103,10 @@ $(document).ready(function(){
     clearButton: true
   });
   $('#invoice_date').bootstrapMaterialDatePicker({
+    time: false,
+    clearButton: true
+  });
+  $('#bill_date').bootstrapMaterialDatePicker({
     time: false,
     clearButton: true
   });

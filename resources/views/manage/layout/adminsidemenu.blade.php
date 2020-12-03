@@ -614,9 +614,9 @@
         </li>
 
         <li class="menu-item">
-          <a href="form-advanced.html" class="menu-link w3-large">
-            <i class="menu-icon">A</i>
-            <span class="menu-label">​ຂໍ້​ມູນ​ລາຍ​ຈ່າຍ</span>
+          <a href="{{ url('account_summary') }}" class="menu-link w3-large">
+            <i class="menu-icon">₭ ສະຫຼຸ​ບ​ລາຍ​ຮັບ​ປະ​ຈຳ​ວັນ</i>
+            <span class="menu-label"></span>
           </a>
         </li>
 
@@ -636,12 +636,12 @@
               </a>
             </li>
     
-            <li class="menu-item">
+            {{-- <li class="menu-item">
               <a href="" class="menu-link w3-large">
                 <i class="menu-icon">₭</i>
                 <span class="menu-label">ລາຍ​ການ​ໃບ​ຮຽກ​ເກັບ</span>
               </a>
-            </li>
+            </li> --}}
           </ul>
         </li>
       </ul>

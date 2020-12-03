@@ -36,8 +36,8 @@
                       <input id="invoiceid" class="form-control" type="text" name="invoiceid" value="{{ $invid }}" readonly required>
                     </div>
                     <div class="form-group">
-                      <label for="expire_date">ວັນ​ທີ່​ໝົດ​ກຳ​ນົດ</label>
-                      <input id="expire_date" class="form-control" type="text" name="expire_date" required>
+                      <label for="bill_date">ວັນ​ທີ່​ວາງ​ບິນ</label>
+                      <input id="bill_date" class="form-control" type="text" name="expire_date" required>
                     </div>
                   </div>
                   <div class="col-md-3">
@@ -55,8 +55,8 @@
                       </select>
                     </div>
                     <div class="form-group">
-                      <label for="credit">ເຄ​ດິດ​ມື້</label>
-                      <input id="credit" class="form-control" type="text" name="credit" required readonly>
+                      <label for="expire_date">ວັນ​ທີ່​ໝົດ​ກຳ​ນົດ</label>
+                      <input id="expire_date" class="form-control" type="text" name="expire_date" required>
                     </div>
                   </div>
                   <div class="col-md-3">
@@ -72,6 +72,10 @@
                           <option value="">ຍັງ​ບໍ່​ມ​ີ​ຂໍ້​ມູນ​ບໍ​ລິ​ສັດ​ໃນ​ລະ​ບົບ</option>
                         @endif
                       </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="credit">ເຄ​ດິດ​ມື້</label>
+                      <input id="credit" class="form-control" type="text" name="credit" required readonly>
                     </div>
                     {{-- <div class="form-group">
                       <label for="discount">ສ່ວນຫຼຸດ</label>

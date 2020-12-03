@@ -33,6 +33,10 @@ $(document).ready(function(){
     $('#credit').val(countday);
   });
   
+  $('#bill_date').bootstrapMaterialDatePicker({
+    time: false,
+    clearButton: true
+  });
   $('#expire_date').bootstrapMaterialDatePicker({
     time: false,
     clearButton: true

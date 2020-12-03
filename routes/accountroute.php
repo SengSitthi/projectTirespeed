@@ -71,3 +71,10 @@ Route::post('/deleteReceipt/{receiptid}', 'ReceiptController@fnDeleteReceipt');
 // route to search receipt data
 Route::post('/searchReceipt', 'ReceiptController@fnSearchReceipt');
 //////////////////////////////////// END RECEIPT ///////////////////////////////////
+
+/////////////////////////////////// START SUMMARY ACCOUNT ///////////////////////////////
+// route to show summary page
+Route::get('/account_summary', 'AccountSumController@index')->name('account_summary');
+// route to search summary account
+Route::post('/searchsummary', 'AccountSumController@fnSearchsummary')->name('searchsummary');
+///////////////////////////////////// END SUMMARY ACCOUNT ///////////////////////////////

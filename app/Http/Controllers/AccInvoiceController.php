@@ -103,6 +103,7 @@ class AccInvoiceController extends Controller
       'qtid' => $req->input('qtid'),
       'cpid' => $req->input('cpid'),
       'invoice_date' => $req->input('invoice_date'),
+      'bill_date' => $req->input('bill_date'),
       // 'discount' => $req->input('discount'),
       'expire_date' => $req->input('expire_date'),
       'credit' => $req->input('credit'),
@@ -204,10 +205,11 @@ class AccInvoiceController extends Controller
     foreach($invoicedata as $invdt){
       $cpid = $invdt->cpid;
       $invoice_date = $invdt->invoice_date;
+      $bill_date = $invdt->bill_date;
       $expire_date = $invdt->expire_date;
       $credit = $invdt->credit;
     }
-    $data = array('cpid'=>$cpid,'invoice_date'=>$invoice_date, 'expire_date'=>$expire_date, 'credit'=>$credit);
+    $data = array('cpid'=>$cpid,'invoice_date'=>$invoice_date, 'bill_date'=>$bill_date, 'expire_date'=>$expire_date, 'credit'=>$credit);
     echo json_encode($data);
   }
 
@@ -221,6 +223,7 @@ class AccInvoiceController extends Controller
     $dataupdate = array(
       'cpid' => $req->input('cpid'),
       'invoice_date' => $req->input('invoice_date'),
+      'bill_date' => $req->input('bill_date'),
       'expire_date' => $req->input('expire_date'),
       'credit' => $req->input('credit'),
       'updated_at' => date('Y-m-d H:i:s')

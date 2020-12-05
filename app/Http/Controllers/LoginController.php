@@ -36,12 +36,21 @@ class LoginController extends Controller
             }else if(auth()->user()->hasRole("Manager")){
                 DB::table('userlog')->insert($userdata);
                 return redirect('admin');
+            }else if(auth()->user()->hasRole("CRM")){
+              DB::table('userlog')->insert($userdata);
+              return redirect('appointment');
             }else if(auth()->user()->hasRole("StockManager")){
               DB::table('userlog')->insert($userdata);
               return redirect('stockdashboard');
+            }else if(auth()->user()->hasRole("Technician")){
+              DB::table('userlog')->insert($userdata);
+              return redirect('technic_dashboard');
+            }else if(auth()->user()->hasRole("Accountant")){
+              DB::table('userlog')->insert($userdata);
+              return redirect('account_dashboard');
             }else{
-                DB::table('userlog')->insert($userdata);
-                return redirect('technic_dashboard');
+              DB::table('userlog')->insert($userdata);
+              return redirect('login');
             }
         }else{
             return back()->with('error', 'ບໍ່​ມີ​ບັນ​ຊີ​ນີ້​ໃນ​ລະ​ບົບ');

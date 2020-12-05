@@ -564,6 +564,12 @@
 
       <ul class="menu collapse" data-parent="#main-menu" id="menu-account">
         <li class="menu-item">
+          <a href="{{ url('account_dashboard') }}" class="menu-link w3-large">
+            <i class="menu-icon mdi mdi-desktop-mac-dashboard"></i>
+            <span class="menu-label">ແຜງ​ຄວບ​ຄຸມ</span>
+          </a>
+        </li>
+        <li class="menu-item">
           <a href="javascript://" class="menu-link w3-large" data-toggle="collapse" data-target="#menu-invoice" aria-expanded="true" aria-controls="menu-invoice">
             <!-- <i class="menu-icon fas fa-tasks"></i> -->
             <i class="menu-icon">₭</i>

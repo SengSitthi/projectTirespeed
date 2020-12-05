@@ -10,6 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+////////////////////////////////// START DASHBOARD //////////////////////////////
+// route to show dashboard page
+Route::get('/account_dashboard', 'AccountController@index')->name('account_dashboard');
+// route to show invoice and receipt chart
+Route::post('/invoice_receipt_chart', 'AccountController@fnInvRecChart');
+////////////////////////////////// END DASHBOARD ////////////////////////////////
+
 ////////////////////////////////// START INVOICE ////////////////////////////////
 // route show new invoice page
 Route::get('/newinvoice', 'AccInvoiceController@fnNewInvoice')->name('newinvoice');

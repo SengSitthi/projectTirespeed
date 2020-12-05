@@ -2,34 +2,34 @@
 
     <div class="menubar-header text-center" style="background-color: lightgray">
         @role('Admin')
-        <a class="menubar-brand" href="{{ url('admin') }}">
-            <img src="{{ url('images/tslogo.png') }}" title="Tirespeed" class="menubar-logo img-fluid"
-                style="height: 50px;">
-        </a>
+          <a class="menubar-brand" href="{{ url('admin') }}">
+              <img src="{{ url('images/tslogo.png') }}" title="Tirespeed" class="menubar-logo img-fluid" style="height: 50px;">
+          </a>
         @endrole
         @role('Manager')
-        <a class="menubar-brand" href="{{ url('admin') }}">
-            <img src="{{ url('images/tslogo.png') }}" title="Tirespeed" class="menubar-logo img-fluid"
-                style="height: 50px;">
-        </a>
+          <a class="menubar-brand" href="{{ url('admin') }}">
+              <img src="{{ url('images/tslogo.png') }}" title="Tirespeed" class="menubar-logo img-fluid" style="height: 50px;">
+          </a>
         @endrole
         @role('CRM')
-        <a class="menubar-brand" href="{{ url('appointment') }}">
-            <img src="{{ url('images/tslogo.png') }}" title="Tirespeed" class="menubar-logo img-fluid"
-                style="height: 50px;">
-        </a>
+          <a class="menubar-brand" href="{{ url('appointment') }}">
+              <img src="{{ url('images/tslogo.png') }}" title="Tirespeed" class="menubar-logo img-fluid" style="height: 50px;">
+          </a>
         @endrole
         @role('StockManager')
-        <a class="menubar-brand" href="{{ url('stockdashboard') }}">
-            <img src="{{ url('images/tslogo.png') }}" title="Tirespeed" class="menubar-logo img-fluid"
-                style="height: 50px;">
-        </a>
+          <a class="menubar-brand" href="{{ url('stockdashboard') }}">
+            <img src="{{ url('images/tslogo.png') }}" title="Tirespeed" class="menubar-logo img-fluid" style="height: 50px;">
+          </a>
         @endrole
         @role('Technician')
-        <a class="menubar-brand" href="{{ url('technic_dashboard') }}">
-            <img src="{{ url('images/tslogo.png') }}" title="Tirespeed" class="menubar-logo img-fluid"
-                style="height: 50px;">
-        </a>
+          <a class="menubar-brand" href="{{ url('technic_dashboard') }}">
+            <img src="{{ url('images/tslogo.png') }}" title="Tirespeed" class="menubar-logo img-fluid" style="height: 50px;">
+          </a>
+        @endrole
+        @role('Accountant')
+          <a class="menubar-brand" href="{{ url('account_dashboard') }}">
+            <img src="{{ url('images/tslogo.png') }}" title="Tirespeed" class="menubar-logo img-fluid" style="height: 50px;">
+          </a>
         @endrole
     </div>
 
@@ -53,6 +53,10 @@
       {{-- include Technician sidebar --}}
       @include('manage.layout.technician')
       {{-- include Technician sidebar --}}
+
+      {{-- include accountant sidebar --}}
+      @include('manage.layout.actsidemenu')
+      {{-- include accountant sidebar --}}
     </div>
 
     <div class="menubar-footer bg-dark p-10">

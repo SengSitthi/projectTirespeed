@@ -24,7 +24,7 @@
                         </div>
                         <div class="card-body">
                             {{-- <div class="table-responsive"> --}}
-                                <table class="table table-dark table-striped table-bordered">
+                                <table class="table table-light table-striped table-bordered">
                                     <thead class="thead-blue">
                                         <tr>
                                             <th class="text-center">ລະ​ຫັດ</th>

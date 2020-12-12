@@ -87,6 +87,7 @@ class RepairbillController extends Controller
       'rcsid' => 'required'
     ]);
 
+    // repair bill data
     $rpbdata = array(
       'rpbid' => $req->input('rpbid'),
       'rcsid' => $req->input('rcsid'),
@@ -94,6 +95,7 @@ class RepairbillController extends Controller
       'created_at' => date('Y-m-d H:i:s')
     );
 
+    // repair bill detail data
     $rpnoid = $req->input('rpnoid');
     for ($i=0; $i < count($rpnoid); $i++){
       $rpbdetaildata = array(
@@ -105,12 +107,22 @@ class RepairbillController extends Controller
       );
       $detaildata[] = $rpbdetaildata;
     }
+
+    // car status
+    $getdateandtime = DB::table('receivecars')->where('rcsid', $req->input('rcsid'))->get();
+    foreach($getdateandtime as $gdnt){
+      $date_in = $gdnt->date_receive;
+      $time_in = $gdnt->time_receive;
+    }
+    $techcarstatusdata = array('rpbid'=>$req->input('rpbid'),'date_in'=>$date_in,'time_in'=>$time_in,'status'=>"1",'created_at'=>date('Y-m-d H:i:s'));
+
     $checkrow = DB::table('repairbill')->where('rpbid', $req->input('rpbid'))->get();
     if(count($checkrow) > 0){
       return back()->with('already_rpbid', 'This id has already!');
     }else{
       DB::table('repairbill')->insert($rpbdata);
       DB::table('repairbill_detail')->insert($detaildata);
+      DB::table('techcarstatus')->insert($techcarstatusdata);
       $rpbpersonaldata = DB::table('repairbill')
       ->join('receivecars', 'receivecars.rcsid', '=', 'repairbill.rcsid')
       ->join('customers', 'customers.cusid', '=', 'receivecars.cusid')->join('districts', 'districts.disid', '=', 'customers.disid')->join('provinces', 'provinces.proid', '=', 'customers.proid')

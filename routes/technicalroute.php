@@ -2,6 +2,8 @@
 ///////////////////////////////////// START TECHNICAL DASHBOARD ///////////////////////////////////
 // show technical dashboard
 Route::get('/technic_dashboard', 'TechrepairController@fnDashboard')->name('technic_dashboard');
+// load technical data to show on chart
+Route::post('/loadtechchart', 'TechrepairController@fnLoadtechchart');
 ///////////////////////////////////// END TECHNICAL DASHBOARD /////////////////////////////////////
 
 ///////////////////////////////////// SETTING ROUTE ///////////////////////////////////////////////
@@ -100,3 +102,20 @@ Route::get('/deleterpbdata/{rpbid}', 'RepairbillController@fnDeleterpb');
 // route to search repair bill
 Route::post('/searchrepairbill', 'RepairbillController@fnSearchrpb');
 ////////////////////////////////////////// END REPAIR BILL ////////////////////////////////////////
+
+////////////////////////////////////////// START CAR STATUS ///////////////////////////////////////
+// list car status page
+Route::get('/techcarstatus', 'TechstatusController@fnTechcarstatus')->name('techcarstatus');
+//route for get car data from receive car form
+Route::post('/getreceivedata', 'TechstatusController@fnGetreceivedata');
+// route to insert new car status
+Route::post('/intechcarstatus', 'TechstatusController@fnIntechcarsdata');
+// route to update date out
+Route::post('/updateDateout', 'TechstatusController@fnUpdateDateout')->name('updateDateout');
+//route to update time out
+Route::post('/updateTimeout', 'TechstatusController@fnUpdateTimeout')->name('updateTimeout');
+// route to udpate status
+Route::post('/updateStatus', 'TechstatusController@fnUpdateStatus')->name('updateStatus');
+// route to delete car status data
+Route::get('/deleteCarstatus/{tcsid}', 'TechstatusController@fnDelCarStatus');
+////////////////////////////////////////// END CAR STATUS /////////////////////////////////////////

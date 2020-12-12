@@ -15129,6 +15129,13 @@ blockquote,
   margin-left: 240px; }
 
 @media (max-width: 991.98px) {
+  .menubar-enabled .wrapper,
+  .menubar-enabled .main-navbar {
+    margin-left: 240px; 
+    /* display: flex; */
+  }
+}
+  /* @media (max-width: 991.98px) {
   .menubar-enabled .menubar {
     display: none; }
   .menubar-enabled .wrapper,
@@ -15139,7 +15146,7 @@ blockquote,
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
-    background-color: #fff; } }
+    background-color: #fff; } } */
 
 .menubar-enabled.menubar-collapsed .wrapper,
 .menubar-enabled.menubar-collapsed .main-navbar {

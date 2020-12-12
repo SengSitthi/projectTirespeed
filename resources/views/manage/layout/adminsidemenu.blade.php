@@ -461,21 +461,9 @@
           </ul>
         </li>
         <li class="menu-item">
-          <a href="icon-fa.html" class="menu-link w3-large">
+          <a href="{{ url('techcarstatus') }}" class="menu-link w3-large">
             <i class="menu-icon mdi mdi-car"></i>
-            <span class="menu-label">ລົດ​ກຳ​ລັງ​ສ້ອມ</span>
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="icon-remix.html" class="menu-link w3-large">
-            <i class="menu-icon mdi mdi-car"></i>
-            <span class="menu-label">​ລົ​ດ​ສ້ອມ​ສຳ​ເລັດ</span>
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="icon-remix.html" class="menu-link w3-large">
-            <i class="menu-icon mdi mdi-car"></i>
-            <span class="menu-label">​ລົ​ດ​ສົ່ງ​ຄືນ​ລູກ​ຄ້າ​ແລ້ວ</span>
+            <span class="menu-label">ສະ​ຖາ​ນະ​ລົດ​ການ​ສ້ອມ</span>
           </a>
         </li>
         <li class="menu-item">
@@ -789,7 +777,5 @@
             </li>
         </ul>
     </li>
-
-
 </ul>
 @endrole

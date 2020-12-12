@@ -60,7 +60,7 @@
             <li class="menu-item">
               <a href="{{ url('quotationnew') }}" class="menu-link w3-large">
                 <i class="menu-icon mdi mdi-file-document-box-plus"></i>
-                <span class="menu-label">​ເພີ່ມໃບ​ສະ​ເໜີ</span>
+                <span class="menu-label">​ໃບ​ສະ​ເໜີໃໝ່</span>
               </a>
             </li>
             <li class="menu-item">
@@ -315,6 +315,13 @@
           </li>
 
           <li class="menu-item">
+            <a href="{{ url('sparesbookprint') }}" class="menu-link w3-large">
+                <i class="menu-icon mdi mdi-printer"></i>
+                <span class="menu-label">ພິມ​ລາຍ​ການອະ​ໄຫຼ່</span>
+            </a>
+        </li>
+
+          <li class="menu-item">
               <a href="{{ url('stocksummary') }}" class="menu-link w3-large">
                   <i class="menu-icon mdi mdi-chart-areaspline"></i>
                   <span class="menu-label">ສະຫຼຸບ</span>
@@ -412,34 +419,226 @@
   </li>
   {{-- End Stock --}}
 
+  {{-- Start Technical --}}
+  <li class="menu-item">
+    <a href="javascript://" class="menu-link w3-large" data-toggle="collapse" data-target="#repair-car"
+        aria-expanded="true" aria-controls="repair-car">
+        <i class="menu-icon mdi mdi-vector-square"></i>
+        <!-- <i class="menu-icon fas fa-vector-square"></i> -->
+        <span class="menu-label">ງານ​ສ້ອມ​ແປງລົດ</span>
+        <i class="menu-arrow mdi mdi-chevron-right"></i>
+    </a>
+
+    <ul class="menu collapse" data-parent="#main-menu" id="repair-car">
+      <li class="menu-item">
+        <a href="{{ url('technic_dashboard') }}" class="menu-link w3-large">
+          <i class="menu-icon mdi mdi-desktop-mac-dashboard"></i>
+          <span class="menu-label">ພາບ​ລວມ​ງານ​ສ້ອມ</span>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="javascript://" class="menu-link w3-large" data-toggle="collapse" data-target="#open-repair"
+          aria-expanded="true" aria-controls="open-repair">
+          <!-- <i class="menu-icon fas fa-tasks"></i> -->
+          <i class="menu-icon mdi mdi-car-side"></i>
+          <span class="menu-label">ໃບ​ເປີດ​ງານ​ສ້ອມ​</span>
+          <i class="menu-arrow mdi mdi-chevron-right"></i>
+        </a>
+
+        <ul class="menu collapse" data-parent="#repair-car" id="open-repair">
+          <li class="menu-item">
+            <a href="{{ url('repairbillnew') }}" class="menu-link w3-large">
+              <i class="menu-icon mdi mdi-file-document-box-plus"></i>
+              <span class="menu-label">ໃບ​ເປີດ​ງານ​ສ້ອມໃໝ່</span>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="{{ url('repairbill_list') }}" class="menu-link w3-large">
+              <i class="menu-icon mdi mdi-file-document-box-multiple"></i>
+              <span class="menu-label">ລາຍ​ການໃບ​ເປີດ​ງານ​ສ້ອມ</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="menu-item">
+        <a href="{{ url('techcarstatus') }}" class="menu-link w3-large">
+          <i class="menu-icon mdi mdi-car"></i>
+          <span class="menu-label">ສະ​ຖາ​ນະ​ລົດ​ການ​ສ້ອມ</span>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="javascript://" class="menu-link w3-large" data-toggle="collapse" data-target="#technical_setting"
+          aria-expanded="true" aria-controls="technical_setting">
+          <!-- <i class="menu-icon fas fa-tasks"></i> -->
+          <i class="menu-icon mdi mdi-car-side"></i>
+          <span class="menu-label">ຕັ້ງ​ຄ່າ</span>
+          <i class="menu-arrow mdi mdi-chevron-right"></i>
+        </a>
+        <ul class="menu collapse" data-parent="#repair-car" id="technical_setting">
+          <li class="menu-item">
+            <a href="javascript://" class="menu-link w3-large" data-toggle="collapse" data-target="#rpnoidsetting"
+                aria-expanded="true" aria-controls="rpnoidsetting">
+                <!-- <i class="menu-icon fas fa-tasks"></i> -->
+                <i class="menu-icon mdi mdi-tools"></i>
+                <span class="menu-label">ລະ​ຫັດ​ສ້ອມ​ແປງ</span>
+                <i class="menu-arrow mdi mdi-chevron-right"></i>
+            </a>
+    
+            <ul class="menu collapse" data-parent="#technical_setting" id="rpnoidsetting">
+              <li class="menu-item">
+                <a href="{{ url('addnewrepairid') }}" class="menu-link w3-large">
+                  <i class="menu-icon mdi mdi-car"></i>
+                  <span class="menu-label">ເພີ່ມ​ລະ​ຫັດ​ສ້ອມ</span>
+                </a>
+              </li>
+              <li class="menu-item">
+                <a href="{{ url('rpnoidlist') }}" class="menu-link w3-large">
+                  <i class="menu-icon mdi mdi-car"></i>
+                  <span class="menu-label">​ລາຍ​ການ​ລະ​ຫັດ​ສ້ອມ</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="menu-item">
+            <a href="javascript://" class="menu-link w3-large" data-toggle="collapse" data-target="#repairwage"
+                aria-expanded="true" aria-controls="repairwage">
+                <!-- <i class="menu-icon fas fa-tasks"></i> -->
+                <i class="menu-icon mdi mdi-home-currency-usd"></i>
+                <span class="menu-label">ຄ່າ​ແຮງ​ງານ</span>
+                <i class="menu-arrow mdi mdi-chevron-right"></i>
+            </a>
+    
+            <ul class="menu collapse" data-parent="#technical_setting" id="repairwage">
+              <li class="menu-item">
+                <a href="{{ url('wagenew') }}" class="menu-link w3-large">
+                  <i class="menu-icon mdi mdi-home-currency-usd"></i>
+                  <span class="menu-label">ເພີ່ມ​ຄ່າ​ແຮງ​ງານ</span>
+                </a>
+              </li>
+              <li class="menu-item">
+                <a href="{{ url('wagelist') }}" class="menu-link w3-large">
+                  <i class="menu-icon mdi mdi-currency-eth"></i>
+                  <span class="menu-label">​ລາຍ​ການ​​ຄ່າ​ແຮງ​ງານ</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="menu-item">
+            <a href="{{ url('managetypecars') }}" class="menu-link w3-large">
+              <i class="menu-icon mdi mdi-car"></i>
+              <span class="menu-label">ຈັດ​ການ​ປະ​ເພດ​ລົດ</span>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="{{ url('unitrepairs') }}" class="menu-link w3-large">
+              <i class="menu-icon mdi mdi-car"></i>
+              <span class="menu-label">ຈັດ​ການ​ຫົວ​ໜ່ວຍ​ສ້ອມ​ແປງ</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  {{-- End Technical --}}
+
   {{-- Start Account Manager --}}
   <li class="menu-item">
-      <a href="javascript://" class="menu-link w3-large" data-toggle="collapse" data-target="#menu-stock"
-          aria-expanded="true" aria-controls="menu-stock">
+    <a href="javascript://" class="menu-link w3-large" data-toggle="collapse" data-target="#menu-account" aria-expanded="true" aria-controls="menu-account">
+      <!-- <i class="menu-icon fas fa-tasks"></i> -->
+      <i class="menu-icon">₭</i>
+      <span class="menu-label">ບັນ​ຊ​ີ</span>
+      <i class="menu-arrow mdi mdi-chevron-right"></i>
+    </a>
+
+    <ul class="menu collapse" data-parent="#main-menu" id="menu-account">
+      <li class="menu-item">
+        <a href="{{ url('account_dashboard') }}" class="menu-link w3-large">
+          <i class="menu-icon mdi mdi-desktop-mac-dashboard"></i>
+          <span class="menu-label">ແຜງ​ຄວບ​ຄຸມ</span>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="javascript://" class="menu-link w3-large" data-toggle="collapse" data-target="#menu-invoice" aria-expanded="true" aria-controls="menu-invoice">
           <!-- <i class="menu-icon fas fa-tasks"></i> -->
-          <i class="menu-icon mdi mdi-home-city-outline"></i>
-          <span class="menu-label">​ລາຍ​ງານ​ລະ​ບົບ​ບັນ​ຊີ</span>
+          <i class="menu-icon">₭</i>
+          <span class="menu-label">ໃບຮຽກ​ເກັບ</span>
           <i class="menu-arrow mdi mdi-chevron-right"></i>
-      </a>
-
-      <ul class="menu collapse" data-parent="#main-menu" id="menu-stock">
-
+        </a>
+  
+        <ul class="menu collapse" data-parent="#menu-account" id="menu-invoice">
           <li class="menu-item">
-              <a href="form-general.html" class="menu-link w3-large">
-                  <i class="menu-icon">E</i>
-                  <span class="menu-label">ຂໍ້​ມູນ​ລາຍ​ຮັບ</span>
-              </a>
+            <a href="{{ url('newinvoice') }}" class="menu-link w3-large">
+              <i class="menu-icon">₭</i>
+              <span class="menu-label">​ໃບ​ຮຽກ​ເກັບ​ໃໝ່</span>
+            </a>
           </li>
-
+  
           <li class="menu-item">
-              <a href="form-advanced.html" class="menu-link w3-large">
-                  <i class="menu-icon">A</i>
-                  <span class="menu-label">​ຂໍ້​ມູນ​ລາຍ​ຈ່າຍ</span>
-              </a>
+            <a href="{{ url('invoicelist') }}" class="menu-link w3-large">
+              <i class="menu-icon">₭</i>
+              <span class="menu-label">ລາຍ​ການ​ໃບ​ຮຽກ​ເກັບ</span>
+            </a>
           </li>
+        </ul>
+      </li>
 
+      <li class="menu-item">
+        <a href="javascript://" class="menu-link w3-large" data-toggle="collapse" data-target="#menu-receitp" aria-expanded="true" aria-controls="menu-receitp">
+          <!-- <i class="menu-icon fas fa-tasks"></i> -->
+          <i class="menu-icon">₭</i>
+          <span class="menu-label">ໃບຮັບ​ເງິນ</span>
+          <i class="menu-arrow mdi mdi-chevron-right"></i>
+        </a>
+  
+        <ul class="menu collapse" data-parent="#menu-account" id="menu-receitp">
+          <li class="menu-item">
+            <a href="{{ url('newreceipt') }}" class="menu-link w3-large">
+              <i class="menu-icon">₭</i>
+              <span class="menu-label">​ໃບ​ຮັບ​ເງິນ​ໃໝ່</span>
+            </a>
+          </li>
+  
+          <li class="menu-item">
+            <a href="{{ url('receiptlist') }}" class="menu-link w3-large">
+              <i class="menu-icon">₭</i>
+              <span class="menu-label">ລາຍ​ການ​ໃບ​ຮັບ​ເງິນ</span>
+            </a>
+          </li>
+        </ul>
+      </li>
 
-      </ul>
+      <li class="menu-item">
+        <a href="{{ url('account_summary') }}" class="menu-link w3-large">
+          <i class="menu-icon">₭ ສະຫຼຸ​ບ​ລາຍ​ຮັບ​ປະ​ຈຳ​ວັນ</i>
+          <span class="menu-label"></span>
+        </a>
+      </li>
+
+      <li class="menu-item">
+        <a href="javascript://" class="menu-link w3-large" data-toggle="collapse" data-target="#account-setting" aria-expanded="true" aria-controls="account-setting">
+          <!-- <i class="menu-icon fas fa-tasks"></i> -->
+          <i class="menu-icon mdi mdi-settings"></i>
+          <span class="menu-label">ຕັ້ງ​ຄ່າ</span>
+          <i class="menu-arrow mdi mdi-chevron-right"></i>
+        </a>
+  
+        <ul class="menu collapse" data-parent="#menu-account" id="account-setting">
+          <li class="menu-item">
+            <a href="{{ url('company') }}" class="menu-link w3-large">
+              <i class="menu-icon mdi mdi-office-building"></i>
+              <span class="menu-label">ບໍ​ລິ​ສັດ</span>
+            </a>
+          </li>
+  
+          {{-- <li class="menu-item">
+            <a href="" class="menu-link w3-large">
+              <i class="menu-icon">₭</i>
+              <span class="menu-label">ລາຍ​ການ​ໃບ​ຮຽກ​ເກັບ</span>
+            </a>
+          </li> --}}
+        </ul>
+      </li>
+    </ul>
   </li>
 
   {{-- <li class="menu-item">
@@ -471,67 +670,7 @@
       </ul>
   </li> --}}
 
-  <li class="menu-item">
-      <a href="javascript://" class="menu-link w3-large" data-toggle="collapse" data-target="#repair-car"
-          aria-expanded="true" aria-controls="repair-car">
-          <i class="menu-icon mdi mdi-vector-square"></i>
-          <!-- <i class="menu-icon fas fa-vector-square"></i> -->
-          <span class="menu-label">ງານ​ສ້ອມ​ແປງລົດ</span>
-          <i class="menu-arrow mdi mdi-chevron-right"></i>
-      </a>
-
-      <ul class="menu collapse" data-parent="#main-menu" id="repair-car">
-          <li class="menu-item">
-              <a href="javascript://" class="menu-link w3-large" data-toggle="collapse" data-target="#open-repair"
-                  aria-expanded="true" aria-controls="open-repair">
-                  <!-- <i class="menu-icon fas fa-tasks"></i> -->
-                  <i class="menu-icon mdi mdi-car-side"></i>
-                  <span class="menu-label">​ເປີດ​ງານ​ສ້ອມ</span>
-                  <i class="menu-arrow mdi mdi-chevron-right"></i>
-              </a>
-
-              <ul class="menu collapse" data-parent="#repair-car" id="open-repair">
-
-                  <li class="menu-item">
-                      <a href="form-general.html" class="menu-link w3-large">
-                          <i class="menu-icon mdi mdi-car"></i>
-                          <span class="menu-label">​ເປີດ​ງານ​ສ້ອມ​ລົດ​ໃໝ່</span>
-                      </a>
-                  </li>
-
-                  <li class="menu-item">
-                      <a href="form-advanced.html" class="menu-link w3-large">
-                          <i class="menu-icon mdi mdi-car"></i>
-                          <span class="menu-label">ປິດ​ການ​ສ້ອມ</span>
-                      </a>
-                  </li>
-
-
-              </ul>
-          </li>
-
-          <li class="menu-item">
-              <a href="icon-fa.html" class="menu-link w3-large">
-                  <i class="menu-icon mdi mdi-car"></i>
-                  <span class="menu-label">ລົດ​ກຳ​ລັງ​ສ້ອມ</span>
-              </a>
-          </li>
-
-          <li class="menu-item">
-              <a href="icon-remix.html" class="menu-link w3-large">
-                  <i class="menu-icon mdi mdi-car"></i>
-                  <span class="menu-label">​ລົ​ດ​ສ້ອມ​ສຳ​ເລັດ</span>
-              </a>
-          </li>
-
-          <li class="menu-item">
-              <a href="icon-remix.html" class="menu-link w3-large">
-                  <i class="menu-icon mdi mdi-car"></i>
-                  <span class="menu-label">​ລົ​ດ​ສົ່ງ​ຄືນ​ລູກ​ຄ້າ​ແລ້ວ</span>
-              </a>
-          </li>
-      </ul>
-  </li>
+  
 
   {{-- <li class="menu-item">
       <a href="#" class="menu-link w3-large" data-toggle="collapse" data-target="#menu-62d0a7" aria-expanded="true"
@@ -638,7 +777,5 @@
           </li>
       </ul>
   </li>
-
-
 </ul>
 @endrole

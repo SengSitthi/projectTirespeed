@@ -288,6 +288,104 @@ class TechrepairController extends Controller
   //////////////////////////// TECHNICAL DASHBOARD ////////////////////////////
   public function fnDashboard(Request $req)
   {
-    return view('manage/technical/index');
+    $today = date('Y-m-d');
+    $monday = date('Y-m-d', strtotime('Monday this week'));
+    $saturday = date('Y-m-d', strtotime('Saturday this week'));
+    $waitrepairtoday = count(DB::table('techcarstatus')->where('status', 1)->where('date_in', $today)->get());
+    $waitrepairweek = count(DB::table('techcarstatus')->whereBetween('status', 1)->where('date_in', [$monday, $saturday])->get());
+    $waitsparetoday = count(DB::table('techcarstatus')->where('status', 2)->where('date_in', $today)->get());
+    $waitspareweek = count(DB::table('techcarstatus')->whereBetween('status', 2)->where('date_in', [$monday, $saturday])->get());
+    $repairingtoday = count(DB::table('techcarstatus')->where('status', 3)->where('date_in', $today)->get());
+    $repairingweek = count(DB::table('techcarstatus')->whereBetween('status', 3)->where('date_in', [$monday, $saturday])->get());
+    $successtoday = count(DB::table('techcarstatus')->where('status', 4)->where('date_in', $today)->get());
+    $successweek = count(DB::table('techcarstatus')->whereBetween('status', 4)->where('date_in', [$monday, $saturday])->get());
+    $sendtoday = count(DB::table('techcarstatus')->where('status', 5)->where('date_in', $today)->get());
+    $sendweek = count(DB::table('techcarstatus')->whereBetween('status', 5)->where('date_in', [$monday, $saturday])->get());
+    return view('manage/technical/index')->with('waitrepairtoday', $waitrepairtoday)->with('waitrepairweek', $waitrepairweek)->with('waitsparetoday', $waitsparetoday)
+    ->with('waitspareweek', $waitspareweek)->with('repairingtoday', $repairingtoday)->with('repairingweek', $repairingweek)->with('successtoday', $successtoday)
+    ->with('successweek', $successweek)->with('sendtoday', $sendtoday)->with('sendweek', $sendweek);
+  }
+
+  // function load technical data to show on chart
+  public function fnLoadtechchart(Request $req)
+  {
+    // waitrepair month count
+    $jan_waitrepair = count(DB::table('techcarstatus')->where('status', 1)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of January')), date('Y-m-d', strtotime('Last day of January'))])->get());
+    $feb_waitrepair = count(DB::table('techcarstatus')->where('status', 1)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of February')), date('Y-m-d', strtotime('Last day of February'))])->get());
+    $mar_waitrepair = count(DB::table('techcarstatus')->where('status', 1)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of March')), date('Y-m-d', strtotime('Last day of March'))])->get());
+    $apr_waitrepair = count(DB::table('techcarstatus')->where('status', 1)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of April')), date('Y-m-d', strtotime('Last day of April'))])->get());
+    $may_waitrepair = count(DB::table('techcarstatus')->where('status', 1)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of May')), date('Y-m-d', strtotime('Last day of May'))])->get());
+    $jun_waitrepair = count(DB::table('techcarstatus')->where('status', 1)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of June')), date('Y-m-d', strtotime('Last day of June'))])->get());
+    $jul_waitrepair = count(DB::table('techcarstatus')->where('status', 1)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of July')), date('Y-m-d', strtotime('Last day of July'))])->get());
+    $aug_waitrepair = count(DB::table('techcarstatus')->where('status', 1)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of August')), date('Y-m-d', strtotime('Last day of August'))])->get());
+    $sep_waitrepair = count(DB::table('techcarstatus')->where('status', 1)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of September')), date('Y-m-d', strtotime('Last day of September'))])->get());
+    $oct_waitrepair = count(DB::table('techcarstatus')->where('status', 1)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of October')), date('Y-m-d', strtotime('Last day of October'))])->get());
+    $nov_waitrepair = count(DB::table('techcarstatus')->where('status', 1)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of November')), date('Y-m-d', strtotime('Last day of November'))])->get());
+    $dec_waitrepair = count(DB::table('techcarstatus')->where('status', 1)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of December')), date('Y-m-d', strtotime('Last day of December'))])->get());
+    $waitrepair = array($jan_waitrepair,$feb_waitrepair,$mar_waitrepair,$apr_waitrepair,$may_waitrepair,$jun_waitrepair,$jul_waitrepair,$aug_waitrepair,$sep_waitrepair,$oct_waitrepair,$nov_waitrepair,$dec_waitrepair);
+
+    // waitspare month count
+    $jan_waitspare = count(DB::table('techcarstatus')->where('status', 2)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of January')), date('Y-m-d', strtotime('Last day of January'))])->get());
+    $feb_waitspare = count(DB::table('techcarstatus')->where('status', 2)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of February')), date('Y-m-d', strtotime('Last day of February'))])->get());
+    $mar_waitspare = count(DB::table('techcarstatus')->where('status', 2)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of March')), date('Y-m-d', strtotime('Last day of March'))])->get());
+    $apr_waitspare = count(DB::table('techcarstatus')->where('status', 2)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of April')), date('Y-m-d', strtotime('Last day of April'))])->get());
+    $may_waitspare = count(DB::table('techcarstatus')->where('status', 2)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of May')), date('Y-m-d', strtotime('Last day of May'))])->get());
+    $jun_waitspare = count(DB::table('techcarstatus')->where('status', 2)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of June')), date('Y-m-d', strtotime('Last day of June'))])->get());
+    $jul_waitspare = count(DB::table('techcarstatus')->where('status', 2)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of July')), date('Y-m-d', strtotime('Last day of July'))])->get());
+    $aug_waitspare = count(DB::table('techcarstatus')->where('status', 2)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of August')), date('Y-m-d', strtotime('Last day of August'))])->get());
+    $sep_waitspare = count(DB::table('techcarstatus')->where('status', 2)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of September')), date('Y-m-d', strtotime('Last day of September'))])->get());
+    $oct_waitspare = count(DB::table('techcarstatus')->where('status', 2)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of October')), date('Y-m-d', strtotime('Last day of October'))])->get());
+    $nov_waitspare = count(DB::table('techcarstatus')->where('status', 2)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of November')), date('Y-m-d', strtotime('Last day of November'))])->get());
+    $dec_waitspare = count(DB::table('techcarstatus')->where('status', 2)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of December')), date('Y-m-d', strtotime('Last day of December'))])->get());
+    $waitspare = array($jan_waitspare,$feb_waitspare,$mar_waitspare,$apr_waitspare,$may_waitspare,$jun_waitspare,$jul_waitspare,$aug_waitspare,$sep_waitspare,$oct_waitspare,$nov_waitspare,$dec_waitspare);
+
+    // repairing month count
+    $jan_repairing = count(DB::table('techcarstatus')->where('status', 3)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of January')), date('Y-m-d', strtotime('Last day of January'))])->get());
+    $feb_repairing = count(DB::table('techcarstatus')->where('status', 3)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of February')), date('Y-m-d', strtotime('Last day of February'))])->get());
+    $mar_repairing = count(DB::table('techcarstatus')->where('status', 3)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of March')), date('Y-m-d', strtotime('Last day of March'))])->get());
+    $apr_repairing = count(DB::table('techcarstatus')->where('status', 3)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of April')), date('Y-m-d', strtotime('Last day of April'))])->get());
+    $may_repairing = count(DB::table('techcarstatus')->where('status', 3)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of May')), date('Y-m-d', strtotime('Last day of May'))])->get());
+    $jun_repairing = count(DB::table('techcarstatus')->where('status', 3)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of June')), date('Y-m-d', strtotime('Last day of June'))])->get());
+    $jul_repairing = count(DB::table('techcarstatus')->where('status', 3)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of July')), date('Y-m-d', strtotime('Last day of July'))])->get());
+    $aug_repairing = count(DB::table('techcarstatus')->where('status', 3)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of August')), date('Y-m-d', strtotime('Last day of August'))])->get());
+    $sep_repairing = count(DB::table('techcarstatus')->where('status', 3)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of September')), date('Y-m-d', strtotime('Last day of September'))])->get());
+    $oct_repairing = count(DB::table('techcarstatus')->where('status', 3)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of October')), date('Y-m-d', strtotime('Last day of October'))])->get());
+    $nov_repairing = count(DB::table('techcarstatus')->where('status', 3)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of November')), date('Y-m-d', strtotime('Last day of November'))])->get());
+    $dec_repairing = count(DB::table('techcarstatus')->where('status', 3)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of December')), date('Y-m-d', strtotime('Last day of December'))])->get());
+    $repairing = array($jan_repairing,$feb_repairing,$mar_repairing,$apr_repairing,$may_repairing,$jun_repairing,$jul_repairing,$aug_repairing,$sep_repairing,$oct_repairing,$nov_repairing,$dec_repairing);
+
+    // success month count
+    $jan_success = count(DB::table('techcarstatus')->where('status', 4)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of January')), date('Y-m-d', strtotime('Last day of January'))])->get());
+    $feb_success = count(DB::table('techcarstatus')->where('status', 4)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of February')), date('Y-m-d', strtotime('Last day of February'))])->get());
+    $mar_success = count(DB::table('techcarstatus')->where('status', 4)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of March')), date('Y-m-d', strtotime('Last day of March'))])->get());
+    $apr_success = count(DB::table('techcarstatus')->where('status', 4)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of April')), date('Y-m-d', strtotime('Last day of April'))])->get());
+    $may_success = count(DB::table('techcarstatus')->where('status', 4)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of May')), date('Y-m-d', strtotime('Last day of May'))])->get());
+    $jun_success = count(DB::table('techcarstatus')->where('status', 4)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of June')), date('Y-m-d', strtotime('Last day of June'))])->get());
+    $jul_success = count(DB::table('techcarstatus')->where('status', 4)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of July')), date('Y-m-d', strtotime('Last day of July'))])->get());
+    $aug_success = count(DB::table('techcarstatus')->where('status', 4)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of August')), date('Y-m-d', strtotime('Last day of August'))])->get());
+    $sep_success = count(DB::table('techcarstatus')->where('status', 4)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of September')), date('Y-m-d', strtotime('Last day of September'))])->get());
+    $oct_success = count(DB::table('techcarstatus')->where('status', 4)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of October')), date('Y-m-d', strtotime('Last day of October'))])->get());
+    $nov_success = count(DB::table('techcarstatus')->where('status', 4)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of November')), date('Y-m-d', strtotime('Last day of November'))])->get());
+    $dec_success = count(DB::table('techcarstatus')->where('status', 4)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of December')), date('Y-m-d', strtotime('Last day of December'))])->get());
+    $success = array($jan_success,$feb_success,$mar_success,$apr_success,$may_success,$jun_success,$jul_success,$aug_success,$sep_success,$oct_success,$nov_success,$dec_success);
+
+    // send month count
+    $jan_send = count(DB::table('techcarstatus')->where('status', 5)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of January')), date('Y-m-d', strtotime('Last day of January'))])->get());
+    $feb_send = count(DB::table('techcarstatus')->where('status', 5)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of February')), date('Y-m-d', strtotime('Last day of February'))])->get());
+    $mar_send = count(DB::table('techcarstatus')->where('status', 5)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of March')), date('Y-m-d', strtotime('Last day of March'))])->get());
+    $apr_send = count(DB::table('techcarstatus')->where('status', 5)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of April')), date('Y-m-d', strtotime('Last day of April'))])->get());
+    $may_send = count(DB::table('techcarstatus')->where('status', 5)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of May')), date('Y-m-d', strtotime('Last day of May'))])->get());
+    $jun_send = count(DB::table('techcarstatus')->where('status', 5)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of June')), date('Y-m-d', strtotime('Last day of June'))])->get());
+    $jul_send = count(DB::table('techcarstatus')->where('status', 5)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of July')), date('Y-m-d', strtotime('Last day of July'))])->get());
+    $aug_send = count(DB::table('techcarstatus')->where('status', 5)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of August')), date('Y-m-d', strtotime('Last day of August'))])->get());
+    $sep_send = count(DB::table('techcarstatus')->where('status', 5)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of September')), date('Y-m-d', strtotime('Last day of September'))])->get());
+    $oct_send = count(DB::table('techcarstatus')->where('status', 5)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of October')), date('Y-m-d', strtotime('Last day of October'))])->get());
+    $nov_send = count(DB::table('techcarstatus')->where('status', 5)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of November')), date('Y-m-d', strtotime('Last day of November'))])->get());
+    $dec_send = count(DB::table('techcarstatus')->where('status', 5)->whereBetween('date_in', [date('Y-m-d', strtotime('First day of December')), date('Y-m-d', strtotime('Last day of December'))])->get());
+    $send = array($jan_send,$feb_send,$mar_send,$apr_send,$may_send,$jun_send,$jul_send,$aug_send,$sep_send,$oct_send,$nov_send,$dec_send);
+
+    $data = array('waitrepair'=>$waitrepair,'waitspare'=>$waitspare,'repairing'=>$repairing,'success'=>$success,'send'=>$send);
+
+    echo json_encode($data);
   }
 }

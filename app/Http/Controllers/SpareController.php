@@ -76,6 +76,7 @@ class SpareController extends Controller
     $createbarcode = $req->input('createbarcode');
     $datainsert = array(
       'sparesid' => $req->input('sparesid'),
+      'rpnoid' => $req->input('rpnoid'),
       'sparesname' => $req->input('sparesname'),
       'typeserviceid' => $req->input('typeserviceid'),
       'typesparesid' => $req->input('typesparesid'),
@@ -92,8 +93,11 @@ class SpareController extends Controller
     // DB::table('spares')->insert($datainsert);
     $sparesid = $req->input('sparesid');
     $count = count(DB::table('spares')->where('sparesid', $sparesid)->get());
+    $count1 = count(DB::table('spares')->where('rpnoid'), $req->input('rpnoid')->get());
     if($count > 0){
       return back()->with('error', 'ຜິດ​ພາດ​ລະ​ຫັດ​ທີ່​ທ່ານ​ປ້ອນ​ຊ້ຳ​ກັນ');
+    }else if($count > 0){
+      return back()->with('rpno_error', 'ຜິດ​ພາດ​ລະ​ຫັດ​ທີ່​ທ່ານ​ປ້ອນ​ຊ້ຳ​ກັນ');
     }else{
       if($createbarcode == "1"){
         DB::table('spares')->insert($datainsert);
@@ -183,6 +187,7 @@ class SpareController extends Controller
         $result .= '
         <tr>
           <td>'.$row->sparesid.'</td>
+          <td>'.$row->rpnoid.'</td>
           <td>'.$row->sparesname.'</td>
           <td>'.$row->typeservicename.'</td>
           <td>'.$row->typesparename.'</td>
@@ -234,6 +239,7 @@ class SpareController extends Controller
     $sqlspares = DB::table('spares')->where('sparesid', $sparesid)->get();
     foreach($sqlspares as $row){
       $sparesid = $row->sparesid;
+      $rpnoid = $row->rpnoid;
       $sparesname = $row->sparesname;
       $typeserviceid = $row->typeserviceid;
       $typesparesid = $row->typesparesid;
@@ -247,6 +253,7 @@ class SpareController extends Controller
     }
     $data = array(
       'sparesid' => $sparesid,
+      'rpnoid' => $rpnoid,
       'sparesname' => $sparesname,
       'typeserviceid' => $typeserviceid,
       'typesparesid' => $typesparesid,
@@ -273,6 +280,7 @@ class SpareController extends Controller
     ]);
     $sparesid = $req->input('sparesid1');
     $dataupdate = array(
+      'rpnoid' => $req->input('rpnoid'),
       'sparesname' => $req->input('sparesname'),
       'typeserviceid' => $req->input('typeserviceid'),
       'typesparesid' => $req->input('typesparesid'),
@@ -320,7 +328,7 @@ class SpareController extends Controller
         <div class="d-inline p-2">
           <p class="text-center">'.$book->sparesname.'</p>
           <img src="data:image/png;base64,'.base64_encode($barcode_generator->getBarcode($book->sparesid, $barcode_generator::TYPE_CODABAR)).'">
-          <h4 class="text-center">ລະ​ຫັດ​: '.$book->sparesid.'</h4>
+          <h6 class="text-center">'.$book->rpnoid.'|'.$book->sparesid.'</h6>
         </div>
         ';
       }

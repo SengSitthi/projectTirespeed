@@ -41,6 +41,7 @@
                               <thead class="thead-light">
                                 <tr>
                                   <th>ລະ​ຫັດ</th>
+                                  <th>ລະ​ຫັດ​ສ້ອມ​ແປງ</th>
                                   <th>ຊື່</th>
                                   <th>ປະ​ເພດ​ອະ​ໄຫຼ່</th>
                                   <th>ລະ​ບົບ​ການ​ສ້ອມ</th>
@@ -60,6 +61,7 @@
                                 @foreach ($sparelist as $sl)
                                 <tr>
                                   <td>{{ $sl->sparesid }}</td>
+                                  <td>{{ $sl->rpnoid }}</td>
                                   <td>{{ $sl->sparesname }}</td>
                                   <td>{{ $sl->typeservicename }}</td>
                                   <td>{{ $sl->typesparename }}</td>
@@ -238,6 +240,11 @@
                               @endif  
                             </select>
                             <div><h5 class="text-danger">{{ $errors->first('unitid') }}</h5></div>
+                          </div>
+                          <div class="form-group">
+                            <label for="rpnoid">ລະ​ຫັດ​ສ້ອມ​ແປງ</label>
+                            <input id="rpnoid" class="form-control" type="text" name="rpnoid" maxlength="8" required placeholder="..." oninvalid="this.setCustomValidity('ກະ​ລຸ​ນາ​ໃສ່​ລາ​ຄາ​ຂາຍ')"
+                            oninput="this.setCustomValidity('')">
                           </div>
                         </div>
                       </div>

@@ -25,6 +25,15 @@
                 timer: 2500
                 });</script>
             @endif
+            @if (Session::get('rpno_error'))
+              <script>swal({
+                title: "ຜິດ​ພາດ",
+                text: "​ລະ​ຫັດ​ສ້ອມ​ທີ່​ທ່ານປ້ອນ​ມີ​ໃນ​ລະ​ບົບແລ້ວ!",
+                icon: "warning",
+                button: false,
+                timer: 2500
+                });</script>
+            @endif
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
@@ -146,6 +155,12 @@
                                     @endif  
                                   </select>
                                   <div><h5 class="text-danger">{{ $errors->first('unitid') }}</h5></div>
+                                </div>
+                                <div class="form-group">
+                                  <label for="rpnoid">ລະ​ຫັດ​ສ້ອມ​ແປງ</label>
+                                  <input id="rpnoid" class="form-control" type="text" name="rpnoid" maxlength="8" required placeholder="..." oninvalid="this.setCustomValidity('ກະ​ລຸ​ນາ​ໃສ່​ລາ​ຄາ​ຂາຍ')"
+                                  oninput="this.setCustomValidity('')">
+                                  <div><h5 class="text-danger">{{ $errors->first('rpnoid') }}</h5></div>
                                 </div>
                               </div>
                             </div>

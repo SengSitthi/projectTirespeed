@@ -1,45 +1,57 @@
 $(document).ready(function() {
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+  
+  func
   Highcharts.chart('workstockoverview', {
     chart: {
-          
       plotBackgroundColor: null,
       plotBorderWidth: null,
       plotShadow: false,
       type: 'pie'
     },
     title: {
-      text: ''
+      text: 'ພາບ​ລວມການ​ເຂົ້າ​ອອກ​ອະ​ໄຫຼ່'
     },
     tooltip: {
       pointFormat: '{series.name}: <b>{point.percentage:.1f}</b>'
+    },
+    accessibility: {
+      point: {
+        valueSuffix: '%'
+      }
     },
     plotOptions: {
       pie: {
         allowPointSelect: true,
         cursor: 'pointer',
         dataLabels: {
-        enabled: false
-      },
-        showInLegend: false
+        enabled: true,
+        format: '<b>{point.name}</b>: {point.percentage:.1f}'
       }
-    },
-    series: [{
-      name: 'Referrals',
-      colorByPoint: true,
-      data: [{
-      name: 'Google',
-      y: 30.5,
+    }
+  },
+  series: [{
+    name: 'ຈຳ​ນວນ',
+    colorByPoint: true,
+    data: [{
+      name: 'ສັ່ງ​ຊື້ອະ​ໄຫຼ່',
+      y: 60,
       sliced: true,
-      // selected: true
+      selected: true
     }, {
-      name: 'Twiter',
-      y: 25.5
-          }, {
-              name: 'Morioh',
-              y: 16
-          }]
-      }]
-  });
+      name: 'ຮັບ​ອະ​ໄຫຼ່​ເຂົ້າ',
+      y: 28
+    }, {
+      name: 'ເບີກອະ​ໄຫຼ່',
+      y: 12
+    }]
+  }]
+});
+
 
   
 

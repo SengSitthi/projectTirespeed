@@ -20,12 +20,12 @@
                   {{-- <td></td> --}}
                   <td style="border: 2px solid black" width="35%" colspan="4">
                     <div class="row">
-                      <div class="col-md-7">
+                      <div class="col-md-7 col-sm-7">
                         <h5><b><u>ໃບ​ຮັບ​ລົດ​ເຂົ້າ​ບໍ​ລິ​ການ</u></b></h5>
                         <h6><b>Receive Car Service</b></h6>
                         <p>ເລກ​ທີ: {{ $dt->rcsid }}/RCS</p>
                       </div>
-                      <div class="col-md-5">
+                      <div class="col-md-5 col-sm-5">
                         <img src="{{ url('images/car_structure.jpg') }}" alt="structure" width="100%">
                       </div>
                     </div>

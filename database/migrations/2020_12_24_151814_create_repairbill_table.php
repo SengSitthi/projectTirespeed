@@ -14,12 +14,12 @@ class CreateRepairbillTable extends Migration
     public function up()
     {
         Schema::create('repairbill', function (Blueprint $table) {
-            $table->string('rpbid', 10);
-            $table->primary('rpbid');
-            $table->string('rcsid', 15);
-            $table->foreign('rcsid')->references('rcsid')->on('receivecars');
-            $table->date('rpbdate');
-            $table->timestamps();
+          $table->string('rpbid', 10);
+          $table->primary('rpbid');
+          $table->string('rcsid', 15);
+          $table->foreign('rcsid')->references('rcsid')->on('receivecars');
+          $table->date('rpbdate');
+          $table->timestamps();
         });
     }
 

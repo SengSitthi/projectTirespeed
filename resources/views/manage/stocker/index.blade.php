@@ -79,9 +79,9 @@
                             </div>
 
                             <div class="form-group">
-                                <a href="https://www.google.com" class="text-body">ສັ່ງ​ອະ​ໄຫຼ່</a>
+                                <a href="#" class="text-body">ສັ່ງ​ອະ​ໄຫຼ່</a>
                                 <div class="float-right text-muted">
-                                    30
+                                  {{ count($receivesparetoday) }}
                                 </div>
                                 <div class="progress progress-xs mt-5">
                                     <div class="progress-bar" style="width: 30.5%;"></div>
@@ -89,9 +89,9 @@
                             </div>
 
                             <div class="form-group">
-                                <a href="https://www.twitter.com" class="text-body">ຮັບ​ອະ​ໄຫຼ່</a>
+                                <a href="#" class="text-body">ຮັບ​ອະ​ໄຫຼ່</a>
                                 <div class="float-right text-muted">
-                                    25
+                                  {{ count($receivesparetoday) }}
                                 </div>
                                 <div class="progress progress-xs mt-5">
                                     <div class="progress-bar" style="width: 25.5%;"></div>
@@ -99,9 +99,9 @@
                             </div>
 
                             <div class="form-group">
-                                <a href="https://morioh.com" class="text-body">ເບີກ​ອະ​ໄຫຼ່</a>
+                                <a href="#" class="text-body">ເບີກ​ອະ​ໄຫຼ່</a>
                                 <div class="float-right text-muted">
-                                    16
+                                  {{ count($withdrawdetailtoday) }}
                                 </div>
 
                                 <div class="progress progress-xs mt-5">

@@ -110,6 +110,7 @@ $(document).ready(function(){
       dataType: 'json',
       success: function(data){
         $('#sparesid1').val(sparesid);
+        $('#rpnoid').val(data.rpnoid);
         $('#sparesname').val(data.sparesname);
         $('#typeserviceid option[value="'+data.typeserviceid+'"]').prop('selected', true);
         $('#typesparesid option[value="'+data.typesparesid+'"]').prop('selected', true);

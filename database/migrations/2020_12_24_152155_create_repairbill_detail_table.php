@@ -14,11 +14,10 @@ class CreateRepairbillDetailTable extends Migration
     public function up()
     {
         Schema::create('repairbill_detail', function (Blueprint $table) {
-            $table->bigIncrements('rpbdtid');
+          $table->bigIncrements('rpbdtid');
             $table->string('rpbid');
             $table->foreign('rpbid')->references('rpbid')->on('repairbill')->onDelete('cascade');
             $table->string('rpnoid', 10);
-            $table->foreign('rpnoid')->references('rpnoid')->on('repairsno');
             $table->integer('useqty');
             $table->string('wageid', 10);
             $table->foreign('wageid')->references('wageid')->on('wages');

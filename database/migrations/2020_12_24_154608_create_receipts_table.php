@@ -14,7 +14,7 @@ class CreateReceiptsTable extends Migration
     public function up()
     {
         Schema::create('receipts', function (Blueprint $table) {
-            $table->string('receiptid', 10);
+          $table->string('receiptid', 10);
             $table->primary('receiptid');
             $table->string('invoiceid', 10);
             $table->foreign('invoiceid')->references('invoiceid')->on('invoice');

@@ -35,9 +35,9 @@ class StockerController extends Controller
     WHERE rd.sparesid=wd.sparesid AND (rd.receiveqty - wd.withdrawqty) < 3');
 
     return view('manage/stocker/index')->with('ordersparetoday', $ordersparetoday)->with('ordersparemonth', $ordersparemonth)
-                                        ->with('receivesparetoday', $receivesparetoday)->with('receivesparetodaym', $receivesparetodaym)
-                                        ->with('withdrawdetailtoday', $withdrawdetailtoday)->with('withdrawdetailmonth', $withdrawdetailmonth)
-                                        ->with('sparemin', $sparemin);
+                                       ->with('receivesparetoday', $receivesparetoday)->with('receivesparetodaym', $receivesparetodaym)
+                                       ->with('withdrawdetailtoday', $withdrawdetailtoday)->with('withdrawdetailmonth', $withdrawdetailmonth)
+                                       ->with('sparemin', $sparemin);
   }
 
 //////////////////// End Spare Function //////////

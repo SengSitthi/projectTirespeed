@@ -12,30 +12,24 @@ class CrvController extends Controller
   public function index()
   {
     $sqlrc = DB::table('receivecars')->select('rcsid')->orderBy('rcsid', 'desc')->take(1)->get();  
-    // $rcid = "RCS0000001";
+    // $rcid = "RCS0001";
     if(count($sqlrc) > 0){
       foreach($sqlrc as $rc){
         $rcsid = $rc->rcsid;
       }
-      $string = Str::substr($rcsid, 3, 10);
+      $string = Str::substr($rcsid, 3, 7);
       $sum = (int)$string + 1;
       if(strlen($sum) == 1){
-        $num = "000000".$sum;
-      }elseif(strlen($sum) == 2){
-        $num = "00000".$sum;
-      }elseif(strlen($sum) == 3){
-        $num = "0000".$sum;
-      }elseif(strlen($sum) == 4){
         $num = "000".$sum;
-      }elseif(strlen($sum) == 5){
+      }elseif(strlen($sum) == 2){
         $num = "00".$sum;
-      }elseif(strlen($sum) == 6){
+      }elseif(strlen($sum) == 3){
         $num = "0".$sum;
       }else{
         $num = $sum;
       }
     }else{
-      $num = "0000001";
+      $num = "0001";
     }
     $id = "RCS".$num;
     $customers = DB::table('customers')->get();

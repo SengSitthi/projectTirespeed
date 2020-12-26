@@ -16,27 +16,21 @@ class ReceiptController extends Controller
       foreach($receipts as $rec){
         $receiptid = $rec->receiptid;
       }
-      $receiptid = "REC0000001";
+      $receiptid = "REC0001";
       $strstring = Str::substr($receiptid, 3, 10);
       $sum = (int)$strstring + 1;
       if(strlen($sum) == 1){
-        $id = "000000".$sum;
-      }else if(strlen($sum) == 2){
-        $id = "00000".$sum;
-      }else if(strlen($sum) == 3){
-        $id = "0000".$sum;
-      }else if(strlen($sum) == 4){
         $id = "000".$sum;
-      }else if(strlen($sum) == 5){
+      }else if(strlen($sum) == 2){
         $id = "00".$sum;
-      }else if(strlen($sum) == 6){
+      }else if(strlen($sum) == 3){
         $id = "0".$sum;
       }else{
         $id = $sum;
       }
       $rcpt = "REC".$id;
     }else{
-      $rcpt = "REC0000001";
+      $rcpt = "REC0001";
     }
     $invoice = DB::table('invoice')->orderBy('invoiceid', 'desc')->get();
     return view('manage/account/receipt')->with('receiptid', $rcpt)->with('invoice', $invoice);
@@ -48,10 +42,9 @@ class ReceiptController extends Controller
     $result = "";
     $invoicedetail = DB::table('invoice_detail')
     ->join('wages', 'wages.wageid', '=', 'invoice_detail.wageid')
-    ->join('repairsno', 'repairsno.rpnoid', '=', 'invoice_detail.rpnoid')
-    ->join('spares', 'spares.sparesid', '=', 'repairsno.sparesid')
+    ->join('spares', 'spares.rpnoid', '=', 'invoice_detail.rpnoid')
     ->where('invoice_detail.invoiceid', $req->invoiceid)
-    ->select('invoice_detail.*','wages.*','repairsno.*', 'spares.sparesname')->get();
+    ->select('invoice_detail.*','wages.*','spares.*')->get();
     $invoices = DB::table('invoice')->where('invoiceid', $req->invoiceid)->get();
     foreach($invoices as $inv){
       $invoice_date = $inv->invoice_date;
@@ -140,8 +133,7 @@ class ReceiptController extends Controller
       DB::table('receipts_detail')->insert($rcpdetaildata);
       $receipts = DB::table('receipts')->where('receiptid', $req->input('receiptid'))->get();
       $receiptlist = DB::table('receipts_detail')
-        ->join('repairsno', 'repairsno.rpnoid', '=', 'receipts_detail.rpnoid')
-        ->join('spares', 'spares.sparesid', '=', 'repairsno.sparesid')
+        ->join('spares', 'spares.rpnoid', '=', 'receipts_detail.rpnoid')
         ->join('unitspare', 'unitspare.unitid', '=', 'spares.unitid')
         ->where('receipts_detail.receiptid', $req->input('receiptid'))
         ->select('receipts_detail.*', 'spares.*', 'unitspare.unitname')->get();
@@ -171,8 +163,7 @@ class ReceiptController extends Controller
   {
     $receipts = DB::table('receipts')->where('receiptid', $receiptid)->get();
     $receiptlist = DB::table('receipts_detail')
-      ->join('repairsno', 'repairsno.rpnoid', '=', 'receipts_detail.rpnoid')
-      ->join('spares', 'spares.sparesid', '=', 'repairsno.sparesid')
+      ->join('spares', 'spares.rpnoid', '=', 'receipts_detail.rpnoid')
       ->join('unitspare', 'unitspare.unitid', '=', 'spares.unitid')
       ->where('receipts_detail.receiptid', $receiptid)
       ->select('receipts_detail.*', 'spares.*', 'unitspare.unitname')->get();
@@ -193,8 +184,8 @@ class ReceiptController extends Controller
   public function fnLoadReceiptdetail(Request $req)
   {
     $result = "";
-    $recdetail = DB::table('receipts_detail')->join('repairsno', 'repairsno.rpnoid', '=', 'receipts_detail.rpnoid')
-    ->join('spares', 'spares.sparesid', '=', 'repairsno.sparesid')->join('wages', 'wages.wageid', '=', 'receipts_detail.wageid')
+    $recdetail = DB::table('receipts_detail')->join('spares', 'spares.rpnoid', '=', 'receipts_detail.rpnoid')
+    ->join('wages', 'wages.wageid', '=', 'receipts_detail.wageid')
     ->where('receipts_detail.receiptid', '=', $req->receiptid)
     ->select('receipts_detail.*', 'spares.sparesname', 'wages.wagename')->get();
     foreach($recdetail as $rdt){

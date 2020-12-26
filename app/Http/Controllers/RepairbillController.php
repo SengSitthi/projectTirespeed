@@ -12,31 +12,23 @@ class RepairbillController extends Controller
   {
     $repairbill = DB::table('repairbill')->select('rpbid')->orderBy('rpbid', 'desc')->take(1)->get();
     if(count($repairbill) > 0){
-      // $rpbid = "RP00000001";
+      // $rpbid = "RP0001";
       foreach($repairbill as $rpb){
         $repairbillid = $rpb->rpbid;
       }
-      $strstring = Str::substr($repairbillid, 2, 10);
+      $strstring = Str::substr($repairbillid, 2, 6);
       $sum = (int)$strstring + 1;
       if(strlen($sum) == 1){
-        $num = "0000000".$sum;
-      }else if($sum == 2){
-        $num = "000000".$sum;
-      }else if($sum == 3){
-        $num = "00000".$sum;
-      }else if($sum == 4){
-        $num = "0000".$sum;
-      }else if($sum == 5){
         $num = "000".$sum;
-      }else if($sum == 6){
+      }else if($sum == 2){
         $num = "00".$sum;
-      }else if($sum == 7){
+      }else if($sum == 3){
         $num = "0".$sum;
-      }else if($sum == 5){
+      }else if($sum == 4){
         $num = $sum;
       }
     }else{
-      $num = "00000001";
+      $num = "0001";
     }
     $rpbid = "RP".$num;
     $receivecars = DB::table('receivecars')->orderBy('rcsid', 'desc')->get();
@@ -47,8 +39,7 @@ class RepairbillController extends Controller
   public function fnGetSparename(Request $req)
   {
     $textsearch = $req->textsearch;
-    $datasearch = DB::table('repairsno')->join('spares', 'spares.sparesid', '=', 'repairsno.sparesid')
-    ->where('repairsno.rpnoid', 'like', '%'.$textsearch.'%')->select('spares.sparesname')->get();
+    $datasearch = DB::table('spares')->where('spares.rpnoid', 'like', '%'.$textsearch.'%')->select('spares.sparesname')->get();
     if(count($datasearch) > 0){
       foreach($datasearch as $dts){
         $sparesname = $dts->sparesname;
@@ -130,10 +121,9 @@ class RepairbillController extends Controller
       ->where('repairbill.rpbid', '=', $req->input('rpbid'))
       ->select('repairbill.*', 'receivecars.*', 'customers.*', 'cars.*','districts.disname','provinces.proname','brands.brandname')->take(1)->get();
       
-      $spares = DB::table('repairbill_detail')->join('repairsno', 'repairsno.rpnoid', '=', 'repairbill_detail.rpnoid')
-      ->join('spares', 'spares.sparesid', '=', 'repairsno.sparesid')->join('unitspare', 'unitspare.unitid', '=', 'spares.unitid')
-      ->where('repairbill_detail.rpbid', '=', $req->input('rpbid'))
-      ->select('repairsno.rpnoid','spares.*','unitspare.unitname','repairbill_detail.useqty')->get();
+      $spares = DB::table('repairbill_detail')->join('spares', 'spares.rpnoid', '=', 'repairbill_detail.rpnoid')
+      ->join('unitspare', 'unitspare.unitid', '=', 'spares.unitid')->where('repairbill_detail.rpbid', '=', $req->input('rpbid'))
+      ->select('spares.*','unitspare.unitname','repairbill_detail.useqty')->get();
       
       $wages = DB::table('wages')->join('repairbill_detail', 'repairbill_detail.wageid', '=', 'wages.wageid')
       ->join('typecars', 'typecars.tcarid', '=', 'wages.tcarid')
@@ -163,10 +153,9 @@ class RepairbillController extends Controller
       ->where('repairbill.rpbid', '=', $rpbid)
       ->select('repairbill.*', 'receivecars.*', 'customers.*', 'cars.*','districts.disname','provinces.proname','brands.brandname')->take(1)->get();
       
-      $spares = DB::table('repairbill_detail')->join('repairsno', 'repairsno.rpnoid', '=', 'repairbill_detail.rpnoid')
-      ->join('spares', 'spares.sparesid', '=', 'repairsno.sparesid')->join('unitspare', 'unitspare.unitid', '=', 'spares.unitid')
-      ->where('repairbill_detail.rpbid', '=', $rpbid)
-      ->select('repairsno.rpnoid','spares.*','unitspare.unitname','repairbill_detail.useqty')->get();
+      $spares = DB::table('repairbill_detail')->join('spares', 'spares.rpnoid', '=', 'repairbill_detail.rpnoid')
+      ->join('unitspare', 'unitspare.unitid', '=', 'spares.unitid')->where('repairbill_detail.rpbid', '=', $rpbid)
+      ->select('spares.*','unitspare.unitname','repairbill_detail.useqty')->get();
       
       $wages = DB::table('wages')->join('repairbill_detail', 'repairbill_detail.wageid', '=', 'wages.wageid')
       ->join('typecars', 'typecars.tcarid', '=', 'wages.tcarid')
@@ -183,12 +172,11 @@ class RepairbillController extends Controller
   {
     $rpbid = $req->rpbid;
     $result = "";
-    $rpbdt = DB::table('repairbill_detail')->join('repairsno', 'repairsno.rpnoid', '=', 'repairbill_detail.rpnoid')
-                                           ->join('spares', 'spares.sparesid', '=', 'repairsno.sparesid')
+    $rpbdt = DB::table('repairbill_detail')->join('spares', 'spares.rpnoid', '=', 'repairbill_detail.rpnoid')
                                            ->join('wages', 'wages.wageid', '=', 'repairbill_detail.wageid')
                                            ->join('unitrepairs', 'unitrepairs.unitrpid', '=', 'wages.unitrpid')
                                            ->where('repairbill_detail.rpbid', '=', $rpbid)
-                                           ->select('repairbill_detail.rpbdtid','repairsno.rpnoid','spares.sparesname','repairbill_detail.useqty','wages.wageid','wages.wagename','unitrepairs.unitrpname')
+                                           ->select('repairbill_detail.rpbdtid','spares.rpnoid','spares.sparesname','repairbill_detail.useqty','wages.wageid','wages.wagename','unitrepairs.unitrpname')
                                            ->get();
     if(count($rpbdt) > 0){
       foreach ($rpbdt as $rdt) {

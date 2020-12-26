@@ -16,27 +16,21 @@ class AccInvoiceController extends Controller
       foreach($invoice as $inv){
         $invoiceid = $inv->invoiceid;
       }
-      // $invoiceid = "INV0000001";
-      $strstring = Str::substr($invoiceid, 3, 10);
+      // $invoiceid = "INV0001";
+      $strstring = Str::substr($invoiceid, 3, 7);
       $sum = (int)$strstring + 1;
       if(strlen($sum) == 1){
-        $id = "000000".$sum;
-      }else if(strlen($sum) == 2){
-        $id = "00000".$sum;
-      }else if(strlen($sum) == 3){
-        $id = "0000".$sum;
-      }else if(strlen($sum) == 4){
         $id = "000".$sum;
-      }else if(strlen($sum) == 5){
+      }else if(strlen($sum) == 2){
         $id = "00".$sum;
-      }else if(strlen($sum) == 6){
+      }else if(strlen($sum) == 3){
         $id = "0".$sum;
       }else{
         $id = $sum;
       }
       $invid = "INV".$id;
     }else{
-      $invid = "INV0000001";
+      $invid = "INV0001";
     }
     $quotations = DB::table('quotations')->orderBy('qtid', 'desc')->get();
     $company = DB::table('company')->orderBy('cpid', 'desc')->get();
@@ -49,10 +43,9 @@ class AccInvoiceController extends Controller
     $result = "";
     $qtdetail = DB::table('quotations_detail')
     ->join('wages', 'wages.wageid', '=', 'quotations_detail.wageid')
-    ->join('repairsno', 'repairsno.rpnoid', '=', 'quotations_detail.rpnoid')
-    ->join('spares', 'spares.sparesid', '=', 'repairsno.sparesid')
+    ->join('spares', 'spares.rpnoid', '=', 'quotations_detail.rpnoid')
     ->where('quotations_detail.qtid', $req->qtid)->where('quotations_detail.status', "1")
-    ->select('quotations_detail.*','wages.*','repairsno.*', 'spares.sparesname')->get();
+    ->select('quotations_detail.*','wages.*','spares.*')->get();
     foreach($qtdetail as $qtdt){
       $result .= '
       <tr>
@@ -143,8 +136,7 @@ class AccInvoiceController extends Controller
       ->where('invoice.invoiceid', '=', $req->input('invoiceid'))
       ->select('invoice.*', 'company.*', 'cars.*', 'brands.brandname')->get();
       $inlist = DB::table('invoice_detail')
-      ->join('repairsno', 'repairsno.rpnoid', '=', 'invoice_detail.rpnoid')
-      ->join('spares', 'spares.sparesid', '=', 'repairsno.sparesid')
+      ->join('spares', 'spares.rpnoid', '=', 'invoice_detail.rpnoid')
       ->join('unitspare', 'unitspare.unitid', '=', 'spares.unitid')
       ->where('invoiceid', $req->input('invoiceid'))
       ->select('invoice_detail.*', 'spares.sparesname', 'unitspare.unitname')->get();
@@ -182,8 +174,7 @@ class AccInvoiceController extends Controller
       ->where('invoice.invoiceid', '=', $invoiceid)
       ->select('invoice.*', 'company.*', 'cars.*', 'brands.brandname')->get();
     $inlist = DB::table('invoice_detail')
-    ->join('repairsno', 'repairsno.rpnoid', '=', 'invoice_detail.rpnoid')
-    ->join('spares', 'spares.sparesid', '=', 'repairsno.sparesid')
+    ->join('spares', 'spares.rpnoid', '=', 'invoice_detail.rpnoid')
     ->join('unitspare', 'unitspare.unitid', '=', 'spares.unitid')
     ->where('invoiceid', $invoiceid)
     ->select('invoice_detail.*', 'spares.sparesname', 'unitspare.unitname')->get();
@@ -283,8 +274,7 @@ class AccInvoiceController extends Controller
   {
     $result = "";
     $inlist = DB::table('invoice_detail')
-    ->join('repairsno', 'repairsno.rpnoid', '=', 'invoice_detail.rpnoid')
-    ->join('spares', 'spares.sparesid', '=', 'repairsno.sparesid')
+    ->join('spares', 'spares.rpnoid', '=', 'invoice_detail.rpnoid')
     ->join('unitspare', 'unitspare.unitid', '=', 'spares.unitid')
     ->join('wages', 'wages.wageid', '=', 'invoice_detail.wageid')
     ->where('invoiceid', $req->invoiceid)

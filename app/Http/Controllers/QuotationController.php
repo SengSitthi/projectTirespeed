@@ -46,12 +46,11 @@ class QuotationController extends Controller
     $result = "";
     $rpbid = $req->rpbid;
     $rpbdetail = DB::table('repairbill_detail')
-    ->join('repairsno', 'repairsno.rpnoid', '=', 'repairbill_detail.rpnoid')
-    ->join('spares', 'spares.sparesid', '=', 'repairsno.sparesid')
+    ->join('spares', 'spares.rpnoid', '=', 'repairbill_detail.rpnoid')
     ->join('unitspare', 'unitspare.unitid', '=', 'spares.unitid')
     ->join('wages', 'wages.wageid', '=', 'repairbill_detail.wageid')
     ->where('repairbill_detail.rpbid', '=', $rpbid)
-    ->select('repairsno.rpnoid','spares.sparesname','unitspare.unitname','repairbill_detail.useqty','spares.sellprice','wages.*')->get();
+    ->select('spares.rpnoid','spares.sparesname','unitspare.unitname','repairbill_detail.useqty','spares.sellprice','wages.*')->get();
     foreach($rpbdetail as $rpbd){
       $result .= '
       <tr>
@@ -163,11 +162,10 @@ class QuotationController extends Controller
       ->get();
       
       $quodetail = DB::table('quotations_detail')
-      ->join('repairsno', 'repairsno.rpnoid', '=', 'quotations_detail.rpnoid')
-      ->join('spares', 'spares.sparesid', '=', 'repairsno.sparesid')
+      ->join('spares', 'spares.rpnoid', '=', 'quotations_detail.rpnoid')
       ->join('unitspare', 'unitspare.unitid', '=', 'spares.unitid')
       ->where('quotations_detail.qtid', '=', $req->input('qtid'))->whereNotIn('quotations_detail.rpnoid', ['CHECK000'])
-      ->select('quotations_detail.*','repairsno.rpnoid','spares.sparesid','spares.sparesname','unitspare.unitname')->get();
+      ->select('quotations_detail.*','spares.rpnoid','spares.sparesid','spares.sparesname','unitspare.unitname')->get();
 
       $wagelist = DB::table('quotations_detail')
       ->join('wages', 'wages.wageid', '=', 'quotations_detail.wageid')
@@ -212,11 +210,10 @@ class QuotationController extends Controller
       ->get();
       
       $quodetail = DB::table('quotations_detail')
-      ->join('repairsno', 'repairsno.rpnoid', '=', 'quotations_detail.rpnoid')
-      ->join('spares', 'spares.sparesid', '=', 'repairsno.sparesid')
+      ->join('spares', 'spares.rpnoid', '=', 'quotations_detail.rpnoid')
       ->join('unitspare', 'unitspare.unitid', '=', 'spares.unitid')
       ->where('quotations_detail.qtid', '=', $qtid)->whereNotIn('quotations_detail.rpnoid', ['CHECK000'])
-      ->select('quotations_detail.*','repairsno.rpnoid','spares.sparesid','spares.sparesname','unitspare.unitname')->get();
+      ->select('quotations_detail.*','spares.rpnoid','spares.sparesid','spares.sparesname','unitspare.unitname')->get();
 
       $wagelist = DB::table('quotations_detail')
       ->join('wages', 'wages.wageid', '=', 'quotations_detail.wageid')
@@ -242,8 +239,7 @@ class QuotationController extends Controller
   {
     $result = "";
     $qtid = $req->qtid;
-    $qtdtdata = DB::table('quotations_detail')->join('repairsno', 'repairsno.rpnoid', '=', 'quotations_detail.rpnoid')
-                                              ->join('spares', 'spares.sparesid', '=', 'repairsno.sparesid')
+    $qtdtdata = DB::table('quotations_detail')->join('spares', 'spares.rpnoid', '=', 'quotations_detail.rpnoid')
                                               ->join('wages', 'wages.wageid', '=', 'quotations_detail.wageid')
                                               ->where('quotations_detail.qtid', '=', $qtid)
                                               ->select('quotations_detail.*','spares.sparesname','wages.*')->get();

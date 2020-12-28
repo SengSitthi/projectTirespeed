@@ -171,15 +171,15 @@ class TechrepairController extends Controller
     $monday = date('Y-m-d', strtotime('Monday this week'));
     $saturday = date('Y-m-d', strtotime('Saturday this week'));
     $waitrepairtoday = count(DB::table('techcarstatus')->where('status', 1)->where('date_in', $today)->get());
-    $waitrepairweek = count(DB::table('techcarstatus')->whereBetween('status', 1)->where('date_in', [$monday, $saturday])->get());
+    $waitrepairweek = count(DB::table('techcarstatus')->where('status', 1)->whereBetween('date_in', [$monday, $saturday])->get());
     $waitsparetoday = count(DB::table('techcarstatus')->where('status', 2)->where('date_in', $today)->get());
-    $waitspareweek = count(DB::table('techcarstatus')->whereBetween('status', 2)->where('date_in', [$monday, $saturday])->get());
+    $waitspareweek = count(DB::table('techcarstatus')->where('status', 2)->whereBetween('date_in', [$monday, $saturday])->get());
     $repairingtoday = count(DB::table('techcarstatus')->where('status', 3)->where('date_in', $today)->get());
-    $repairingweek = count(DB::table('techcarstatus')->whereBetween('status', 3)->where('date_in', [$monday, $saturday])->get());
+    $repairingweek = count(DB::table('techcarstatus')->where('status', 3)->whereBetween('date_in', [$monday, $saturday])->get());
     $successtoday = count(DB::table('techcarstatus')->where('status', 4)->where('date_in', $today)->get());
-    $successweek = count(DB::table('techcarstatus')->whereBetween('status', 4)->where('date_in', [$monday, $saturday])->get());
+    $successweek = count(DB::table('techcarstatus')->where('status', 4)->whereBetween('date_in', [$monday, $saturday])->get());
     $sendtoday = count(DB::table('techcarstatus')->where('status', 5)->where('date_in', $today)->get());
-    $sendweek = count(DB::table('techcarstatus')->whereBetween('status', 5)->where('date_in', [$monday, $saturday])->get());
+    $sendweek = count(DB::table('techcarstatus')->where('status', 5)->whereBetween('date_in', [$monday, $saturday])->get());
     return view('manage/technical/index')->with('waitrepairtoday', $waitrepairtoday)->with('waitrepairweek', $waitrepairweek)->with('waitsparetoday', $waitsparetoday)
     ->with('waitspareweek', $waitspareweek)->with('repairingtoday', $repairingtoday)->with('repairingweek', $repairingweek)->with('successtoday', $successtoday)
     ->with('successweek', $successweek)->with('sendtoday', $sendtoday)->with('sendweek', $sendweek);

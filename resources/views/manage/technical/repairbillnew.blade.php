@@ -53,8 +53,11 @@
                       <input id="rpbdate" class="form-control" type="text" name="rpbdate" required>
                     </div>
                   </div>
-                  <div class="col-md-4 d-flex justify-content-center mb-3">
+                  <div class="col-md-2 d-flex justify-content-center mb-3">
                     <button class="btn btn-success" type="submit"><i class="mdi mdi-content-save"></i> ບັນ​ທຶກ</button>
+                  </div>
+                  <div class="col-md-2">
+                    <h3>ຈຳ​ນວນ​ອະ​ໄຫຼ່ຍັງ​ເຫຼືອ: <span class="badge badge-danger"><b id="sparesleft"></b></span></h3>
                   </div>
                 </div>
                 <div class="row">

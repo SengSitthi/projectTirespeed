@@ -40,6 +40,17 @@ class RepairbillController extends Controller
   {
     $textsearch = $req->textsearch;
     $datasearch = DB::table('spares')->where('spares.rpnoid', 'like', '%'.$textsearch.'%')->select('spares.sparesname')->get();
+    // select receive qty
+    $sqlreceiveqty = DB::table('receivedetail')
+    ->join('spares', 'spares.sparesid', '=', 'receivedetail.sparesid')
+    ->where('spares.rpnoid', '=', $textsearch)->sum('receivedetail.receiveqty');
+
+    // select withdraw textsearch
+    $sqlwithdrawqty = DB::table('withdrawdetail')
+    ->join('spares', 'spares.sparesid', '=', 'withdrawdetail.sparesid')
+    ->where('spares.rpnoid', '=', $textsearch)->sum('withdrawdetail.withdrawqty');
+    $sparesleft = (int)$sqlreceiveqty - (int)$sqlwithdrawqty;
+
     if(count($datasearch) > 0){
       foreach($datasearch as $dts){
         $sparesname = $dts->sparesname;
@@ -47,7 +58,8 @@ class RepairbillController extends Controller
     }else{
       $sparesname = "ບໍ່​ມີ​ລາຍ​ນີ້ໃນ​ລະ​ບົບ!";
     }
-    $data = array('sparesname'=>$sparesname);
+    
+    $data = array('sparesname'=>$sparesname, 'sparesleft' => $sparesleft);
     echo json_encode($data);
   }
 

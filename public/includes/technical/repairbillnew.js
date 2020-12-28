@@ -37,7 +37,8 @@ $(document).ready(function(){
         data: {textsearch:textsearch},
         dataType: 'json',
         success: function(data){
-          // console.log(data);
+          // console.log(data.sparesleft);
+          $('#sparesleft').text(data.sparesleft);
           $('#sparename'+id).val(data.sparesname);
         }, error: function(data){
           console.log('Error: ' + data);

@@ -5,7 +5,7 @@ $(document).ready(function() {
     }
   });
   
-  func
+  
   Highcharts.chart('workstockoverview', {
     chart: {
       plotBackgroundColor: null,

@@ -85,16 +85,16 @@
             <div class="row" style="margin-top: 30px">
               <div class="col-md-12">
                 <div class="row">
-                  <div class="col-md-3">
+                  <div class="col-md-3 col-sm-3">
                     <h5 class="text-center"><b><u>ພະ​ແນກ​ຈັດ​ຊື້</u></b></h5>
                   </div>
-                  <div class="col-md-3">
+                  <div class="col-md-3 col-sm-3">
                     <h5 class="text-center"><b><u>ຜູ້​ຈ​ັດ​ການ​ສ​ູນ</u></b></h5>
                   </div>
-                  <div class="col-md-3">
+                  <div class="col-md-3 col-sm-3">
                     <h5 class="text-center"><b><u>​ຜູ້​ເຫັນ​ດີ</u></b></h5>
                   </div>
-                  <div class="col-md-3">
+                  <div class="col-md-3 col-sm-3">
                     <h5 class="text-center"><b><u>​ຜູ້​ສະ​ເໜີ</u></b></h5>
                   </div>
                 </div>

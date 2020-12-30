@@ -57,7 +57,7 @@
 
 
             <div class="row">
-              <div class="col-lg-8 col-12">
+              <div class="col-lg-12 col-12">
 
                 <div class="card">
                   <div class="card-header bg-transparent py-15">ພາບ​ລວມ</div>
@@ -65,54 +65,6 @@
                       <div style="height: 540px; max-width: 100%;" id="stockoverview"></div>
                     </div>
                   </div>
-                </div>
-
-                <div class="col-lg-4 col-12">
-
-                    <div class="card">
-                        <div class="card-header bg-transparent py-15">ພາບ​ລວມໜ້າ​ວຽກ</div>
-
-                        <div class="card-body">
-
-                            <div class="form-group">
-                                <div style="height: 280px; max-width: 100%;" id="workstockoverview"></div>
-                            </div>
-
-                            <div class="form-group">
-                                <a href="#" class="text-body">ສັ່ງ​ອະ​ໄຫຼ່</a>
-                                <div class="float-right text-muted">
-                                  {{ count($receivesparetoday) }}
-                                </div>
-                                <div class="progress progress-xs mt-5">
-                                    <div class="progress-bar" style="width: 30.5%;"></div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <a href="#" class="text-body">ຮັບ​ອະ​ໄຫຼ່</a>
-                                <div class="float-right text-muted">
-                                  {{ count($receivesparetoday) }}
-                                </div>
-                                <div class="progress progress-xs mt-5">
-                                    <div class="progress-bar" style="width: 25.5%;"></div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <a href="#" class="text-body">ເບີກ​ອະ​ໄຫຼ່</a>
-                                <div class="float-right text-muted">
-                                  {{ count($withdrawdetailtoday) }}
-                                </div>
-
-                                <div class="progress progress-xs mt-5">
-                                    <div class="progress-bar" style="width: 16%;"></div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
                 </div>
             </div>
 

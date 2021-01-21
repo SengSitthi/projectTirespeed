@@ -89,123 +89,73 @@
                 lineColor: '#3b73da',
                 fillColor: 'rgba(59, 115, 218,0.2)'
             });
-
-
-
-            Highcharts.chart('hl-pie-ref', {
-                chart: {
-                    
-                    plotBackgroundColor: null,
-                    plotBorderWidth: null,
-                    plotShadow: false,
-                    type: 'pie'
-                },
-                title: {
+          loadTechchart();
+          function loadTechchart(){
+            $.ajax({
+              url: '/loadtechchart',
+              type: 'POST',
+              dataType: 'json',
+              success: function(data){
+                // console.log(data);
+                Highcharts.chart('techchart', {
+                  title: {
                     text: ''
-                },
-                tooltip: {
-                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-                },
-                plotOptions: {
-                    pie: {
-                        allowPointSelect: true,
-                        cursor: 'pointer',
-                        dataLabels: {
-                            enabled: false
-                        },
-                        showInLegend: false
-                    }
-                },
-                series: [{
-                    name: 'Referrals',
-                    colorByPoint: true,
-                    data: [{
-                        name: 'Google',
-                        y: 30.5,
-                        sliced: true,
-                        // selected: true
-                    }, {
-                        name: 'Twiter',
-                        y: 25.5
-                    }, {
-                        name: 'Morioh',
-                        y: 16
-                    }, {
-                        name: 'Facebook',
-                        y: 8
-                    }, {
-                        name: 'Pinterest',
-                        y: 4
-                    }, {
-                        name: 'Other',
-                        y: 7.05
-                    }]
-                }]
-            });
-
-
-
-            Highcharts.chart('hl-line-main', {
-                title: {
-                    text: ''//'Stats of last 30 days'
-                },
-
-                // subtitle: {
-                //     text: 'Source: thesolarfoundation.com'
-                // },
-
-                yAxis: {
+                  },
+              
+                  yAxis: {
                     title: {
-                        text: 'ການ​ເຄື່ອນ​ໄຫວ​ເດືອນ​ນີ້'
+                      text: 'ການ​ເຄື່ອນ​ໄຫວ​ເດືອນ​ນີ້'
                     }
-                },
-                // legend: {
-                //     // layout: 'vertical',
-                //     // align: 'right',
-                //     verticalAlign: 'middle'
-                // },
-
-                plotOptions: {
+                  },
+              
+                  plotOptions: {
                     series: {
-                        label: {
-                            connectorAllowed: false
+                      label: {
+                        connectorAllowed: false
                         },
-                        pointStart: 1
+                      pointStart: 1
                     }
-                },
-
-                series: [
+                  },
+              
+                  series: [
                     {
-                        name: '​ລົດ​ເຂົ້າ',
-                        data: [8050, 8500, 8600, 8800, 8600, 9000, 9100, 9100, 9500, 9400, 9800, 9900, 10000, 9800, 9600, 9000, 8800, 9600, 9800, 10000, 11000, 11200, 11400, 11400]
+                      name: 'ລົດ​ລໍ​ຖ້າ​ສ້ອມ',
+                      data: data.waitrepair
                     },
                     {
-                        name: '​ລູກ​ຄ້າ',
-                        data: [1000, 1100, 1210, 1110, 1150, 1200, 1400, 1500, 1350, 1300, 1200, 1250, 1260, 1390, 1289, 1120, 1200, 1300, 1310, 1350, 1350, 1400, 1300, 1400]
+                      name: 'ລົດ​ລໍ​ຖ້າ​ອະ​ໄຫຼ່',
+                      data: data.waitspare
                     }, {
-                        name: '​ລົດ​ກຳ​ລັງ​ສ້ອມ​ແປງ',
-                        data: [3000, 3200, 4000, 3000, 3500, 6000, 5000, 3450, 5460, 7000, 6000, 6500, 5500, 8000, 7000, 9000, 8000, 7000, 8000, 9000, 9100, 9200, 9300, 9400]
+                      name: '​ລົດ​ກຳ​ລັງ​ສ້ອມ',
+                      data: data.repairing
                     }, {
-                        name: '​ລາຍ​ຮັບ',
-                        data: [1000, 2200, 2300, 3000, 2500, 2300, 3000, 3200, 2600, 2800, 2700, 2650, 2600, 2800, 2500, 2500, 3000, 3100, 3300, 3000, 3200, 3000, 3200, 3300]
+                      name: 'ລົດ​ສ້ອມ​ສຳ​ເລັດ',
+                      data: data.success
+                    }, {
+                      name: '​ສົ່ງ​ມອບ​ລູກ​ຄ້າ',
+                      data: data.send
                     }],
-
-                responsive: {
+              
+                  responsive: {
                     rules: [{
-                        // condition: {
-                        //     maxWidth: 500
-                        // },
-                        chartOptions: {
-                            legend: {
-                                layout: 'horizontal',
-                                align: 'center',
-                                verticalAlign: 'bottom'
-                            }
+                      // condition: {
+                      //     maxWidth: 500
+                      // },
+                      chartOptions: {
+                        legend: {
+                          layout: 'horizontal',
+                          align: 'center',
+                          verticalAlign: 'bottom'
                         }
+                      }
                     }]
-                }
-
+                  }
+                });
+                }, error: function(data){
+                console.log('Error: '+ data);
+              }
             });
+          }
         })
 
     </script>

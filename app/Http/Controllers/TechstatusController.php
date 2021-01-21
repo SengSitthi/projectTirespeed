@@ -19,7 +19,7 @@ class TechstatusController extends Controller
   }
 
   // function get car data from receive
-  public function fnGetreceivedata(Request $req)
+  public function fnGetReceivedt(Request $req)
   {
     $rpbid = $req->rpbid;
     $rcsdata = DB::table('repairbill')->join('receivecars', 'receivecars.rcsid', '=', 'repairbill.rcsid')

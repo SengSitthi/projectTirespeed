@@ -88,7 +88,7 @@ Route::post('/searchrepairbill', 'RepairbillController@fnSearchrpb');
 // list car status page
 Route::get('/techcarstatus', 'TechstatusController@fnTechcarstatus')->name('techcarstatus');
 //route for get car data from receive car form
-Route::post('/getreceivedata', 'TechstatusController@fnGetreceivedata');
+Route::post('/getreceivedt', 'TechstatusController@fnGetReceivedt');
 // route to insert new car status
 Route::post('/intechcarstatus', 'TechstatusController@fnIntechcarsdata');
 // route to update date out

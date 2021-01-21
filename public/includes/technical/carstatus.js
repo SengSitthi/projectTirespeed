@@ -14,7 +14,7 @@ $(document).ready(function(){
       $('#time_in').val("");
     }else{
       $.ajax({
-        url: '/getreceivedata',
+        url: '/getreceivedt',
         type: 'POST',
         data: {rpbid:rpbid},
         dataType: 'json',

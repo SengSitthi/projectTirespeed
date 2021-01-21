@@ -1,6 +1,6 @@
 @if(isset(Auth::user()->email) && isset(Auth::user()->password))
 @include('manage.layout.head')
-  <div class="wrapper">
+  {{-- <div class="wrapper"> --}}
 
     {{-- @include('manage.layout.nav') --}}
 
@@ -62,7 +62,7 @@
       </div>
     </div>
 
-  </div>
+  {{-- </div> --}}
 
 @include('manage.layout.foot')
 <script src="{{ url('includes/stockjs/sparesbook.js') }}"></script>

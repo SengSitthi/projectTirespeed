@@ -125,7 +125,8 @@ class SpareController extends Controller
     ->join('brands', 'brands.brandid', '=', 'spares.brandid')
     ->join('unitspare', 'unitspare.unitid', '=', 'spares.unitid')
     ->select('spares.*','brands.*','typeservice.typeservicename','typespares.typesparename','brandspares.brandsparename','unitspare.unitname')
-    ->paginate(20);
+    ->orderBy('rpnoid', 'asc')
+    ->paginate(50);
     $count = count($sparelist);
     $typeservice = DB::table('typeservice')->get();
     $typespares = DB::table('typespares')->get();
@@ -196,7 +197,7 @@ class SpareController extends Controller
           <td>'.$row->brandname.'</td>
           <td>'.$row->carmodel.'</td>
           <td>'.$row->madeyear.'</td>
-          <td>'.$row->sellprice.'</td>
+          <td>'.number_format($row->sellprice).'</td>
           <td>'.$row->unitname.'</td>
           <td class="text-center">
             <button class="btn btn-info" type="button" value="'.$row->sparesid.'" id="btnBarcode"><i class="mdi mdi-barcode"></i></button>

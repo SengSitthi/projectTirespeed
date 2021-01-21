@@ -279,6 +279,7 @@ class SpareController extends Controller
       'unitid' => 'required',
       'brandid' => 'required'
     ]);
+    $updatecurrenturl = $req->input('updatecurrenturl');
     $sparesid = $req->input('sparesid1');
     $dataupdate = array(
       'rpnoid' => $req->input('rpnoid'),
@@ -294,7 +295,7 @@ class SpareController extends Controller
       'unitid' => $req->input('unitid')
     );
     DB::table('spares')->where('sparesid', $sparesid)->update($dataupdate);
-    return redirect('spareslist')->with('success', 'update spares success');
+    return redirect($updatecurrenturl)->with('success', 'update spares success');
   }
 
   // function delete spares data

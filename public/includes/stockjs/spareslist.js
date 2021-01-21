@@ -109,6 +109,7 @@ $(document).ready(function(){
       data: {sparesid:sparesid},
       dataType: 'json',
       success: function(data){
+        $('#updatecurrenturl').val(window.location.href);
         $('#sparesid1').val(sparesid);
         $('#rpnoid').val(data.rpnoid);
         $('#sparesname').val(data.sparesname);
@@ -122,7 +123,7 @@ $(document).ready(function(){
         $('#sellprice').val(data.sellprice);
         $('#unitid option[value="'+data.unitid+'"]').prop('selected', true);
         $('#editspare').modal('show');
-        console.log(data);
+        // console.log(data);
       }, error: function(data){
         console.log('Error: ' + data);
       }

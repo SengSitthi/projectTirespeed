@@ -136,6 +136,7 @@
                       <div class="row">
                         <div class="col-md-3">
                           <div class="form-group">
+                            <input type="hidden" id="updatecurrenturl" name="updatecurrenturl" value="">
                             <label for="sparesid1">ລະ​ຫັດ​ອະ​ໄຫຼ່</label>
                             <input id="sparesid1" class="form-control" type="text" name="sparesid1" id="sparesid1" value="" required readonly>
                           </div>

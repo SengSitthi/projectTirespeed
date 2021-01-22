@@ -96,8 +96,8 @@ class SpareController extends Controller
     $count1 = count(DB::table('spares')->where('rpnoid'), $req->input('rpnoid')->get());
     if($count > 0){
       return back()->with('error', 'ຜິດ​ພາດ​ລະ​ຫັດ​ທີ່​ທ່ານ​ປ້ອນ​ຊ້ຳ​ກັນ');
-    }else if($count > 0){
-      return back()->with('rpno_error', 'ຜິດ​ພາດ​ລະ​ຫັດ​ທີ່​ທ່ານ​ປ້ອນ​ຊ້ຳ​ກັນ');
+    }else if($count1 > 0){
+      return back()->with('rpno_error', 'ຜິດ​ພາດ​ລະ​ຫັດ​ສ້ອມ​ແປງທີ່​ທ່ານ​ປ້ອນ​ຊ້ຳ​ກັນ');
     }else{
       if($createbarcode == "1"){
         DB::table('spares')->insert($datainsert);
